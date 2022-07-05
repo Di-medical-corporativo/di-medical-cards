@@ -1,0 +1,20 @@
+.logo {
+    .logo__image {
+        width: 60%;
+    
+        @include small_device-up {
+            width: 250px;
+        }
+    }
+
+}
+
+.background {
+    width: 100%;
+    height: 100%;
+    background: {
+        position: center;
+        size: cover;
+    }
+    @include flex(center, space-between, column);
+}
