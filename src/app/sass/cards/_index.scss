@@ -1,2 +1,7 @@
 @import './components';
 @import './views';
+
+.card__content {
+    @include flex(center, center , column);
+
+}
