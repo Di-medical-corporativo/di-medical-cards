@@ -16,13 +16,42 @@
         }
 
         .card-contact__info {
+            width: 100%;
+            @include flex(center, space-between, column);
+            .card-contact__name {
+                text-align: center;
+                @include flex(center, space-between, column);
+                .card-contact__name__employee {
+                    font-size: 30px;
+                }
 
+                .card-contact__name__job {
+                    font-size: 25px;
+                }
+
+                .card-contact__name__button {
+                    width: 135px;
+                    height: 30px;
+                    border-radius: 3px;
+                    outline: none;
+                    border: none;
+                    cursor: pointer;
+                    color: #fff;
+                    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+                    .icon {
+                        color: #fff;
+                    }
+
+                    @include flex(center, space-evenly, row);
+                }
+
+            }
         }
 
         .card-contact__links {
             width: 100%;
             @include flex(center, space-around, row);
-
+            margin-top: 20px;
             .card-contact__links--left {
                 width: 45%;
                 height: 100%;

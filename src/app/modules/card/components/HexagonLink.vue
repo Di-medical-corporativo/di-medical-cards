@@ -24,7 +24,7 @@ export default {
     setup(props) {
         return {
             colorIcon: computed(() =>{ 
-                return props.sucursal === 'sur' ? '#2218d9b' : '#c28400'
+                return props.sucursal === 'sur' ? '#218d9b' : '#c28400'
             })
         }
     }

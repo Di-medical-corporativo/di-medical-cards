@@ -17,6 +17,9 @@
             <slot name="hexagons-right" :sucursal="$route.params.sucursal"></slot>
         </div>
     </div>
+    <div class="card-contact__copy">
+        <slot name="copy"></slot>
+    </div>
   </div>
 </template>
 

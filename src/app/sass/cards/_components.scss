@@ -1,6 +1,8 @@
 .logo {
+    
+    @include flex(center, center, row);
     .logo__image {
-        width: 60%;
+        width: 55%;
     
         @include small_device-up {
             width: 250px;
@@ -24,14 +26,20 @@
     background-color: #f8f9fa;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
     background: {
-        // image: url('https://firebasestorage.googleapis.com/v0/b/di-medical-del-sur.appspot.com/o/hexagon%20.webp?alt=media&token=d6b3c02c-cd89-4028-aba7-0c281c6c32ba');
+        image: url('https://firebasestorage.googleapis.com/v0/b/di-medical-del-sur.appspot.com/o/hexagon%20.webp?alt=media&token=d6b3c02c-cd89-4028-aba7-0c281c6c32ba');
         position: center;
-        size: cover;
+        size: 200%;
         
     }
     .icon {
         transform: rotate(-90deg);
-        font-size: 35px;
+        font-size: 40px;
     }
 
+}
+
+.copy {
+    p {
+        color: #fff;
+    }
 }
