@@ -75,13 +75,8 @@
     }
 
 
-    @include small_device-up {
-        width: 40%;
-        height: 100%;
-    }
-
     @include medium_device-up { 
-        width: 700px;
+        width: 800px;
         height: 100%;
     }
 }

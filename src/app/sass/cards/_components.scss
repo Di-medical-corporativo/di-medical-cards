@@ -2,10 +2,10 @@
     
     @include flex(center, center, row);
     .logo__image {
-        width: 55%;
+        width: 50%;
     
         @include small_device-up {
-            width: 250px;
+            width: 200px;
         }
     }
 
@@ -31,7 +31,8 @@
         size: 200%;
         
     }
-    .icon {
+
+    .hexagon-container__link__page {
         transform: rotate(-90deg);
         font-size: 40px;
     }

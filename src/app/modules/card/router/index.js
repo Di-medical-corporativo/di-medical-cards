@@ -11,6 +11,6 @@ export default {
             path: ':name/about',
             name: 'about-card',
             component: () => import('../views/AboutView.vue')
-        }
+        },
     ]
 }

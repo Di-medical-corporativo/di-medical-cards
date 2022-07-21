@@ -1,7 +1,7 @@
 export const leftHexagonsLogos = [
     {
         logo: 'envelope',
-        link: ''
+        link: 'mailto:xyz@abc.com'
     },
     {
         logo: 'whatsapp',
@@ -9,15 +9,15 @@ export const leftHexagonsLogos = [
     },
     {
        logo: 'facebook',
-       link: '' 
+       link: 'https://bit.ly/3M8lgP3' 
     },
     {
         logo: 'youtube',
-        link: ''
+        link: 'https://bit.ly/3xaqrdg'
     },
     {
         logo: 'tiktok',
-        link: ''
+        link: 'https://bit.ly/3ziRBQH'
     }
 ]
 
@@ -32,7 +32,7 @@ export const rightHexagonsLogos = [
     },
     {
        logo: 'instagram',
-       link: '' 
+       link: 'https://bit.ly/3awalS9' 
     },
     {
         logo: 'geo-alt',

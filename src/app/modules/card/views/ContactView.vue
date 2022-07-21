@@ -19,6 +19,7 @@
                 v-for="(l, i) in leftHexagonsLogos"
                 :key="i"
                 :icon="l.logo"
+                :link="l.link"
             />
         </template>
         <template #hexagons-right="{ sucursal }">
@@ -26,7 +27,8 @@
                 :sucursal="sucursal"
                 v-for="(l, i)  in rightHexagonsLogos"
                 :key="i" 
-                :icon="l.logo"     
+                :icon="l.logo"
+                :link="l.link"     
             />
         </template>
         

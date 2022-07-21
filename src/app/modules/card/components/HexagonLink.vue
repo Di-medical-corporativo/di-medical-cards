@@ -1,9 +1,14 @@
 <template>
   <div class="hexagon-container">
     <div class="hexagon-container__link">
-        <i 
-        :class="`bi bi-${icon} icon`" 
-        :style="{ 'color': colorIcon }"></i>
+        <a 
+            :href="link" 
+            class="hexagon-container__link__page">
+            <i 
+                :class="`bi bi-${icon} icon`" 
+                :style="{ 'color': colorIcon }">
+            </i>
+        </a>
     </div>
   </div>
 </template>
@@ -17,6 +22,9 @@ export default {
             type: String
         },
         icon: {
+            type: String
+        },
+        link: {
             type: String
         }
     },
