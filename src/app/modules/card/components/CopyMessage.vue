@@ -7,9 +7,8 @@
 <script>
 export default {
     setup() {
-        const currentYear = new Date().getFullYear()
         return {
-            currentYear
+            currentYear: new Date().getFullYear()
         }
     }
 }

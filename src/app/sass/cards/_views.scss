@@ -80,3 +80,61 @@
         height: 100%;
     }
 }
+
+.card-about {
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    background: {
+        image: url('https://firebasestorage.googleapis.com/v0/b/di-medical-del-sur.appspot.com/o/mainBg.webp?alt=media&token=072feb70-824e-468a-8594-89b5ee617997');
+        position: center;
+        size: cover;
+    }
+    .card-about__image {
+        width: 100%;
+        .card-about__image__button {
+            $s: 70px;
+            $m: 6px;
+            color: #fff;
+            outline: none;
+            border: none;
+            cursor: pointer;
+            width: $s;
+            margin: $m;
+            border-radius: 15px;
+            height: calc(#{$s} * 1.1547);
+            @include flex(center, center, column);
+            transform: rotate(90deg); 
+            font-size: initial;
+            position: relative;
+            clip-path: polygon(0% 25%, 0% 75%, 50% 100%, 100% 75%, 100% 25%, 50% 0%);
+            background-color: $sur_bg--ligth;
+
+            .icon {
+                color:#fff;
+                font-size: 20px;
+                transform: rotate(-90deg);
+            }
+        }
+
+        .card-about__image__outline {
+            width: 300px;
+            height: 300px;
+            margin-right: -120px;
+            border-radius: 50%;
+            background: {
+                size: cover;
+                position:center;
+            }
+            box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+
+        }
+        @include flex(center, space-around, row);
+
+    }
+    @include flex(center, space-between, column);
+    @include medium_device-up { 
+        width: 800px;
+        height: 100%;
+    }
+}

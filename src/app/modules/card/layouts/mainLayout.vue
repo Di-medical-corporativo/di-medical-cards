@@ -1,6 +1,10 @@
 <template>
     <main class="card__content" :class="globalBackground">
-        <router-view></router-view>
+        <router-view v-slot="{ Component, route }">
+            <transition name="scale" mode="out-in">
+                <component :is="Component" :key="route.path" />
+            </transition>
+        </router-view>
     </main>
 </template>
 
@@ -22,7 +26,3 @@ export default {
     }
 }
 </script>
-
-<style>
-
-</style>

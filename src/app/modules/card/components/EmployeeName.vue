@@ -4,7 +4,8 @@
     <h4 class="card-contact__name__job">{{employee.job}}</h4>
     <button 
         class="card-contact__name__button"
-        :style="{ 'background': sucursalColor }"
+        @click="$router.push({ name: 'about-card' })"
+        :style="sucursalColor"
     >
         <i class="bi bi-person-fill icon"></i>
         Sobre mi
@@ -28,7 +29,8 @@ export default {
     setup(props) {
         return { 
             sucursalColor: computed(() => {
-                return props.sucursal == 'sur' ? '#218d9b' : '#c28400'
+                const color = props.sucursal == 'sur' ? '#218d9b' : '#c28400'
+                return { 'background': color }
             })
         }
     }

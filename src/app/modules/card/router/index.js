@@ -5,12 +5,14 @@ export default {
         {
             path: ':name',
             name: 'contact-card',
-            component: () => import('../views/ContactView.vue')
+            component: () => import('../views/ContactView.vue'),
+            meta: { transition: 'slide-left' },
         },
         {
             path: ':name/about',
             name: 'about-card',
-            component: () => import('../views/AboutView.vue')
+            component: () => import('../views/AboutView.vue'),
+            meta: { transition: 'slide-right' },
         },
     ]
 }

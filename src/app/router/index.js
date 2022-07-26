@@ -6,7 +6,8 @@ const routes = [
   {
     path: '/:sucursal',
     ...CardRouter,
-    beforeEnter: checkSucursalParam
+    beforeEnter: checkSucursalParam,
+    redirect: { name: 'not-found' }
   },
   {
     path: '/:pathMatch(.*)*',
