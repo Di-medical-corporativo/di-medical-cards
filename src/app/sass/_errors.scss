@@ -1,0 +1,8 @@
+.not-found {
+    width:100%;
+    height:100vh;
+    @include flex(center, center, column);
+    .not-found__code {
+        font-size: 150px
+    }
+}

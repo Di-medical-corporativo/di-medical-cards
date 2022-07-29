@@ -1,6 +1,7 @@
 @import './variables';
 @import './mixins';
 @import './cards/index';
+@import 'errors';
 
 * {
     font-family: $font;

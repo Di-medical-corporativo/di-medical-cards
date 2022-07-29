@@ -1,15 +1,8 @@
 <template>
   <div class="not-found">
-    <h1>Route not found</h1>
+    <p class="not-found__code">
+        404
+    </p>
+    <p class="not-found__message"></p>
   </div>
 </template>
-
-<script>
-export default {
-
-}
-</script>
-
-<style>
-
-</style>

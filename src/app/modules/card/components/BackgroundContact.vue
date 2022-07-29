@@ -4,17 +4,29 @@
   :style="backgroundImage"
   >
     <div class="card-contact__logo">
-        <slot name="logo" :sucursal="$route.params.sucursal"></slot>
+        <slot 
+            name="logo" 
+            :sucursal="$route.params.sucursal">
+        </slot>
     </div>
     <div class="card-contact__info">
-        <slot name="employee" :sucursal="$route.params.sucursal"></slot>
+        <slot 
+            name="employee" 
+            :sucursal="$route.params.sucursal">
+        </slot>
     </div>
     <div class="card-contact__links">
         <div class="card-contact__links--left">
-            <slot name="hexagons-left" :sucursal="$route.params.sucursal"></slot>
+            <slot 
+                name="hexagons-left" 
+                :sucursal="$route.params.sucursal">
+            </slot>
         </div>
         <div class="card-contact__links--right">
-            <slot name="hexagons-right" :sucursal="$route.params.sucursal"></slot>
+            <slot 
+                name="hexagons-right" 
+                :sucursal="$route.params.sucursal">
+            </slot>
         </div>
     </div>
     <div class="card-contact__copy">
