@@ -11,9 +11,13 @@ const routes = [
   },
   {
     path: '/:pathMatch(.*)*',
+    beforeEnter: (to, from, next) => { next('/not-found') }
+  },
+  {
+    path: '/not-found',
     name: 'not-found',
     component: () => import('../views/NotFoundView.vue'),
-}
+  },
 
 ]
 

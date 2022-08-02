@@ -1,10 +1,12 @@
 .card-contact {
     width: 100%;
     height: 100%;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 
     .card-contact__sucursal__provider{
         width: 100%;
         height: 100%;
+        position: relative;
         background: {
             position: top;
             size: cover;
@@ -69,6 +71,31 @@
 
                 .hexagon-container:nth-child(2n) {
                     align-self: flex-end;
+                }
+            }
+        }
+
+        .card-contact__share {
+            position: absolute;
+            right: 10px;
+            top: 10px;
+
+            .sharer {
+                .sharer__button {
+                    outline: none;
+                    border: none;
+                    cursor: pointer;
+                    width: 110px;
+                    height: 30px;
+                    font-size: 12px;
+                    border-radius: 5px;
+                    color: #fff;
+                    box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+
+                    @include flex(center, space-around, row);
+                    .icon {
+                        color: #fff;
+                    }
                 }
             }
         }

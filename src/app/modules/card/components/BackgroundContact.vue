@@ -3,6 +3,13 @@
   class="card-contact__sucursal__provider"
   :style="backgroundImage"
   >
+    <div class="card-contact__share">
+        <slot 
+            name="sharer" 
+            :sucursal="$route.params.sucursal">
+        </slot>
+    </div>
+  
     <div class="card-contact__logo">
         <slot 
             name="logo" 

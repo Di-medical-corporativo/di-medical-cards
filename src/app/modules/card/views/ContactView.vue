@@ -1,6 +1,11 @@
 <template>
   <div class="card-contact">
     <SucursalProvider>
+        
+        <template #sharer="{ sucursal }">
+            <Sharer :sucursal="sucursal"/>
+        </template>
+
         <template #logo="{ sucursal }">
             <Logo :sucursal="sucursal"/>
         </template>
@@ -35,7 +40,6 @@
         <template #copy>
             <CopyMessage/>
         </template>
-
     </SucursalProvider>
   </div>
 </template>
@@ -49,7 +53,8 @@ export default {
         SucursalProvider: defineAsyncComponent(() => import('../components/BackgroundContact.vue')),
         EmployeeName: defineAsyncComponent(() => import('../components/EmployeeName.vue')),
         Hexagon: defineAsyncComponent(() => import('../components/HexagonLink.vue')),
-        CopyMessage: defineAsyncComponent(() => import('../components/CopyMessage.vue'))
+        CopyMessage: defineAsyncComponent(() => import('../components/CopyMessage.vue')),
+        Sharer: defineAsyncComponent(() => import('../components/Sharer.vue'))
     },
 
     setup() {

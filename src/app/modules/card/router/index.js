@@ -13,6 +13,6 @@ export default {
             name: 'about-card',
             component: () => import('../views/AboutView.vue'),
             meta: { transition: 'slide-right' },
-        },
+        }
     ]
 }
