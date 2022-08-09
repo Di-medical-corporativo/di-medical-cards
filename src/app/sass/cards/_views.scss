@@ -81,6 +81,7 @@
             top: 10px;
 
             .sharer {
+                z-index: 10000;
                 .sharer__button {
                     outline: none;
                     border: none;
