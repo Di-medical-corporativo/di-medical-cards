@@ -98,6 +98,22 @@
                         color: #fff;
                     }
                 }
+
+                .sharer__options {
+                    width: 100%;
+                    height: 100%;
+                    @include flex(center, space-around, row);
+
+                    a {
+                        color: inherit;
+                    }
+                    
+                    .icon {
+                        cursor: pointer;
+                        color: inherit;
+                        font-size:25px;
+                    }
+                }
             }
         }
     }

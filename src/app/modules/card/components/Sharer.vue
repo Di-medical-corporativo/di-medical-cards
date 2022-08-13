@@ -4,7 +4,7 @@
         class="sharer__button"
         data-bs-toggle="modal" 
         data-bs-target="#exampleModal"
-        :style="sucursalColor">
+        :style="sucursalColor('background')">
         <i class="bi bi-share-fill icon"></i>
         Compartir
     </button>
@@ -16,7 +16,13 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        ...
+        <div class="sharer__options" :style="sucursalColor('color')">
+
+            <a :href="`https://www.facebook.com/sharer/sharer.php?u=${url}`"><i class="bi bi-facebook icon"></i></a>
+            <a :href="`https://api.whatsapp.com/send?text=${url}`"><i class="bi bi-whatsapp icon"></i></a>
+            <i class="bi bi-link icon" @click="copyToClipBoard"></i>
+            <div :class="bookMarkIcon" @click="saveToFavorites"></div>
+        </div>
       </div>
     </div>
   </div>
@@ -27,6 +33,9 @@
 
 <script>
 import { computed } from 'vue'
+import { useRoute } from 'vue-router'
+import bookMark from '../helpers/bookMarkCard'
+
 
 export default {
     props: {
@@ -36,12 +45,26 @@ export default {
     },
 
     setup(props) {
-
+        const route = useRoute()
+        const { sucursal, id } = route.params
         return {
             sucursalColor: computed(() => {
                 const color = props.sucursal === 'sur' ? '#218d9b' : '#c28400'
-                return { 'background': color }
-            })
+                return (typeStyle) => {
+                    return typeStyle == 'color' ? 
+                        { 'color' : color } :
+                        { 'background' : color }
+                }
+            }),
+            bookMarkIcon: computed(() => {
+                if(!localStorage.getItem('bookmark')) {
+                    return 'bi bi-bookmark icon'
+                }
+                return 'bi bi-bookmark-fill icon' 
+            }),
+            saveToFavorites: () => bookMark(),
+            url: `https://www.dimedicalcorporativo.mx/#/${sucursal}/${id}`,
+            copyToClipBoard: () => navigator.clipboard.writeText(window.location.href)
         }
     }
 }
