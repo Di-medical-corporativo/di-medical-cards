@@ -44,31 +44,31 @@
 </template>
 
 <script>
-import { defineAsyncComponent } from '@vue/runtime-core'
-import { leftHexagonsLogos, rightHexagonsLogos } from '../helpers/hexagonLogos'
+import { defineAsyncComponent } from "@vue/runtime-core";
+import { leftHexagonsLogos, rightHexagonsLogos } from "../helpers/hexagonLogos";
 export default {
   components: {
-    Logo: defineAsyncComponent(() => import('../components/Logo.vue')),
+    Logo: defineAsyncComponent(() => import("../components/Logo.vue")),
     SucursalProvider: defineAsyncComponent(() =>
-      import('../components/BackgroundContact.vue')
+      import("../components/BackgroundContact.vue")
     ),
     EmployeeName: defineAsyncComponent(() =>
-      import('../components/EmployeeName.vue')
+      import("../components/EmployeeName.vue")
     ),
     Hexagon: defineAsyncComponent(() =>
-      import('../components/HexagonLink.vue')
+      import("../components/HexagonLink.vue")
     ),
     CopyMessage: defineAsyncComponent(() =>
-      import('../components/CopyMessage.vue')
+      import("../components/CopyMessage.vue")
     ),
-    Sharer: defineAsyncComponent(() => import('../components/Sharer.vue'))
+    Sharer: defineAsyncComponent(() => import("../components/Sharer.vue")),
   },
 
-  setup () {
+  setup() {
     return {
       leftHexagonsLogos,
-      rightHexagonsLogos
-    }
-  }
-}
+      rightHexagonsLogos,
+    };
+  },
+};
 </script>

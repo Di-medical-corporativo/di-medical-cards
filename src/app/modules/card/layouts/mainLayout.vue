@@ -9,20 +9,20 @@
 </template>
 
 <script>
-import { computed } from 'vue'
-import { useRoute } from 'vue-router'
+import { computed } from "vue";
+import { useRoute } from "vue-router";
 
 export default {
-  setup () {
-    const route = useRoute()
-    const { sucursal } = route.params
+  setup() {
+    const route = useRoute();
+    const { sucursal } = route.params;
     return {
       globalBackground: computed(() => {
-        return sucursal == 'sur'
-          ? 'card__content--sur'
-          : 'card__content--corporativo'
-      })
-    }
-  }
-}
+        return sucursal == "sur"
+          ? "card__content--sur"
+          : "card__content--corporativo";
+      }),
+    };
+  },
+};
 </script>
