@@ -8,8 +8,8 @@ export const leftHexagonsLogos = [
         link: ''
     },
     {
-       logo: 'facebook',
-       link: 'https://bit.ly/3M8lgP3' 
+        logo: 'facebook',
+        link: 'https://bit.ly/3M8lgP3'
     },
     {
         logo: 'youtube',
@@ -31,8 +31,8 @@ export const rightHexagonsLogos = [
         link: ''
     },
     {
-       logo: 'instagram',
-       link: 'https://bit.ly/3awalS9' 
+        logo: 'instagram',
+        link: 'https://bit.ly/3awalS9'
     },
     {
         logo: 'geo-alt',
