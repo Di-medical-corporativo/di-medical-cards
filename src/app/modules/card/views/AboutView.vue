@@ -45,34 +45,34 @@
 </template>
 
 <script>
-import { computed, defineAsyncComponent } from "@vue/runtime-core";
-import { useRoute } from "vue-router";
+import { computed, defineAsyncComponent } from '@vue/runtime-core'
+import { useRoute } from 'vue-router'
 export default {
   components: {
-    Logo: defineAsyncComponent(() => import("../components/Logo.vue")),
+    Logo: defineAsyncComponent(() => import('../components/Logo.vue'))
   },
 
-  setup() {
-    const route = useRoute();
-    const { sucursal } = route.params;
+  setup () {
+    const route = useRoute()
+    const { sucursal } = route.params
     return {
       sucursal,
       buttonBackground: computed(() => {
-        const backgroundColor = sucursal == "sur" ? "#218d9b" : "#c28400";
-        return { background: backgroundColor };
+        const backgroundColor = sucursal === 'sur' ? '#218d9b' : '#c28400'
+        return { background: backgroundColor }
       }),
       sucursalBackground: computed(() => {
         const backgrounds = {
-          sur: "https://firebasestorage.googleapis.com/v0/b/di-medical-del-sur.appspot.com/o/FondoSur.webp?alt=media&token=eb8461a2-b4e0-4578-ad86-a4f6d3f008f0",
+          sur: 'https://firebasestorage.googleapis.com/v0/b/di-medical-del-sur.appspot.com/o/FondoSur.webp?alt=media&token=eb8461a2-b4e0-4578-ad86-a4f6d3f008f0',
           corporativo:
-            "https://firebasestorage.googleapis.com/v0/b/di-medical-del-sur.appspot.com/o/FondoCorp.webp?alt=media&token=acdc5457-d064-490b-bf1a-2f6787b8c0a8",
-        };
+            'https://firebasestorage.googleapis.com/v0/b/di-medical-del-sur.appspot.com/o/FondoCorp.webp?alt=media&token=acdc5457-d064-490b-bf1a-2f6787b8c0a8'
+        }
 
-        return { "background-image": `url(${backgrounds[sucursal]})` };
-      }),
-    };
-  },
-};
+        return { 'background-image': `url(${backgrounds[sucursal]})` }
+      })
+    }
+  }
+}
 </script>
 
 <style>

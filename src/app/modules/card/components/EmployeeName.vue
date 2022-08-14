@@ -14,25 +14,25 @@
 </template>
 
 <script>
-import { computed } from "vue";
+import { computed } from 'vue'
 export default {
   props: {
     sucursal: {
-      type: String,
+      type: String
     },
     employee: {
       type: Object,
-      default: () => {},
-    },
+      default: () => {}
+    }
   },
 
-  setup(props) {
+  setup (props) {
     return {
       sucursalColor: computed(() => {
-        const color = props.sucursal == "sur" ? "#218d9b" : "#c28400";
-        return { background: color };
-      }),
-    };
-  },
-};
+        const color = props.sucursal === 'sur' ? '#218d9b' : '#c28400'
+        return { background: color }
+      })
+    }
+  }
+}
 </script>

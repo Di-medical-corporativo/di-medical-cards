@@ -6,12 +6,12 @@
 
 <script>
 export default {
-  setup() {
+  setup () {
     return {
-      currentYear: new Date().getFullYear(),
-    };
-  },
-};
+      currentYear: new Date().getFullYear()
+    }
+  }
+}
 </script>
 
 <style>

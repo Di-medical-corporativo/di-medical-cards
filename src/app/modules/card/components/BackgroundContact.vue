@@ -25,24 +25,24 @@
 </template>
 
 <script>
-import { computed } from "vue";
-import { useRoute } from "vue-router";
+import { computed } from 'vue'
+import { useRoute } from 'vue-router'
 
 export default {
-  setup() {
-    const route = useRoute();
-    const { sucursal } = route.params;
+  setup () {
+    const route = useRoute()
+    const { sucursal } = route.params
     const backgroundList = {
-      sur: "https://firebasestorage.googleapis.com/v0/b/di-medical-del-sur.appspot.com/o/FondoSur.webp?alt=media&token=eb8461a2-b4e0-4578-ad86-a4f6d3f008f0",
+      sur: 'https://firebasestorage.googleapis.com/v0/b/di-medical-del-sur.appspot.com/o/FondoSur.webp?alt=media&token=eb8461a2-b4e0-4578-ad86-a4f6d3f008f0',
       corporativo:
-        "https://firebasestorage.googleapis.com/v0/b/di-medical-del-sur.appspot.com/o/FondoCorp.webp?alt=media&token=acdc5457-d064-490b-bf1a-2f6787b8c0a8",
-    };
+        'https://firebasestorage.googleapis.com/v0/b/di-medical-del-sur.appspot.com/o/FondoCorp.webp?alt=media&token=acdc5457-d064-490b-bf1a-2f6787b8c0a8'
+    }
 
     return {
       backgroundImage: computed(() => {
-        return `background-image: url(${backgroundList[sucursal]})`;
-      }),
-    };
-  },
-};
+        return `background-image: url(${backgroundList[sucursal]})`
+      })
+    }
+  }
+}
 </script>

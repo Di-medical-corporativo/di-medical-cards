@@ -9,29 +9,29 @@
 </template>
 
 <script>
-import { computed } from "vue";
+import { computed } from 'vue'
 
 export default {
   props: {
     sucursal: {
-      type: String,
+      type: String
     },
     icon: {
-      type: String,
+      type: String
     },
     link: {
-      type: String,
-    },
+      type: String
+    }
   },
 
-  setup(props) {
+  setup (props) {
     return {
       colorIcon: computed(() => {
-        return props.sucursal === "sur" ? "#218d9b" : "#c28400";
-      }),
-    };
-  },
-};
+        return props.sucursal === 'sur' ? '#218d9b' : '#c28400'
+      })
+    }
+  }
+}
 </script>
 
 <style>
