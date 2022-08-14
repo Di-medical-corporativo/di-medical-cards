@@ -3,16 +3,18 @@
     height: 100%;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 
-    .card-contact__sucursal__provider{
+    .card-contact__sucursal__provider {
         width: 100%;
         height: 100%;
         position: relative;
+
         background: {
             position: top;
             size: cover;
         }
+
         @include flex(center, space-between, column);
-    
+
         .card-contact__logo {
             width: 100%;
         }
@@ -20,9 +22,11 @@
         .card-contact__info {
             width: 100%;
             @include flex(center, space-between, column);
+
             .card-contact__name {
                 text-align: center;
                 @include flex(center, space-between, column);
+
                 .card-contact__name__employee {
                     font-size: 30px;
                 }
@@ -40,6 +44,7 @@
                     cursor: pointer;
                     color: #fff;
                     box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+
                     .icon {
                         color: #fff;
                     }
@@ -54,6 +59,7 @@
             width: 100%;
             @include flex(center, space-around, row);
             margin-top: 20px;
+
             .card-contact__links--left {
                 width: 45%;
                 height: 100%;
@@ -94,6 +100,7 @@
                     box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
 
                     @include flex(center, space-around, row);
+
                     .icon {
                         color: #fff;
                     }
@@ -119,7 +126,7 @@
     }
 
 
-    @include medium_device-up { 
+    @include medium_device-up {
         width: 800px;
         height: 100%;
     }
@@ -129,13 +136,16 @@
     width: 100%;
     height: 100%;
     overflow-x: hidden;
+
     background: {
         image: url('https://firebasestorage.googleapis.com/v0/b/di-medical-del-sur.appspot.com/o/mainBg.webp?alt=media&token=072feb70-824e-468a-8594-89b5ee617997');
         position: center;
         size: cover;
     }
+
     .card-about__image {
         width: 100%;
+
         .card-about__image__button {
             $s: 70px;
             $m: 6px;
@@ -148,14 +158,14 @@
             border-radius: 15px;
             height: calc(#{$s} * 1.1547);
             @include flex(center, center, column);
-            transform: rotate(90deg); 
+            transform: rotate(90deg);
             font-size: initial;
             position: relative;
             clip-path: polygon(0% 25%, 0% 75%, 50% 100%, 100% 75%, 100% 25%, 50% 0%);
             background-color: $sur_bg--ligth;
 
             .icon {
-                color:#fff;
+                color: #fff;
                 font-size: 20px;
                 transform: rotate(-90deg);
             }
@@ -166,12 +176,19 @@
             height: 280px;
             margin-right: -120px;
             border-radius: 50%;
+
             background: {
                 size: cover;
-                position:center;
+                position: center;
             }
-            box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+
+            box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+            rgba(0, 0, 0, 0.12) 0px -12px 30px,
+            rgba(0, 0, 0, 0.12) 0px 4px 6px,
+            rgba(0, 0, 0, 0.17) 0px 12px 13px,
+            rgba(0, 0, 0, 0.09) 0px -3px 5px;
             @include flex(center, center, column);
+
             .card-about__image__employee {
                 width: 95%;
                 height: 95%;
@@ -180,6 +197,7 @@
                 object-fit: cover;
             }
         }
+
         @include flex(center, space-around, row);
 
     }
@@ -188,16 +206,19 @@
         width: 100%;
         margin-top: 20px;
         margin-bottom: 10px;
+
         .card-about__info__paragraph {
             width: 90%;
             min-height: 70px;
             margin-top: 15px;
             border-radius: 10px;
             box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+
             background: {
                 size: cover;
-                position:20% 60%;
+                position: 20% 60%;
             }
+
             .card-about__info__paragraph__text {
                 width: 90%;
                 height: 100%;
@@ -208,6 +229,7 @@
                 line-height: 17px;
                 @include flex(center, center, row);
             }
+
             @include flex(center, center, column);
 
             @include medium_device-up {
@@ -221,7 +243,8 @@
     }
 
     @include flex(center, space-between, column);
-    @include medium_device-up { 
+
+    @include medium_device-up {
         width: 800px;
         height: 100%;
     }
