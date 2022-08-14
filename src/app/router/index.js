@@ -1,6 +1,6 @@
-import { createRouter, createWebHashHistory } from 'vue-router'
-import CardRouter from '../modules/card/router';
-import checkSucursalParam from './sucursal-guard';
+import { createRouter, createWebHistory } from 'vue-router'
+import CardRouter from '../modules/card/router'
+import checkSucursalParam from './sucursal-guard'
 
 const routes = [
   {
@@ -16,13 +16,13 @@ const routes = [
   {
     path: '/not-found',
     name: 'not-found',
-    component: () => import('../views/NotFoundView.vue'),
-  },
+    component: () => import('../views/NotFoundView.vue')
+  }
 
 ]
 
 const router = createRouter({
-  history: createWebHashHistory(),
+  history: createWebHistory(),
   routes
 })
 

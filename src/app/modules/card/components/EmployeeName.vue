@@ -1,14 +1,14 @@
 <template>
   <div class="card-contact__name">
-    <p class="card-contact__name__employee">{{employee.name}}</p>
-    <h4 class="card-contact__name__job">{{employee.job}}</h4>
-    <button 
-        class="card-contact__name__button"
-        @click="$router.push({ name: 'about-card' })"
-        :style="sucursalColor"
+    <p class="card-contact__name__employee">{{ employee.name }}</p>
+    <h4 class="card-contact__name__job">{{ employee.job }}</h4>
+    <button
+      class="card-contact__name__button"
+      @click="$router.push({ name: 'about-card' })"
+      :style="sucursalColor"
     >
-        <i class="bi bi-person-fill icon"></i>
-        Sobre mi
+      <i class="bi bi-person-fill icon"></i>
+      Sobre mi
     </button>
   </div>
 </template>
@@ -16,23 +16,23 @@
 <script>
 import { computed } from 'vue'
 export default {
-    props: {
-        sucursal: {
-            type: String,
-        },
-        employee: {
-            type: Object,
-            default: () => {}
-        }
+  props: {
+    sucursal: {
+      type: String
     },
-
-    setup(props) {
-        return { 
-            sucursalColor: computed(() => {
-                const color = props.sucursal == 'sur' ? '#218d9b' : '#c28400'
-                return { 'background': color }
-            })
-        }
+    employee: {
+      type: Object,
+      default: () => {}
     }
+  },
+
+  setup (props) {
+    return {
+      sucursalColor: computed(() => {
+        const color = props.sucursal === 'sur' ? '#218d9b' : '#c28400'
+        return { background: color }
+      })
+    }
+  }
 }
 </script>

@@ -1,27 +1,28 @@
 .not-found {
-    width:100%;
-    height:100vh;
+    width: 100%;
+    height: 100vh;
 
-    background: rgb(194,132,0);
-    background: -moz-radial-gradient(circle, rgba(194,132,0,1) 0%, rgba(104,71,0,1) 100%);
-    background: -webkit-radial-gradient(circle, rgba(194,132,0,1) 0%, rgba(104,71,0,1) 100%);
-    background: radial-gradient(circle, rgba(194,132,0,1) 0%, rgba(104,71,0,1) 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#c28400",endColorstr="#684700",GradientType=1);
+    background: rgb(194, 132, 0);
+    background: -moz-radial-gradient(circle, rgba(194, 132, 0, 1) 0%, rgba(104, 71, 0, 1) 100%);
+    background: -webkit-radial-gradient(circle, rgba(194, 132, 0, 1) 0%, rgba(104, 71, 0, 1) 100%);
+    background: radial-gradient(circle, rgba(194, 132, 0, 1) 0%, rgba(104, 71, 0, 1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#c28400", endColorstr="#684700", GradientType=1);
 
     .not-found__code {
         font-size: 150px;
         color: #ffff;
     }
+
     @include flex(center, center, column);
 
     .not-found__list {
         .not-found__list__social {
             list-style: none;
-            
+
             a {
                 color: #ffff;
                 text-decoration: none;
-                
+
                 :hover {
                     text-decoration: underline #ffff;
                 }
