@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Products button to catalogue should match snapshot 1`] = `<button class="productsButton" style="background: rgb(33, 141, 155);"> Produtos <i class="bi bi-cart-fill icon"></i></button>`;
