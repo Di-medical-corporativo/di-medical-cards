@@ -4,8 +4,8 @@
     :style="buttonBackground"
     @click="goToProducts()"
   >
-    Produtos
     <i class="bi bi-cart-fill icon"></i>
+    Produtos
   </button>
 </template>
 
