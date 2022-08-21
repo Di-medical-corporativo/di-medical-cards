@@ -4,6 +4,10 @@
       <slot name="sharer" :sucursal="$route.params.sucursal"> </slot>
     </div>
 
+    <div class="card-contact__products">
+      <slot name="products" :sucursal="$route.params.sucursal"></slot>
+    </div>
+
     <div class="card-contact__logo">
       <slot name="logo" :sucursal="$route.params.sucursal"> </slot>
     </div>

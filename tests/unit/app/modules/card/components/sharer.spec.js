@@ -1,5 +1,5 @@
 import { shallowMount } from '@vue/test-utils'
-import Sharer from '../../../../../src/app/modules/card/components/Sharer.vue'
+import Sharer from '../../../../../../src/app/modules/card/components/Sharer.vue'
 
 jest.mock('vue-router', () => ({
   useRoute: jest.fn(() => ({

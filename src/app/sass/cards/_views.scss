@@ -88,6 +88,7 @@
 
             .sharer {
                 z-index: 10000;
+
                 .sharer__button {
                     outline: none;
                     border: none;
@@ -114,17 +115,41 @@
                     a {
                         color: inherit;
                     }
-                    
+
                     .icon {
                         cursor: pointer;
                         color: inherit;
-                        font-size:25px;
+                        font-size: 25px;
                     }
                 }
             }
         }
-    }
 
+        .card-contact__products {
+            position: absolute;
+            left: 10px;
+            top: 10px;
+
+            .productsButton {
+                z-index: 10000;
+                outline: none;
+                border: none;
+                cursor: pointer;
+                width: 110px;
+                height: 30px;
+                font-size: 12px;
+                border-radius: 5px;
+                color: #fff;
+                box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+
+                @include flex(center, space-around, row);
+
+                .icon {
+                    color: #fff;
+                }
+            }
+        }
+    }
 
     @include medium_device-up {
         width: 800px;

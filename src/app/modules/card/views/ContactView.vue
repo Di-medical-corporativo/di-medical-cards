@@ -5,6 +5,10 @@
         <Sharer :sucursal="sucursal" />
       </template>
 
+      <template #products="{ sucursal }">
+        <ProductsButton :sucursal="sucursal"></ProductsButton>
+      </template>
+
       <template #logo="{ sucursal }">
         <Logo :sucursal="sucursal" />
       </template>
@@ -61,7 +65,10 @@ export default {
     CopyMessage: defineAsyncComponent(() =>
       import('../components/CopyMessage.vue')
     ),
-    Sharer: defineAsyncComponent(() => import('../components/Sharer.vue'))
+    Sharer: defineAsyncComponent(() => import('../components/Sharer.vue')),
+    ProductsButton: defineAsyncComponent(() =>
+      import('../components/ProductsButton.vue')
+    )
   },
 
   setup () {
