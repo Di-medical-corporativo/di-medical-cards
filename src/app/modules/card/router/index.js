@@ -13,6 +13,12 @@ export default {
       name: 'about-card',
       component: () => import('../views/AboutView.vue'),
       meta: { transition: 'slide-right' }
+    },
+    {
+      path: ':name/products',
+      name: 'products-card',
+      component: () => import('../views/ProductsView.vue'),
+      meta: { transition: 'slide-left' }
     }
   ]
 }
