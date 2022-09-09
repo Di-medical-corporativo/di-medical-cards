@@ -339,6 +339,25 @@
                 @include flex(center, space-around, row);
             }
         }
+
+        &__search {
+            width:100%;
+            margin-top: 30px;
+            @include flex(center, space-around, row);
+
+            &--input {
+                width: 90%;
+                height: 38px;
+                border-radius: 5px;
+                padding: 2px;
+                border: 1px solid #2c3e50;
+                outline: none;
+
+                @include medium_device-up {
+                    width: 65%;
+                }
+            }
+        }
     }
 
     .button_header {

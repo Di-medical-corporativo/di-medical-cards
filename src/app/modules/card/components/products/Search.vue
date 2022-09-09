@@ -1,11 +1,26 @@
 <template>
   <div class="products__search">
-    <input type="text" />
+    <input
+        class="products__search--input"
+        type="text"
+        v-model="input"/>
   </div>
 </template>
 
 <script>
-export default {}
+import { ref, watch } from 'vue'
+export default {
+  emits: ['input'],
+  setup (_, { emit }) {
+    const input = ref('')
+    watch(input, (value) => {
+      emit('input', value)
+    })
+    return {
+      input
+    }
+  }
+}
 </script>
 
 <style>
