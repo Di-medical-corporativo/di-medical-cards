@@ -1,9 +1,19 @@
 <template>
-  <h1>Products</h1>
+  <div class="card-products">
+    <Header />
+  </div>
 </template>
 
 <script>
-export default {}
+import { defineAsyncComponent } from 'vue'
+
+export default {
+  components: {
+    Header: defineAsyncComponent(() =>
+      import('../components/products/Header.vue')
+    )
+  }
+}
 </script>
 
 <style>
