@@ -3,6 +3,7 @@
     <input
         class="products__search--input"
         type="text"
+        placeholder="Buscar producto por nombre, código, marca o descripción"
         v-model="input"/>
   </div>
 </template>

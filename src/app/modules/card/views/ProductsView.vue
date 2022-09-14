@@ -1,7 +1,8 @@
 <template>
-  <div class="card-products">
+  <div class="card--products">
     <Header />
     <Search/>
+    <Products/>
   </div>
 </template>
 
@@ -12,7 +13,8 @@ export default {
   components: {
     Header: defineAsyncComponent(() =>
       import('../components/products/Header.vue')),
-    Search: defineAsyncComponent(() => import('../components/products/Search.vue'))
+    Search: defineAsyncComponent(() => import('../components/products/Search.vue')),
+    Products: defineAsyncComponent(() => import('../components/products/ListProducts.vue'))
   }
 }
 </script>
