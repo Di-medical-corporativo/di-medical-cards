@@ -360,9 +360,9 @@
         }
 
         &__product {
-            max-width: 320px;
-            margin-top: 15px;
-            height: 400px;
+            max-width: 330px;
+            margin-top: 20px;
+            height: 430px;
             border-radius: 5px;
             box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
             @include small_device-up {
@@ -382,8 +382,58 @@
             &--name {
                 width: 100%;
 
+               h4  {
+                    padding-left: 10px;
+                    padding-right: 10px;
+                    padding-top: 10px;
+                }
+            }
+
+            &--brand {
+                width: 100%;
+
+                h6 {
+                    padding-left: 10px;
+                    padding-right: 10px;
+                    color: #6c757d;
+                }
+
+            }
+
+            &--description {
+                width: 100%;
+
                 p {
-                    padding: 5px;
+                    padding-left: 10px;
+                    padding-right: 10px;
+                }
+            }
+
+            &--cta {
+                width: 95%;
+                @include flex(center, space-evenly, row);
+
+                button {
+                    width: 160px;
+                    height: 35px;
+                    color: #fff;
+                    outline: none;
+                    border: none;
+                }
+
+                p {
+                    @include flex(center, space-evenly, row);
+                    i {
+                        margin-right: 5px;
+                    }
+
+                    .stock {
+                        color: #28a745;
+                    }
+
+                    .out-stock {
+                        color: #ff0000;
+                    }
                 }
             }
         }
