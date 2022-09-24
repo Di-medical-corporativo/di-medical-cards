@@ -15,16 +15,13 @@
       <template #employee="{ sucursal }">
         <EmployeeName
           :sucursal="sucursal"
-          :employee="{
-            name: 'Lic. Sandra Marcela Sánchez Marín',
-            job: 'Gerente de Ventas',
-          }"
+          :employee="employeeData"
         />
       </template>
       <template #hexagons-left="{ sucursal }">
         <Hexagon
           :sucursal="sucursal"
-          v-for="(l, i) in leftHexagonsLogos"
+          v-for="(l, i) in leftHexagonsWithEmployeeData"
           :key="i"
           :icon="l.logo"
           :link="l.link"
@@ -33,7 +30,7 @@
       <template #hexagons-right="{ sucursal }">
         <Hexagon
           :sucursal="sucursal"
-          v-for="(l, i) in rightHexagonsLogos"
+          v-for="(l, i) in rightHexagonsWithEmployeeData"
           :key="i"
           :icon="l.logo"
           :link="l.link"
@@ -48,8 +45,10 @@
 </template>
 
 <script>
-import { defineAsyncComponent } from '@vue/runtime-core'
+import { defineAsyncComponent, ref } from 'vue'
+import useEmployee from '../composables/useEmployee'
 import { leftHexagonsLogos, rightHexagonsLogos } from '../helpers/hexagonLogos'
+import { useRoute, useRouter } from 'vue-router'
 export default {
   components: {
     Logo: defineAsyncComponent(() => import('../components/Logo.vue')),
@@ -72,9 +71,50 @@ export default {
   },
 
   setup () {
+    const { getEmployee } = useEmployee()
+    const router = useRouter()
+    const route = useRoute()
+    const employeeData = ref({})
+    const leftHexagonsWithEmployeeData = ref([])
+    const rightHexagonsWithEmployeeData = ref([])
+
+    const getEmployeeFromDataBaseOrSavedInLocalStorage = async () => {
+      try {
+        const employee = await getEmployee(route.params.id)
+        setHexagonsFromEmployeeData(employee)
+        employeeData.value = employee
+      } catch (error) {
+        router.push({ name: 'not-found' })
+      }
+    }
+
+    const setHexagonsFromEmployeeData = (employee) => {
+      leftHexagonsWithEmployeeData.value = leftHexagonsLogos.map((hexagon) => {
+        if (hexagon.logo === 'envelope') {
+          hexagon.link = `mailto:${employee.email}`
+        }
+
+        if (hexagon.logo === 'whatsapp') {
+          hexagon.link = `https://api.whatsapp.com/send?phone=${employee.phone}&text=Hola,+busco+informes+&utm_source=web+page`
+        }
+        return hexagon
+      })
+
+      rightHexagonsWithEmployeeData.value = rightHexagonsLogos.map((hexagon) => {
+        if (hexagon.logo === 'phone') {
+          hexagon.link = `tel:+52${employee.phone}`
+        }
+        return hexagon
+      })
+    }
+
+    getEmployeeFromDataBaseOrSavedInLocalStorage()
     return {
       leftHexagonsLogos,
-      rightHexagonsLogos
+      rightHexagonsLogos,
+      employeeData,
+      leftHexagonsWithEmployeeData,
+      rightHexagonsWithEmployeeData
     }
   }
 }
