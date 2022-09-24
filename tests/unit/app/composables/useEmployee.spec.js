@@ -2,7 +2,8 @@ import useEmployee from '../../../../src/app/modules/card/composables/useEmploye
 import testUser from '../../mock-data/testUser'
 
 const mockStore = {
-  dispatch: jest.fn().mockReturnValue(testUser)
+  dispatch: jest.fn().mockReturnValue(testUser),
+  commit: jest.fn()
 }
 
 jest.mock('vuex', () => ({

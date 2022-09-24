@@ -49,7 +49,8 @@ describe('Card store', () => {
         image: 'https://firebasestorage.googleapis.com/v0/b/di-medical-del-sur.appspot.com/o/cards%2FCarlos%20Omar%2FCarlos%20Omar-image.jpg?alt=media&token=1d041e52-b07d-4e81-83e2-1431a7c365fa',
         job: 'Jefe de Almacén ',
         phone: '5580494313',
-        sucursal: 'dm-sur'
+        sucursal: 'dm-sur',
+        email: 'almacen@dimedicaldelsur.mx'
       }
       const store = createVuexStore({ employee: null })
       await store.dispatch('card/getEmployeeById', '0W2w0TFoyn3AbUf10hYn')
