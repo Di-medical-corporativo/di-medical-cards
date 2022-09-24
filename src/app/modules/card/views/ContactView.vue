@@ -30,7 +30,7 @@
       <template #hexagons-right="{ sucursal }">
         <Hexagon
           :sucursal="sucursal"
-          v-for="(l, i) in rightHexagonsLogos"
+          v-for="(l, i) in rightHexagonsWithEmployeeData"
           :key="i"
           :icon="l.logo"
           :link="l.link"
@@ -76,8 +76,9 @@ export default {
     const route = useRoute()
     const employeeData = ref({})
     const leftHexagonsWithEmployeeData = ref([])
+    const rightHexagonsWithEmployeeData = ref([])
 
-    const getEmployeeFromDataBase = async () => {
+    const getEmployeeFromDataBaseOrSavedInLocalStorage = async () => {
       try {
         const employee = await getEmployee(route.params.id)
         setHexagonsFromEmployeeData(employee)
@@ -88,24 +89,32 @@ export default {
     }
 
     const setHexagonsFromEmployeeData = (employee) => {
-      console.log(employee)
       leftHexagonsWithEmployeeData.value = leftHexagonsLogos.map((hexagon) => {
         if (hexagon.logo === 'envelope') {
           hexagon.link = `mailto:${employee.email}`
-          console.log(hexagon)
+        }
+
+        if (hexagon.logo === 'whatsapp') {
+          hexagon.link = `https://api.whatsapp.com/send?phone=${employee.phone}&text=Hola,+busco+informes+&utm_source=web+page`
         }
         return hexagon
       })
 
-      console.log(leftHexagonsWithEmployeeData.value)
+      rightHexagonsWithEmployeeData.value = rightHexagonsLogos.map((hexagon) => {
+        if (hexagon.logo === 'phone') {
+          hexagon.link = `tel:+52${employee.phone}`
+        }
+        return hexagon
+      })
     }
 
-    getEmployeeFromDataBase()
+    getEmployeeFromDataBaseOrSavedInLocalStorage()
     return {
       leftHexagonsLogos,
       rightHexagonsLogos,
       employeeData,
-      leftHexagonsWithEmployeeData
+      leftHexagonsWithEmployeeData,
+      rightHexagonsWithEmployeeData
     }
   }
 }

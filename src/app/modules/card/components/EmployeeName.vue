@@ -8,7 +8,7 @@
       :style="sucursalColor"
     >
       <i class="bi bi-person-fill icon"></i>
-      Sobre mi
+      Sobre mí
     </button>
   </div>
 </template>

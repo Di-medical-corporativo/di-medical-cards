@@ -15,24 +15,19 @@
         <img
           alt=""
           class="card-about__image__employee"
-          src="https://firebasestorage.googleapis.com/v0/b/di-medical-del-sur.appspot.com/o/cards%2FCrist%C3%B3bal%2FCrist%C3%B3bal-image.jpg?alt=media&token=cd2dabfe-cbe4-4c24-b8bb-dd699e032d41"
+          :src="employeeDescription.image"
         />
       </div>
     </div>
     <div class="card-about__info">
       <div class="card-about__info__paragraph" :style="sucursalBackground">
         <p class="card-about__info__paragraph__text">
-          Lic. en Relaciones Internacionales Egresada de la Universidad Nacional
-          Autónoma de México, Especialidad en Tráfico de Mercancías y
-          Tramitación Aduanal Egresada del Instituto de Formación Aduanal.
+          {{employeeDescription.description1}}
         </p>
       </div>
       <div class="card-about__info__paragraph" :style="sucursalBackground">
         <p class="card-about__info__paragraph__text">
-          Lic. en Terapia Respiratoria, Egresada de la U. Manuela Beltrán Bogotá
-          Colombia - Especialista en Cuidado Crítico - Maestrante de Fisiatría y
-          Kinesiología Cardiorrespiratoria de la U. Gran Rosario de Argentina -
-          Docente y Ponente Internacional
+          {{employeeDescription.description2}}
         </p>
       </div>
       <div class="card-about__info__paragraph" :style="sucursalBackground">
@@ -45,8 +40,9 @@
 </template>
 
 <script>
-import { computed, defineAsyncComponent } from '@vue/runtime-core'
-import { useRoute } from 'vue-router'
+import { computed, defineAsyncComponent, ref } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
+import useEmployee from '../composables/useEmployee'
 export default {
   components: {
     Logo: defineAsyncComponent(() => import('../components/Logo.vue'))
@@ -54,7 +50,21 @@ export default {
 
   setup () {
     const route = useRoute()
+    const router = useRouter()
     const { sucursal } = route.params
+    const { getEmployee } = useEmployee()
+    const employeeDescription = ref({})
+
+    const getEmployeeFromDataBaseOrSavedInLocalStorage = async () => {
+      try {
+        employeeDescription.value = await getEmployee(route.params.id)
+      } catch (error) {
+        router.push({ name: 'not-found' })
+      }
+    }
+
+    getEmployeeFromDataBaseOrSavedInLocalStorage()
+
     return {
       sucursal,
       buttonBackground: computed(() => {
@@ -69,7 +79,8 @@ export default {
         }
 
         return { 'background-image': `url(${backgrounds[sucursal]})` }
-      })
+      }),
+      employeeDescription
     }
   }
 }

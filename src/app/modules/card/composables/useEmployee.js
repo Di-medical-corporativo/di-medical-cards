@@ -1,3 +1,4 @@
+import { computed } from 'vue'
 import { useStore } from 'vuex'
 
 const useEmployee = () => {
@@ -5,7 +6,9 @@ const useEmployee = () => {
 
   const getEmployee = async (id) => {
     if (checkIfEmployeeExistsInLocalStore(id)) {
-      return JSON.parse(localStorage.getItem(id))
+      const savedEmployee = JSON.parse(localStorage.getItem(id))
+      store.commit('card/setEmployee', savedEmployee)
+      return savedEmployee
     }
     const employee = await store.dispatch('card/getEmployeeById', id)
     saveEmployeeToLocalStore(employee, id)
@@ -21,7 +24,8 @@ const useEmployee = () => {
   }
 
   return {
-    getEmployee
+    getEmployee,
+    isLoading: computed(() => store.getters['card/isLoading'])
   }
 }
 
