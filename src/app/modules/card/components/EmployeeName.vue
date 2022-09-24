@@ -1,6 +1,6 @@
 <template>
   <div class="card-contact__name">
-    <p class="card-contact__name__employee">{{ employee.name }}</p>
+    <p class="card-contact__name__employee">{{ employee.firstName || ''}} {{employee.lastName || ''}}</p>
     <h4 class="card-contact__name__job">{{ employee.job }}</h4>
     <button
       class="card-contact__name__button"

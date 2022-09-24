@@ -1,3 +1,3 @@
-export const getName = () => {
-  return 'hola'
+export const getEmployee = (state) => {
+  return state.employee
 }

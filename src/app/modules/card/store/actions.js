@@ -6,8 +6,11 @@ const initActions = (dependencies) => {
   } = dependencies
   return {
     getEmployeeById: async ({ commit }, id) => {
+      commit('setLoading', true)
       const employee = await getEmployeeByIdUseCase(dependencies).execute({ id })
-      console.log(employee)
+      commit('setLoading', false)
+      commit('setEmployee', employee)
+      return employee
     }
   }
 }

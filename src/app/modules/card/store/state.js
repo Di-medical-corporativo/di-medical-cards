@@ -1,3 +1,4 @@
 export default () => ({
-  employee: null
+  employee: null,
+  isLoading: true
 })

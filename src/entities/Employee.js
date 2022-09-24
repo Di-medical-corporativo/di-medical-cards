@@ -7,7 +7,8 @@ class Employee {
     image,
     job,
     phone,
-    sucursal
+    sucursal,
+    email
   ) {
     this.firstName = firstName
     this.lastName = lastName
@@ -17,6 +18,7 @@ class Employee {
     this.job = job
     this.phone = phone
     this.sucursal = sucursal
+    this.email = email
   }
 
   getFullName () {
@@ -40,7 +42,8 @@ const employeeConverter = {
       data.image,
       data.job,
       data.phone,
-      data.sucursal
+      data.sucursal,
+      data.mail
     )
   }
 }
