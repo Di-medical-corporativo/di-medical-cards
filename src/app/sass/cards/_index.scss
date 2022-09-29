@@ -3,20 +3,19 @@
 
 .card__content {
     @include flex(center, center, column);
-}
+    &--sur {
+        background: rgb(33, 141, 155);
+        background: -moz-linear-gradient(90deg, rgba(33, 141, 155, 1) 0%, rgba(255, 255, 255, 1) 37%, rgba(255, 255, 255, 1) 65%, rgba(24, 120, 118, 1) 100%);
+        background: -webkit-linear-gradient(90deg, rgba(33, 141, 155, 1) 0%, rgba(255, 255, 255, 1) 37%, rgba(255, 255, 255, 1) 65%, rgba(24, 120, 118, 1) 100%);
+        background: linear-gradient(90deg, rgba(33, 141, 155, 1) 0%, rgba(255, 255, 255, 1) 37%, rgba(255, 255, 255, 1) 65%, rgba(24, 120, 118, 1) 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#218d9b", endColorstr="#187876", GradientType=1);
+    }
 
-.card__content--sur {
-    background: rgb(33, 141, 155);
-    background: -moz-linear-gradient(90deg, rgba(33, 141, 155, 1) 0%, rgba(255, 255, 255, 1) 37%, rgba(255, 255, 255, 1) 65%, rgba(24, 120, 118, 1) 100%);
-    background: -webkit-linear-gradient(90deg, rgba(33, 141, 155, 1) 0%, rgba(255, 255, 255, 1) 37%, rgba(255, 255, 255, 1) 65%, rgba(24, 120, 118, 1) 100%);
-    background: linear-gradient(90deg, rgba(33, 141, 155, 1) 0%, rgba(255, 255, 255, 1) 37%, rgba(255, 255, 255, 1) 65%, rgba(24, 120, 118, 1) 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#218d9b", endColorstr="#187876", GradientType=1);
-}
-
-.card__content--corporativo {
-    background: rgb(194, 132, 0);
-    background: -moz-linear-gradient(90deg, rgba(194, 132, 0, 1) 0%, rgba(255, 255, 255, 1) 50%, rgba(194, 132, 0, 1) 100%);
-    background: -webkit-linear-gradient(90deg, rgba(194, 132, 0, 1) 0%, rgba(255, 255, 255, 1) 50%, rgba(194, 132, 0, 1) 100%);
-    background: linear-gradient(90deg, rgba(194, 132, 0, 1) 0%, rgba(255, 255, 255, 1) 50%, rgba(194, 132, 0, 1) 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#c28400", endColorstr="#c28400", GradientType=1);
+    &--corporativo {
+        background: rgb(194, 132, 0);
+        background: -moz-linear-gradient(90deg, rgba(194, 132, 0, 1) 0%, rgba(255, 255, 255, 1) 50%, rgba(194, 132, 0, 1) 100%);
+        background: -webkit-linear-gradient(90deg, rgba(194, 132, 0, 1) 0%, rgba(255, 255, 255, 1) 50%, rgba(194, 132, 0, 1) 100%);
+        background: linear-gradient(90deg, rgba(194, 132, 0, 1) 0%, rgba(255, 255, 255, 1) 50%, rgba(194, 132, 0, 1) 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#c28400", endColorstr="#c28400", GradientType=1);
+    }
 }
