@@ -43,6 +43,7 @@
 import { computed, defineAsyncComponent, ref } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import useEmployee from '../composables/useEmployee'
+import meta from '../../../services/metatags'
 export default {
   components: {
     Logo: defineAsyncComponent(() => import('../components/Logo.vue'))
@@ -58,6 +59,8 @@ export default {
     const getEmployeeFromDataBaseOrSavedInLocalStorage = async () => {
       try {
         employeeDescription.value = await getEmployee(route.params.id)
+        meta.update('title', employeeDescription.value.firstName + ' ' + employeeDescription.value.lastName)
+        meta.update('url', `https://card.dimedicalcorporativo.mx${route.path}`)
       } catch (error) {
         router.push({ name: 'not-found' })
       }
