@@ -45,7 +45,7 @@ export default {
 
   setup (props) {
     const route = useRoute()
-    const { sucursal, name } = route.params
+    const { sucursal, id } = route.params
     return {
       sucursalColor: computed(() => {
         const color = props.sucursal === 'sur' ? '#218d9b' : '#c28400'
@@ -62,8 +62,8 @@ export default {
         return 'bi bi-bookmark-fill icon'
       }),
       saveToFavorites: () => bookMark(),
-      url: `https://card.dimedicalcorporativo.mx/${sucursal}/${name}`,
-      copyToClipBoard: () => navigator.clipboard.writeText(`https://card.dimedicalcorporativo.mx/${sucursal}/${name}`)
+      url: `https://card.dimedicalcorporativo.mx/${sucursal}/${id}`,
+      copyToClipBoard: () => navigator.clipboard.writeText(`https://card.dimedicalcorporativo.mx/${sucursal}/${id}`)
     }
   }
 }
