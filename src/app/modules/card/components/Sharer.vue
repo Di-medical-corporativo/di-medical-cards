@@ -19,7 +19,7 @@
                     <div class="sharer__options" :style="sucursalColor('color')">
 
                         <a :href="`https://www.facebook.com/sharer/sharer.php?u=${url}`" target="_blank"><i class="bi bi-facebook icon"></i></a>
-                        <a :href="`https://api.whatsapp.com/send?text=${url}`" target="_blank"><i class="bi bi-whatsapp icon"></i></a>
+                        <a :href="`https://api.whatsapp.com/send?text=Contacta con ${employeeName} por medio de su Vcard: ${url} | Lo más selecto de las mejores marcas para el mercado hospitalario`" target="_blank"><i class="bi bi-whatsapp icon"></i></a>
                         <i class="bi bi-link icon" @click="copyToClipBoard"></i>
                         <div :class="bookMarkIcon" @click="saveToFavorites"></div>
                     </div>
@@ -39,6 +39,9 @@ import bookMark from '../helpers/bookMarkCard'
 export default {
   props: {
     sucursal: {
+      type: String
+    },
+    employeeName: {
       type: String
     }
   },
