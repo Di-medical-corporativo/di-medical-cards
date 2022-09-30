@@ -5,10 +5,6 @@
         <Sharer :sucursal="sucursal" />
       </template>
 
-      <template #products="{ sucursal }">
-        <ProductsButton :sucursal="sucursal"></ProductsButton>
-      </template>
-
       <template #logo="{ sucursal }">
         <Logo :sucursal="sucursal" />
       </template>
@@ -46,9 +42,10 @@
 
 <script>
 import { defineAsyncComponent, ref } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
 import useEmployee from '../composables/useEmployee'
 import { leftHexagonsLogos, rightHexagonsLogos } from '../helpers/hexagonLogos'
-import { useRoute, useRouter } from 'vue-router'
+import meta from '../../../services/metatags'
 export default {
   components: {
     Logo: defineAsyncComponent(() => import('../components/Logo.vue')),
@@ -64,10 +61,7 @@ export default {
     CopyMessage: defineAsyncComponent(() =>
       import('../components/CopyMessage.vue')
     ),
-    Sharer: defineAsyncComponent(() => import('../components/Sharer.vue')),
-    ProductsButton: defineAsyncComponent(() =>
-      import('../components/ProductsButton.vue')
-    )
+    Sharer: defineAsyncComponent(() => import('../components/Sharer.vue'))
   },
 
   setup () {
@@ -83,6 +77,8 @@ export default {
         const employee = await getEmployee(route.params.id)
         setHexagonsFromEmployeeData(employee)
         employeeData.value = employee
+        meta.update('title', employee.firstName + ' ' + employee.lastName)
+        meta.update('url', `https://card.dimedicalcorporativo.mx${route.path}`)
       } catch (error) {
         router.push({ name: 'not-found' })
       }
