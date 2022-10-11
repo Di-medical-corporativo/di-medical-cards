@@ -9,9 +9,7 @@ exports[`Sharer component should match snapshot 1`] = `
           <h5 class="modal-title" id="exampleModalLabel">Compartir vcard</h5><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <div class="sharer__options" style="color: rgb(33, 141, 155);"><a href="https://www.facebook.com/sharer/sharer.php?u=https://card.dimedicalcorporativo.mx/sur/kevin-aron-tapia-cruz" target="_blank"><i class="bi bi-facebook icon"></i></a><a href="https://api.whatsapp.com/send?text=https://card.dimedicalcorporativo.mx/sur/kevin-aron-tapia-cruz" target="_blank"><i class="bi bi-whatsapp icon"></i></a><i class="bi bi-link icon"></i>
-            <div class="bi bi-bookmark icon"></div>
-          </div>
+          <div class="sharer__options" style="color: rgb(33, 141, 155);"><a href="https://www.facebook.com/sharer/sharer.php?u=https://card.dimedicalcorporativo.mx/sur/kevin-aron-tapia-cruz" target="_blank"><i class="bi bi-facebook icon"></i></a><a href="https://api.whatsapp.com/send?text=Contacta con undefined por medio de su Vcard: https://card.dimedicalcorporativo.mx/sur/kevin-aron-tapia-cruz | Lo más selecto de las mejores marcas para el mercado hospitalario" target="_blank"><i class="bi bi-whatsapp icon"></i></a><i class="bi bi-link icon" data-toggle="tooltip" data-placement="top" title="Tooltip on top"></i></div>
         </div>
       </div>
     </div>

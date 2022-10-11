@@ -2,7 +2,7 @@
   <div class="card-contact">
     <SucursalProvider>
       <template #sharer="{ sucursal }">
-        <Sharer :sucursal="sucursal" />
+        <Sharer :sucursal="sucursal" :employeeName="`${employeeData.firstName} ${employeeData.lastName}`"/>
       </template>
 
       <template #logo="{ sucursal }">

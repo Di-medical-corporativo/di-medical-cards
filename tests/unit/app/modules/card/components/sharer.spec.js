@@ -4,7 +4,7 @@ import Sharer from '../../../../../../src/app/modules/card/components/Sharer.vue
 jest.mock('vue-router', () => ({
   useRoute: jest.fn(() => ({
     params: {
-      name: 'kevin-aron-tapia-cruz',
+      id: 'kevin-aron-tapia-cruz',
       sucursal: 'sur'
     }
   }))
@@ -22,6 +22,7 @@ describe('Sharer component', () => {
       )
     }
     global.navigator.clipboard = mockClipboard
+    global.alert = jest.fn()
   })
 
   test('should match snapshot', () => {
@@ -61,10 +62,19 @@ describe('Sharer component', () => {
         sucursal: 'sur'
       }
     })
-    const copiedLink = 'https://card.dimedicalcorporativo.mx/sur/kevin-aron-tapia-cruz'
     const copyToClipBoardButton = wrapper.findAll('.icon')[3]
     copyToClipBoardButton.trigger('click')
     expect(global.navigator.clipboard.writeText).toHaveBeenCalled()
-    expect(global.navigator.clipboard.writeText).toHaveBeenCalledWith(copiedLink)
+  })
+
+  test('should call alert method', () => {
+    const wrapper = shallowMount(Sharer, {
+      propsData: {
+        sucursal: 'sur'
+      }
+    })
+    const copyToClipBoardButton = wrapper.findAll('.icon')[3]
+    copyToClipBoardButton.trigger('click')
+    expect(global.alert).toHaveBeenCalled()
   })
 })
