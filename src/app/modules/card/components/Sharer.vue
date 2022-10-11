@@ -47,7 +47,6 @@ export default {
   setup (props) {
     const route = useRoute()
     const { sucursal, id } = route.params
-    const formattedName = props.employeeName.toLowerCase().split(' ').join('').normalize('NFD').replace(/[\u0300-\u036f]/g, '')
     return {
       sucursalColor: computed(() => {
         const color = props.sucursal === 'sur' ? '#218d9b' : '#c28400'
@@ -64,9 +63,9 @@ export default {
         return 'bi bi-bookmark-fill icon'
       }),
       saveToFavorites: () => bookMark(),
-      url: `https://card.dimedicalcorporativo.mx/${sucursal}/${id}?name=@${formattedName}`,
-      copyToClipBoard: () => {
-        navigator.clipboard.writeText(`https://card.dimedicalcorporativo.mx/${sucursal}/${id}?name=@${formattedName}`)
+      url: `https://card.dimedicalcorporativo.mx/${sucursal}/${id}`,
+      copyToClipBoard: async () => {
+        await navigator.clipboard.writeText(`https://card.dimedicalcorporativo.mx/${sucursal}/${id}`)
         alert('Enlace copiado al portapapeles')
       }
     }
