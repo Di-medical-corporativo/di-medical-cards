@@ -64,8 +64,8 @@ export default {
       }),
       saveToFavorites: () => bookMark(),
       url: `https://card.dimedicalcorporativo.mx/${sucursal}/${id}`,
-      copyToClipBoard: () => {
-        navigator.clipboard.writeText(`https://card.dimedicalcorporativo.mx/${sucursal}/${id}`)
+      copyToClipBoard: async () => {
+        await navigator.clipboard.writeText(`https://card.dimedicalcorporativo.mx/${sucursal}/${id}`)
         alert('Enlace copiado al portapapeles')
       }
     }
