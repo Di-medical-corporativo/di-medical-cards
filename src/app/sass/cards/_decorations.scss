@@ -18,6 +18,13 @@ $color-shadow: rgba(45,45,45,0.5);
         }
     }
 
+    &__cutted {
+        width: 100%;
+        position: absolute;
+        top: 0;
+        z-index: -1;
+    }
+
     &__candle {
         width: 100px;
         position: absolute;

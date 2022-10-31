@@ -1,7 +1,7 @@
 .logo {
 
     @include flex(center, center, row);
-
+    z-index: 10;
     .logo__image {
         width: 50%;
 
