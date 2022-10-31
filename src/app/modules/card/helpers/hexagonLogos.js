@@ -40,6 +40,6 @@ export const rightHexagonsLogos = [
   },
   {
     logo: 'globe',
-    link: 'https://bit.ly/3M8lgP3'
+    link: 'https://bit.ly/dimedicalpage'
   }
 ]

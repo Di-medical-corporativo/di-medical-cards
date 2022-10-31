@@ -36,6 +36,7 @@
         </p>
       </div>
     </div>
+    <img class="hallowen__decoration__web" src="../assets/decorations/hallowen/web.png" alt="Spider web image">
   </div>
 </template>
 
