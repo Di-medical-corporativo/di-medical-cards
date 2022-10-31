@@ -21,8 +21,13 @@ $color-shadow: rgba(45,45,45,0.5);
     &__cutted {
         width: 100%;
         position: absolute;
-        top: 0;
+        top: 0px;
         z-index: -1;
+
+        @include medium_device-up {
+            top: -25px;
+            width: 750px;
+        }
     }
 
     &__candle {
