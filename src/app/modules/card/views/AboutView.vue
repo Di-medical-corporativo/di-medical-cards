@@ -1,6 +1,6 @@
 <template>
   <div class="card-about">
-    <div class="card-about__logo">
+    <div class="card-about__logo" style="visibility: hidden;">
       <Logo :sucursal="sucursal" />
     </div>
     <div class="card-about__image">
@@ -36,7 +36,8 @@
         </p>
       </div>
     </div>
-  </div>
+    <img src="../assets/decorations/hallowen/cutted.png" class="hallowen__decoration__cutted" alt="Papel picado image">
+</div>
 </template>
 
 <script>

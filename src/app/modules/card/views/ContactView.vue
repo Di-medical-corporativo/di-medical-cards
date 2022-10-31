@@ -37,7 +37,11 @@
         <CopyMessage />
       </template>
     </SucursalProvider>
-  </div>
+    <Spider/>
+    <img class="hallowen__decoration__web" src="../assets/decorations/hallowen/web.png" alt="Spider web image">
+    <img class="hallowen__decoration__candle" src="../assets/decorations/hallowen/vela.png" alt="Candle image">
+    <img class="hallowen__decoration__candle_2" src="../assets/decorations/hallowen/vela.png" alt="Candle image">
+</div>
 </template>
 
 <script>
@@ -61,7 +65,8 @@ export default {
     CopyMessage: defineAsyncComponent(() =>
       import('../components/CopyMessage.vue')
     ),
-    Sharer: defineAsyncComponent(() => import('../components/Sharer.vue'))
+    Sharer: defineAsyncComponent(() => import('../components/Sharer.vue')),
+    Spider: defineAsyncComponent(() => import('../components/decorations/hallowen/Spider.vue'))
   },
 
   setup () {

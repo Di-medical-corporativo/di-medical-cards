@@ -1,7 +1,7 @@
 .logo {
 
     @include flex(center, center, row);
-
+    z-index: 10;
     .logo__image {
         width: 50%;
 
@@ -44,5 +44,7 @@
 .copy {
     p {
         color: #fff;
+        text-align: center;
+        font-size: 12px;
     }
 }
