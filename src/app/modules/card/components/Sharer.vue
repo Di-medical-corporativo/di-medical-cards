@@ -20,6 +20,7 @@
                         <a :href="`https://www.facebook.com/sharer/sharer.php?u=${url}`" target="_blank"><i class="bi bi-facebook icon"></i></a>
                         <a :href="`https://api.whatsapp.com/send?text=Contacta con ${employeeName} por medio de su Vcard: ${url} | Lo más selecto de las mejores marcas para el mercado hospitalario`" target="_blank"><i class="bi bi-whatsapp icon"></i></a>
                         <i class="bi bi-link icon" @click="copyToClipBoard" data-toggle="tooltip" data-placement="top" title="Tooltip on top"></i>
+                        <a @click="toQRview" data-bs-dismiss="modal"><i class="bi bi-qr-code-scan icon"></i></a>
                     </div>
                 </div>
             </div>
@@ -31,7 +32,7 @@
 
 <script>
 import { computed } from 'vue'
-import { useRoute } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 import bookMark from '../helpers/bookMarkCard'
 
 export default {
@@ -46,6 +47,7 @@ export default {
 
   setup (props) {
     const route = useRoute()
+    const router = useRouter()
     const { sucursal, id } = route.params
     return {
       sucursalColor: computed(() => {
@@ -67,7 +69,8 @@ export default {
       copyToClipBoard: async () => {
         await navigator.clipboard.writeText(`https://card.dimedicalcorporativo.mx/${sucursal}/${id}`)
         alert('Enlace copiado al portapapeles')
-      }
+      },
+      toQRview: () => router.push({ name: 'qr-card' })
     }
   }
 }

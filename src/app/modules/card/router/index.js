@@ -13,6 +13,12 @@ export default {
       name: 'about-card',
       component: () => import('../views/AboutView.vue'),
       meta: { transition: 'slide-right' }
+    },
+    {
+      path: ':id/qr',
+      name: 'qr-card',
+      component: () => import('../views/QRCodeView.vue'),
+      meta: { transition: 'slide-left' }
     }
   ]
 }
