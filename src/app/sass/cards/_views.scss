@@ -2,6 +2,7 @@
     width: 100%;
     height: 100%;
     position: relative;
+    overflow: hidden;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 
     .card-contact__sucursal__provider {
@@ -86,10 +87,8 @@
             position: absolute;
             right: 10px;
             top: 10px;
-
+            z-index: 10000000;
             .sharer {
-                z-index: 10000;
-
                 .sharer__button {
                     outline: none;
                     border: none;
