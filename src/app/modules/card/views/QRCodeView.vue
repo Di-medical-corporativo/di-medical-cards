@@ -42,7 +42,7 @@ export default {
     const { params } = useRoute()
     const { sucursal } = params
     return {
-      currentLink: computed(() => `https://www.dimedicalcorporativo.mx/${params.sucursal}/${params.id}`),
+      currentLink: computed(() => `https://card.dimedicalcorporativo.mx/${params.sucursal}/${params.id}`),
       dotsColor: computed(() => sucursal === 'sur' ? '#218d9b' : '#c28400'),
       cornersCOlor: computed(() => sucursal === 'sur' ? '#187876' : '#684700')
     }
