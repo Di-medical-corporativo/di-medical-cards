@@ -1,8 +1,14 @@
 <template>
   <div class="card-about">
-    <div class="card-about__logo">
+    <div class="card-about__logo" style="visibility: hidden;">
       <Logo :sucursal="sucursal" />
     </div>
+
+    <img
+        src="https://firebasestorage.googleapis.com/v0/b/di-medical-del-sur.appspot.com/o/static%2Fdecoration%2FpineXmas.png?alt=media&token=a7976b85-0bbe-4e68-824c-17131c136723"
+        alt=""
+        class="xmas__pine">
+
     <div class="card-about__image">
       <button
         class="card-about__image__button"
