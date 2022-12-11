@@ -17,11 +17,10 @@
                 </div>
                 <div class="modal-body">
                     <div class="sharer__options" :style="sucursalColor('color')">
-
                         <a :href="`https://www.facebook.com/sharer/sharer.php?u=${url}`" target="_blank"><i class="bi bi-facebook icon"></i></a>
-                        <a :href="`https://api.whatsapp.com/send?text=${url}`" target="_blank"><i class="bi bi-whatsapp icon"></i></a>
-                        <i class="bi bi-link icon" @click="copyToClipBoard"></i>
-                        <div :class="bookMarkIcon" @click="saveToFavorites"></div>
+                        <a :href="`https://api.whatsapp.com/send?text=Contacta con ${employeeName} por medio de su Vcard: ${url} | Lo más selecto de las mejores marcas para el mercado hospitalario`" target="_blank"><i class="bi bi-whatsapp icon"></i></a>
+                        <i class="bi bi-link icon" @click="copyToClipBoard" data-toggle="tooltip" data-placement="top" title="Tooltip on top"></i>
+                        <a @click="toQRview" data-bs-dismiss="modal"><i class="bi bi-qr-code-scan icon"></i></a>
                     </div>
                 </div>
             </div>
@@ -33,19 +32,23 @@
 
 <script>
 import { computed } from 'vue'
-import { useRoute } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 import bookMark from '../helpers/bookMarkCard'
 
 export default {
   props: {
     sucursal: {
       type: String
+    },
+    employeeName: {
+      type: String
     }
   },
 
   setup (props) {
     const route = useRoute()
-    const { sucursal, name } = route.params
+    const router = useRouter()
+    const { sucursal, id } = route.params
     return {
       sucursalColor: computed(() => {
         const color = props.sucursal === 'sur' ? '#218d9b' : '#c28400'
@@ -62,8 +65,12 @@ export default {
         return 'bi bi-bookmark-fill icon'
       }),
       saveToFavorites: () => bookMark(),
-      url: `https://card.dimedicalcorporativo.mx/${sucursal}/${name}`,
-      copyToClipBoard: () => navigator.clipboard.writeText(`https://card.dimedicalcorporativo.mx/${sucursal}/${name}`)
+      url: `https://card.dimedicalcorporativo.mx/${sucursal}/${id}`,
+      copyToClipBoard: async () => {
+        await navigator.clipboard.writeText(`https://card.dimedicalcorporativo.mx/${sucursal}/${id}`)
+        alert('Enlace copiado al portapapeles')
+      },
+      toQRview: () => router.push({ name: 'qr-card' })
     }
   }
 }

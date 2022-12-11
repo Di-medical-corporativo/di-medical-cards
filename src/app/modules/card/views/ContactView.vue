@@ -2,11 +2,7 @@
   <div class="card-contact">
     <SucursalProvider>
       <template #sharer="{ sucursal }">
-        <Sharer :sucursal="sucursal" />
-      </template>
-
-      <template #products="{ sucursal }">
-        <ProductsButton :sucursal="sucursal"></ProductsButton>
+        <Sharer :sucursal="sucursal" :employeeName="`${employeeData.firstName} ${employeeData.lastName}`"/>
       </template>
 
       <template #logo="{ sucursal }">
@@ -15,16 +11,13 @@
       <template #employee="{ sucursal }">
         <EmployeeName
           :sucursal="sucursal"
-          :employee="{
-            name: 'Lic. Sandra Marcela Sánchez Marín',
-            job: 'Gerente de Ventas',
-          }"
+          :employee="employeeData"
         />
       </template>
       <template #hexagons-left="{ sucursal }">
         <Hexagon
           :sucursal="sucursal"
-          v-for="(l, i) in leftHexagonsLogos"
+          v-for="(l, i) in leftHexagonsWithEmployeeData"
           :key="i"
           :icon="l.logo"
           :link="l.link"
@@ -33,7 +26,7 @@
       <template #hexagons-right="{ sucursal }">
         <Hexagon
           :sucursal="sucursal"
-          v-for="(l, i) in rightHexagonsLogos"
+          v-for="(l, i) in rightHexagonsWithEmployeeData"
           :key="i"
           :icon="l.logo"
           :link="l.link"
@@ -44,12 +37,29 @@
         <CopyMessage />
       </template>
     </SucursalProvider>
-  </div>
+
+    <img
+        class="xmas__lights"
+        src="https://firebasestorage.googleapis.com/v0/b/di-medical-del-sur.appspot.com/o/static%2Fdecoration%2FxmasLights.png?alt=media&token=74fa0a46-debe-464d-9e2d-76664394cbf0"
+        alt="xmas lights"
+        srcset=""
+    >
+    <img
+    class="xmas__lights"
+    src="https://firebasestorage.googleapis.com/v0/b/di-medical-del-sur.appspot.com/o/static%2Fdecoration%2FxmasLights.png?alt=media&token=74fa0a46-debe-464d-9e2d-76664394cbf0"
+    alt="xmas lights"
+    srcset=""
+>
+    <Snow/>
+</div>
 </template>
 
 <script>
-import { defineAsyncComponent } from '@vue/runtime-core'
+import { defineAsyncComponent, ref } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
+import useEmployee from '../composables/useEmployee'
 import { leftHexagonsLogos, rightHexagonsLogos } from '../helpers/hexagonLogos'
+import meta from '../../../services/metatags'
 export default {
   components: {
     Logo: defineAsyncComponent(() => import('../components/Logo.vue')),
@@ -66,15 +76,56 @@ export default {
       import('../components/CopyMessage.vue')
     ),
     Sharer: defineAsyncComponent(() => import('../components/Sharer.vue')),
-    ProductsButton: defineAsyncComponent(() =>
-      import('../components/ProductsButton.vue')
-    )
+    Snow: defineAsyncComponent(() => import('../components/decoration/xmas/Snow.vue'))
   },
 
   setup () {
+    const { getEmployee } = useEmployee()
+    const router = useRouter()
+    const route = useRoute()
+    const employeeData = ref({})
+    const leftHexagonsWithEmployeeData = ref([])
+    const rightHexagonsWithEmployeeData = ref([])
+
+    const getEmployeeFromDataBaseOrSavedInLocalStorage = async () => {
+      try {
+        const employee = await getEmployee(route.params.id)
+        setHexagonsFromEmployeeData(employee)
+        employeeData.value = employee
+        meta.update('title', employee.firstName + ' ' + employee.lastName)
+        meta.update('url', `https://card.dimedicalcorporativo.mx${route.path}`)
+      } catch (error) {
+        router.push({ name: 'not-found' })
+      }
+    }
+
+    const setHexagonsFromEmployeeData = (employee) => {
+      leftHexagonsWithEmployeeData.value = leftHexagonsLogos.map((hexagon) => {
+        if (hexagon.logo === 'envelope') {
+          hexagon.link = `mailto:${employee.email}`
+        }
+
+        if (hexagon.logo === 'whatsapp') {
+          hexagon.link = `https://api.whatsapp.com/send?phone=${employee.phone}&text=Hola,+busco+informes+&utm_source=web+page`
+        }
+        return hexagon
+      })
+
+      rightHexagonsWithEmployeeData.value = rightHexagonsLogos.map((hexagon) => {
+        if (hexagon.logo === 'phone') {
+          hexagon.link = `tel:+52${employee.phone}`
+        }
+        return hexagon
+      })
+    }
+
+    getEmployeeFromDataBaseOrSavedInLocalStorage()
     return {
       leftHexagonsLogos,
-      rightHexagonsLogos
+      rightHexagonsLogos,
+      employeeData,
+      leftHexagonsWithEmployeeData,
+      rightHexagonsWithEmployeeData
     }
   }
 }

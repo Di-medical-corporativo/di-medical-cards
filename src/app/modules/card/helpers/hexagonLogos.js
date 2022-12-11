@@ -28,18 +28,18 @@ export const rightHexagonsLogos = [
   },
   {
     logo: 'telephone',
-    link: ''
+    link: 'tel:+525572616849'
   },
   {
     logo: 'instagram',
-    link: 'https://bit.ly/3awalS9'
+    link: 'https://bit.ly/dimedicalinstagram'
   },
   {
     logo: 'geo-alt',
-    link: ''
+    link: 'https://bit.ly/ubicaciondimedicaldelsur'
   },
   {
     logo: 'globe',
-    link: ''
+    link: 'https://bit.ly/dimedicalpage'
   }
 ]

@@ -1,6 +1,8 @@
 .card-contact {
     width: 100%;
     height: 100%;
+    position: relative;
+    overflow: hidden;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 
     .card-contact__sucursal__provider {
@@ -28,11 +30,11 @@
                 @include flex(center, space-between, column);
 
                 .card-contact__name__employee {
-                    font-size: 30px;
+                    font-size: 32px;
                 }
 
                 .card-contact__name__job {
-                    font-size: 25px;
+                    font-size: 28px;
                 }
 
                 .card-contact__name__button {
@@ -85,10 +87,8 @@
             position: absolute;
             right: 10px;
             top: 10px;
-
+            z-index: 10000000;
             .sharer {
-                z-index: 10000;
-
                 .sharer__button {
                     outline: none;
                     border: none;
@@ -161,7 +161,7 @@
     width: 100%;
     height: 100%;
     overflow-x: hidden;
-
+    z-index: 5;
     background: {
         image: url('https://firebasestorage.googleapis.com/v0/b/di-medical-del-sur.appspot.com/o/mainBg.webp?alt=media&token=072feb70-824e-468a-8594-89b5ee617997');
         position: center;
@@ -275,190 +275,38 @@
     }
 }
 
-.card--products {
+.card-qr {
     width: 100%;
-    height: 100%;
-    background-color: #fff;
-    @include flex(center, space-between, column);
-    .products {
-        &__header {
+    height: 100vh;
+    background: #fff;
+    @include flex(center, space-around, column);
+
+    &__image {
+        @include flex(center, space-evenly, column);
+        .img-qr {
             width: 100%;
-            height: 120px;
-            @include flex(center, space-around, column);
-            background-color: #e9ecef;
-
-            &--back {
-                @include flex(center, flex-start, row);
-                align-self: flex-start;
-                margin-left: 10px;
-                height: 50%;
-                &__button {
-                    width: 50px;
-                    height: 50px;
-                    border-radius: 50%;
-                    @include medium_device-up {
-                        width: 53px;
-                        height: 53px;
-
-                    }
-                }
-
-                @include medium_device-up {
-                    width: 50%;
-                    align-self: center;
-                    margin-left: 15px;
-                }
-            }
-
-            &--actions {
-                @include flex(center, space-evenly, row);
-                width: 100%;
-                $radius-actions: 3px;
-                $with-actions: 125px;
-                $height-actions: 30px;
-                &__stories {
-                    width: $with-actions;
-                    @include flex(center, space-evenly, row);
-                    border-radius: $radius-actions;
-                    height: $height-actions;
-                }
-
-                &__catalogue {
-                    width: $with-actions;
-                    @include flex(center, space-evenly, row);
-                    border-radius: $radius-actions;
-                    height: $height-actions;
-                }
-
-                @include medium_device-up {
-                    width: 50%;
-                }
-            }
+            height: 100%;
 
             @include medium_device-up {
-                @include flex(center, space-around, row);
+                width: 350px;
+                height: 350px;
             }
         }
 
-        &__search {
-            width:100%;
-            margin-top: 30px;
-            @include flex(center, space-around, row);
-
-            &--input {
-                width: 95%;
-                height: 35px;
-                border-radius: 5px;
-                padding: 5px;
-                border: 1px solid #2c3e50;
-                outline: none;
-
-                @include medium_device-up {
-                    width: 50%;
-                }
-            }
-        }
-
-        &__product {
-            max-width: 330px;
-            margin-top: 20px;
-            height: 430px;
+        @mixin buttonQR {
+            width: 100%;
+            height: 35px;
+            outline: none;
             border-radius: 5px;
-            box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
-            @include small_device-up {
-                flex-direction: row;
-            }
-            &--photo {
-                width: 100%;
-                height: 55%;
-            
-                &__image {
-                    width: 100%;
-                    height: 100%;
-                    object-fit: cover;
-                }
-            }
-
-            &--name {
-                width: 100%;
-
-               h4  {
-                    padding-left: 10px;
-                    padding-right: 10px;
-                    padding-top: 10px;
-                }
-            }
-
-            &--brand {
-                width: 100%;
-
-                h6 {
-                    padding-left: 10px;
-                    padding-right: 10px;
-                    color: #6c757d;
-                }
-
-            }
-
-            &--description {
-                width: 100%;
-
-                p {
-                    padding-left: 10px;
-                    padding-right: 10px;
-                }
-            }
-
-            &--cta {
-                width: 95%;
-                @include flex(center, space-evenly, row);
-
-                button {
-                    width: 160px;
-                    height: 35px;
-                    color: #fff;
-                    outline: none;
-                    border: none;
-                }
-
-                p {
-                    @include flex(center, space-evenly, row);
-                    i {
-                        margin-right: 5px;
-                    }
-
-                    .stock {
-                        color: #28a745;
-                    }
-
-                    .out-stock {
-                        color: #ff0000;
-                    }
-                }
-            }
-        }
-
-        &__list {
-            width: 100%;
-            @include flex(center, space-between, column);
-            flex-wrap: wrap;
-            margin-top: 50px;
-
-            @include medium_device-up {
-                width: 90%;
-                flex-direction: row;
-            }
-        }
-    }
-
-    .button_header {
-        border: none;
-        outline: none;
-        color: #fff;
-        cursor: pointer;
-
-        .bi {
+            border: none;
+            margin-top: 20px;
             color: #fff;
+        }
+        .download__qr {
+            &--sur {
+                background-color: $bg-dm-corporativo-light;
+                @include buttonQR;
+            }
         }
     }
 }

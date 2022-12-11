@@ -3,21 +3,21 @@ export default {
   component: () => import('../layouts/mainLayout.vue'),
   children: [
     {
-      path: ':name',
+      path: ':id',
       name: 'contact-card',
       component: () => import('../views/ContactView.vue'),
       meta: { transition: 'slide-left' }
     },
     {
-      path: ':name/about',
+      path: ':id/about',
       name: 'about-card',
       component: () => import('../views/AboutView.vue'),
       meta: { transition: 'slide-right' }
     },
     {
-      path: ':name/products',
-      name: 'products-card',
-      component: () => import('../views/ProductsView.vue'),
+      path: ':id/qr',
+      name: 'qr-card',
+      component: () => import('../views/QRCodeView.vue'),
       meta: { transition: 'slide-left' }
     }
   ]

@@ -1,0 +1,71 @@
+@function random_range($min, $max) {
+    $rand: random();
+    $random_range: $min + floor($rand * (($max - $min) + 1));
+    @return $random_range;
+}
+
+.snow {
+    $total: 200;
+    position: absolute;
+    overflow: hidden;
+    width: 10px;
+    top: 0;
+    height: 10px;
+    background: white;
+    border-radius: 50%;
+
+    @for $i from 1 through $total {
+        $random-x: random(10000000) * 0.00001vw;
+        $random-offset: random_range(-10000, 10000) * 0.001vw;
+        $random-x-end: $random-x + $random-offset;
+        $random-x-end-yoyo: $random-x + ($random-offset / 2);
+        $random-yoyo-time: random_range(3000, 8000) / 10000;
+        $random-yoyo-y: $random-yoyo-time * 200vh;
+        $random-scale: random(10000) * 0.0001;
+        $fall-duration: random_range(10, 30) * 1s;
+        $fall-delay: random(30) * -1s;
+
+        &:nth-child(#{$i}) {
+            opacity: random(1000) * 0.01;
+            transform: translate($random-x, -10px) scale($random-scale);
+            animation: fall-#{$i} $fall-duration $fall-delay linear infinite;
+        }
+
+        @keyframes fall-#{$i} {
+            #{percentage($random-yoyo-time)} {
+                transform: translate($random-x-end, $random-yoyo-y) scale($random-scale);
+            }
+
+            to {
+                transform: translate($random-x-end-yoyo, 190vh) scale($random-scale);
+            }
+        }
+    }
+}
+
+.xmas {
+    &__lights {
+        width:100%;
+        height: 200px;
+        position: absolute;
+        
+        &:nth-child(2) {
+            top: -100px;
+            left: -30px;
+            transform: rotate(-25deg);
+        }
+
+        &:nth-child(3) {
+            top: -100px;
+            right: -180px;
+            transform: rotate(60deg);
+        }
+    }
+
+    &__pine {
+        width: 100%;
+        position: absolute;
+        top: 0;
+    }
+
+}
