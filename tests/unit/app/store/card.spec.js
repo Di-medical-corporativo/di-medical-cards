@@ -56,5 +56,31 @@ describe('Card store', () => {
       await store.dispatch('card/getEmployeeById', '0W2w0TFoyn3AbUf10hYn')
       expect(store.state.card.employee).toEqual(testEmployee)
     })
+
+    test('getProducts, should get all products', async () => {
+      const store = createVuexStore({
+        employee: null,
+        products: null,
+        isLoading: false,
+        lastDate: null
+      })
+
+      await store.dispatch('card/getAllProducts')
+      expect(store.state.card.products.length).toBe(5)
+    })
+
+    test('should get products after lastDate', async () => {
+      const store = createVuexStore({
+        employee: null,
+        products: null,
+        isLoading: false,
+        lastDate: null
+      })
+
+      await store.dispatch('card/getAllProducts')
+      expect(store.state.card.products.length).toBe(5)
+      await store.dispatch('card/getAllProducts')
+      console.log(store.state.card.products.length)
+    })
   })
 })

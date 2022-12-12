@@ -1,8 +1,8 @@
 <template>
-  <div class="card--products">
+  <div class="card-products">
     <Header />
-    <Search/>
     <Products/>
+    <Paginate/>
   </div>
 </template>
 
@@ -13,8 +13,8 @@ export default {
   components: {
     Header: defineAsyncComponent(() =>
       import('../components/products/Header.vue')),
-    Search: defineAsyncComponent(() => import('../components/products/Search.vue')),
-    Products: defineAsyncComponent(() => import('../components/products/ListProducts.vue'))
+    Products: defineAsyncComponent(() => import('../components/products/ListProducts.vue')),
+    Paginate: defineAsyncComponent(() => import('../components/products/LoadProducts.vue'))
   }
 }
 </script>

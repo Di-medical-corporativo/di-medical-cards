@@ -1,6 +1,6 @@
 <template>
   <button
-    class="productsButton"
+    class="card-contact__products__button"
     :style="buttonBackground"
     @click="goToProducts()"
   >

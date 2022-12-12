@@ -1,34 +1,41 @@
 <template>
-  <div class="products__list">
+  <div class="products__list" v-if="productsPaginated">
     <Product
-        :product="testProduct"
+        :product="product"
         :sucursal="sucursal"
-        v-for="i in 10"
-        :key="i"
+        v-for="product in productsPaginated"
+        :key="product.id"
     />
   </div>
+  <div v-else>cargando...</div>
 </template>
 
 <script>
-import { defineAsyncComponent, ref } from '@vue/runtime-core'
-import { useRoute } from 'vue-router'
+import { computed, defineAsyncComponent } from '@vue/runtime-core'
+import { useRoute, useRouter } from 'vue-router'
+import { useStore } from 'vuex'
 export default {
   components: {
     Product: defineAsyncComponent(() => import('./Product.vue'))
   },
   setup () {
     const route = useRoute()
-    const testProduct = ref({
-      title: 'Antifaz para fototerapia con correa pediátrico',
-      description: 'Antifaz para fototerapia con correa pediátrico color verde, el modelo diseñado para un paciente macrosómico. En Di medical corporativo contamos también con: Antifaz para fototerapia con correa pretérmino color gris, Antifaz para fototerapia con correa termino color azul',
-      photos: ['.jpg', '.jpg', '.mp4'],
-      brand: 'Brand',
-      stock: true
-    })
+    const store = useStore()
+    const router = useRouter()
+
+    const getProducts = async () => {
+      try {
+        await store.dispatch('card/getAllProducts')
+      } catch (e) {
+        router.push({ name: 'not-found' })
+      }
+    }
+
+    getProducts()
 
     return {
-      testProduct,
-      sucursal: route.params.sucursal
+      sucursal: route.params.sucursal,
+      productsPaginated: computed(() => store.getters['card/getProducts'])
     }
   }
 }
