@@ -88,6 +88,7 @@
             right: 10px;
             top: 10px;
             z-index: 10000000;
+
             .sharer {
                 .sharer__button {
                     outline: none;
@@ -129,7 +130,7 @@
             position: absolute;
             left: 10px;
             top: 10px;
-
+            z-index: 10000;
             &__button {
                 z-index: 10000;
                 outline: none;
@@ -162,6 +163,7 @@
     height: 100%;
     overflow-x: hidden;
     z-index: 5;
+
     background: {
         image: url('https://firebasestorage.googleapis.com/v0/b/di-medical-del-sur.appspot.com/o/mainBg.webp?alt=media&token=072feb70-824e-468a-8594-89b5ee617997');
         position: center;
@@ -283,6 +285,7 @@
 
     &__image {
         @include flex(center, space-evenly, column);
+
         .img-qr {
             width: 100%;
             height: 100%;
@@ -302,6 +305,7 @@
             margin-top: 20px;
             color: #fff;
         }
+
         .download__qr {
             &--sur {
                 background-color: $bg-dm-corporativo-light;
@@ -315,33 +319,30 @@
     width: 100%;
     height: 100%;
     background-color: #fff;
+    @include flex(center, space-between, column);
 
     .products {
         &__header {
             width: 100%;
             height: 120px;
-            @include flex(center, space-around, column);
             background-color: #e9ecef;
 
             &--back {
-                @include flex(center, flex-start, row);
-                align-self: flex-start;
-                margin-left: 10px;
-                height: 50%;
+                height: 100%;
+                @include flex(center, left, row);
                 &__button {
                     width: 50px;
                     height: 50px;
                     border-radius: 50%;
+
                     @include medium_device-up {
                         width: 53px;
                         height: 53px;
 
                     }
                 }
-
+                margin-left: 25px;
                 @include medium_device-up {
-                    width: 50%;
-                    align-self: center;
                     margin-left: 15px;
                 }
             }
@@ -352,6 +353,7 @@
                 $radius-actions: 3px;
                 $with-actions: 125px;
                 $height-actions: 30px;
+
                 &__stories {
                     width: $with-actions;
                     @include flex(center, space-evenly, row);
@@ -372,7 +374,7 @@
             }
 
             @include medium_device-up {
-                @include flex(center, space-around, row);
+                @include flex(center, left, row);
             }
         }
 
@@ -381,49 +383,71 @@
             flex-wrap: wrap;
             margin-top: 20px;
             margin-bottom: 10px;
+
+            .list-enter-active,
+            .list-leave-active {
+                transition: all 0.5s ease;
+            }
+
+            .list-enter-from,
+            .list-leave-to {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+
         }
 
         &__product {
             max-width: 20rem;
-            height: 395px;
+            height: 410px;
             padding: 0;
-            border: 1px solid rgba(0,0,0,.125);
+            border: 1px solid rgba(0, 0, 0, .125);
             margin-top: 15px;
             border-radius: 5px;
-
+            @include flex(left, space-between,  column);
+            
             &--photo {
-                width:100%;
+                width: 100%;
                 height: 200px;
 
                 &__image {
                     width: 100%;
                     height: 100%;
-                    border-radius:5px
+                    border-radius: 5px
                 }
             }
 
             &--name {
                 text-align: left;
                 margin-left: 10px;
+                margin-right: 10px;
                 margin-top: 10px;
             }
 
             &--brand {
                 margin-left: 10px;
+                color: #6c757d;
+                font-size: 14px;
             }
+
             &--description {
                 margin-left: 10px;
+                margin-right: 10px;
+                font-size: 16.5px;
             }
-            &--cta {
-                @include flex(center, space-around, row);
 
-                button {
+            &--cta {
+                @include flex(center, space-evenly, row);
+                margin-bottom: 10px;
+                a {
                     border: none;
                     outline: none;
                     cursor: pointer;
-                    width:50%;
+                    width: 50%;
                     height: 35px;
                     color: #fff;
+                    @include flex(center, space-evenly, row);
+                    text-decoration: none;
                 }
 
                 p {
@@ -433,6 +457,19 @@
                 }
             }
 
+        }
+
+        &__load {
+            &__button {
+                color: #fff;
+                outline: none;
+                border: none;
+                width: 20rem;
+                height: 35px;
+                border-radius:5px;
+            }
+            margin-top: 10px;
+            margin-bottom: 10px;
         }
     }
 

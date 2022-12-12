@@ -14,7 +14,9 @@ describe('Search input for products view', () => {
         product: {
           title: 'Antifaz para fototerapia con correa pediátrico',
           brand: 'Brand',
-          description: 'description'
+          description: 'description',
+          photos: ['.jpg', '.jpg', '.jpg']
+
         },
         sucursal: 'sur',
         stock: true

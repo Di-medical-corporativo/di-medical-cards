@@ -9,17 +9,6 @@
         <i class="bi bi-arrow-left"></i>
       </button>
     </div>
-    <div class="products__header--actions">
-      <button class="products__header--actions__stories button_header" :style="backgroundSucursal">
-        Stories
-        <i class="bi bi-file-image"></i>
-      </button>
-
-      <button class="products__header--actions__catalogue button_header" :style="backgroundSucursal">
-        Catálogos
-        <i class="bi bi-book-fill"></i>
-      </button>
-    </div>
   </div>
 </template>
 

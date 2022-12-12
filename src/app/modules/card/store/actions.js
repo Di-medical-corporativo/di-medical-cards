@@ -18,6 +18,11 @@ const initActions = (dependencies) => {
 
     getAllProducts: async ({ commit, getters }) => {
       const products = await getProductsUsecase(dependencies).execute({ startAfterDate: getters.getLastDate })
+
+      if (!products) {
+        return null
+      }
+
       const formatedProducts = formatResult(products)
       const lastDate = formatedProducts[formatedProducts.length - 1].date
       commit('setLastDateToPaginate', lastDate)

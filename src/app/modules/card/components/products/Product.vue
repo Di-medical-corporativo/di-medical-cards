@@ -7,7 +7,7 @@
             class="products__product--photo__image">
     </div>
     <div class="products__product--name">
-        <h4>{{shortenTitle}}</h4>
+        <h5>{{shortenTitle}}</h5>
     </div>
     <div class="products__product--brand">
         <h6>{{product.brand || ''}}</h6>
@@ -16,9 +16,12 @@
         <p>{{shortenDesc}}</p>
     </div>
     <div class="products__product--cta">
-        <button :style="backgroundButton">
+        <a
+            :href="urlToProductPage"
+            target="_blank"
+            :style="backgroundButton">
             Más información
-        </button>
+        </a>
         <p>
             <i :class="stockIcon.icon"></i>
             {{stockIcon.text}}
@@ -51,7 +54,7 @@ export default {
           : product.value.title
       }),
       shortenDesc: computed(() => {
-        return product.value.description.length > 120
+        return product.value.description.length > 100
           ? product.value.description.substring(0, 50) + '...'
           : product.value.description
       }),
@@ -67,7 +70,10 @@ export default {
       }),
       photoThumb: computed(
         () => product.value.photos.filter((e) => e.includes('jpg')) || []
-      )
+      ),
+
+      urlToProductPage: computed(() => `https://www.dimedicalcorporativo.mx/products/detail/${product.value.id}`)
+
     }
   }
 }

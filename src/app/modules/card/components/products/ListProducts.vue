@@ -1,11 +1,13 @@
 <template>
   <div class="products__list" v-if="productsPaginated">
-    <Product
+    <TransitionGroup name="list">
+        <Product
         :product="product"
         :sucursal="sucursal"
         v-for="product in productsPaginated"
         :key="product.id"
     />
+    </TransitionGroup>
   </div>
   <div v-else>cargando...</div>
 </template>
@@ -35,7 +37,8 @@ export default {
 
     return {
       sucursal: route.params.sucursal,
-      productsPaginated: computed(() => store.getters['card/getProducts'])
+      productsPaginated: computed(() => store.getters['card/getProducts']),
+      getProducts
     }
   }
 }

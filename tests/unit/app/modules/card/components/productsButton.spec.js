@@ -4,6 +4,11 @@ import ProductsButton from '../../../../../../src/app/modules/card/components/Pr
 jest.mock('vue-router', () => ({
   useRouter: jest.fn(() => ({
     push: jest.fn()
+  })),
+  useRoute: jest.fn(() => ({
+    params: {
+      sucursal: 'sur'
+    }
   }))
 }))
 
