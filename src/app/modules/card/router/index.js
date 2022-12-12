@@ -19,6 +19,12 @@ export default {
       name: 'qr-card',
       component: () => import('../views/QRCodeView.vue'),
       meta: { transition: 'slide-left' }
+    },
+    {
+      path: ':id/products',
+      name: 'products-card',
+      component: () => import('../views/ProductsView.vue'),
+      meta: { transition: 'slide-right' }
     }
   ]
 }

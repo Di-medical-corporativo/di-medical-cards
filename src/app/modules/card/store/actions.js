@@ -1,7 +1,10 @@
+import { formatResult } from '../helpers/formatProducts'
+
 const initActions = (dependencies) => {
   const {
     useCases: {
-      getEmployeeByIdUseCase
+      getEmployeeByIdUseCase,
+      getProductsUsecase
     }
   } = dependencies
   return {
@@ -11,7 +14,22 @@ const initActions = (dependencies) => {
       commit('setLoading', false)
       commit('setEmployee', employee)
       return employee
+    },
+
+    getAllProducts: async ({ commit, getters }) => {
+      const products = await getProductsUsecase(dependencies).execute({ startAfterDate: getters.getLastDate })
+
+      if (!products) {
+        return null
+      }
+
+      const formatedProducts = formatResult(products)
+      const lastDate = formatedProducts[formatedProducts.length - 1].date
+      commit('setLastDateToPaginate', lastDate)
+      commit('setProducts', products)
+      return formatedProducts
     }
+
   }
 }
 

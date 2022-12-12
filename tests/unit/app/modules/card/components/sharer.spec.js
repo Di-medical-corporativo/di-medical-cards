@@ -7,6 +7,9 @@ jest.mock('vue-router', () => ({
       id: 'kevin-aron-tapia-cruz',
       sucursal: 'sur'
     }
+  })),
+  useRouter: jest.fn(() => ({
+    push: jest.fn()
   }))
 }))
 
@@ -67,14 +70,14 @@ describe('Sharer component', () => {
     expect(global.navigator.clipboard.writeText).toHaveBeenCalled()
   })
 
-  test('should call alert method', () => {
+  test('should call alert method', async () => {
     const wrapper = shallowMount(Sharer, {
       propsData: {
         sucursal: 'sur'
       }
     })
     const copyToClipBoardButton = wrapper.findAll('.icon')[3]
-    copyToClipBoardButton.trigger('click')
+    await copyToClipBoardButton.trigger('click')
     expect(global.alert).toHaveBeenCalled()
   })
 })

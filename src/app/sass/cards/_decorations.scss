@@ -65,7 +65,12 @@
     &__pine {
         width: 100%;
         position: absolute;
-        top: 0;
+        top: -5px;
+
+        @include medium_device-up {
+            width: 800px;
+            top: -25px;
+        }
     }
 
 }
