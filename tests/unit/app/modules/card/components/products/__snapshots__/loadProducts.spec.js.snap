@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Load product component should match snapshot 1`] = `<div class="products__load"><button class="products__load__button" style="background: rgb(33, 141, 155);"> Cargar más </button></div>`;

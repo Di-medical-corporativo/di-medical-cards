@@ -1,5 +1,7 @@
 import employeeRepository from './employee'
+import productRepository from './product'
 
 export default {
-  ...employeeRepository
+  ...employeeRepository,
+  ...productRepository
 }

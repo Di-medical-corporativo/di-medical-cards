@@ -4,7 +4,9 @@
       <template #sharer="{ sucursal }">
         <Sharer :sucursal="sucursal" :employeeName="`${employeeData.firstName} ${employeeData.lastName}`"/>
       </template>
-
+      <template #products="{ sucursal }">
+        <ProductsButton :sucursal="sucursal"/>
+      </template>
       <template #logo="{ sucursal }">
         <Logo :sucursal="sucursal" />
       </template>
@@ -66,6 +68,7 @@ export default {
     SucursalProvider: defineAsyncComponent(() =>
       import('../components/BackgroundContact.vue')
     ),
+    ProductsButton: defineAsyncComponent(() => import('../components/ProductsButton.vue')),
     EmployeeName: defineAsyncComponent(() =>
       import('../components/EmployeeName.vue')
     ),

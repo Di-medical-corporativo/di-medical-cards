@@ -1,5 +1,6 @@
 import { initializeApp } from 'firebase/app'
 import { getFirestore } from 'firebase/firestore'
+import { getDatabase } from 'firebase/database'
 let firebaseConfig
 
 if (process.env.NODE_ENV === 'production') {
@@ -27,3 +28,4 @@ if (process.env.NODE_ENV === 'production') {
 
 const app = initializeApp(firebaseConfig)
 export const firestore = getFirestore(app)
+export const firebase = getDatabase(app)
