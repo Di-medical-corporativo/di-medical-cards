@@ -129,5 +129,20 @@ describe('Card store', () => {
       await store.dispatch('card/getAllProducts')
       expect(store.state.card.products.length).toBe(9)
     })
+
+    test('getTechnicalSheets, should getFirst 5', async () => {
+      const store = createVuexStore({
+        employee: null,
+        products: null,
+        isLoading: false,
+        lastDate: null,
+        lastDateTechnicalSheets: null,
+        technicalSheets: null
+      })
+
+      await store.dispatch('card/getTechnicalSheets')
+
+      expect(store.state.card.technicalSheets.length).toBe(5)
+    })
   })
 })

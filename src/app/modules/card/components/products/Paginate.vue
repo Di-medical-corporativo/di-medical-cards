@@ -2,7 +2,7 @@
   <div class="products__load">
     <button
         class="products__load__button"
-        @click="loadMoreProducts"
+        @click="loadMoreElements"
         :style="backgroundButton"
         v-show="showButton"
     >
@@ -17,15 +17,28 @@ import { useRoute } from 'vue-router'
 import { useStore } from 'vuex'
 
 export default {
-  setup () {
+  props: {
+    elementToPaginate: {
+      type: String
+    }
+  },
+  setup (props) {
     const store = useStore()
     const route = useRoute()
     const showButton = ref(true)
 
     return {
-      loadMoreProducts: async () => {
-        const products = await store.dispatch('card/getAllProducts')
-        if (!products) {
+      loadMoreElements: async () => {
+        let elements = null
+        if (props.elementToPaginate === 'products') {
+          elements = await store.dispatch('card/getAllProducts')
+        }
+
+        if (props.elementToPaginate === 'technicals') {
+          elements = await store.dispatch('card/getTechnicalSheets')
+        }
+
+        if (!elements) {
           showButton.value = false
         }
       },
