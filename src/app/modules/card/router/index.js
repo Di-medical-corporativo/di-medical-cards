@@ -22,9 +22,22 @@ export default {
     },
     {
       path: ':id/products',
-      name: 'products-card',
-      component: () => import('../views/ProductsView.vue'),
-      meta: { transition: 'slide-right' }
+      name: 'products',
+      component: () => import('../layouts/productsLayout.vue'),
+      meta: { transition: 'slide-right' },
+      children: [
+        {
+          path: '',
+          name: 'products-card',
+          component: () => import('../views/ProductsView.vue')
+        },
+        {
+          path: 'technicalSheets',
+          name: 'products-technicals',
+          component: () => import('../views/TechnicalSheets.vue'),
+          meta: { transition: 'slide-right' }
+        }
+      ]
     }
   ]
 }
