@@ -1,8 +1,7 @@
 <template>
   <div class="card-products">
-    <Header />
     <Products/>
-    <Paginate/>
+    <Paginate elementToPaginate="products"/>
   </div>
 </template>
 
@@ -11,10 +10,8 @@ import { defineAsyncComponent } from 'vue'
 
 export default {
   components: {
-    Header: defineAsyncComponent(() =>
-      import('../components/products/Header.vue')),
     Products: defineAsyncComponent(() => import('../components/products/ListProducts.vue')),
-    Paginate: defineAsyncComponent(() => import('../components/products/LoadProducts.vue'))
+    Paginate: defineAsyncComponent(() => import('../components/products/Paginate.vue'))
   }
 }
 </script>

@@ -9,6 +9,16 @@
         <i class="bi bi-arrow-left"></i>
       </button>
     </div>
+
+    <div class="products__header--actions">
+        <router-link
+            class="products__header--actions__catalogue"
+            :style="backgroundSucursal"
+            :to="{ name: 'products-technicals' }"
+        >
+        Fichas Técnicas
+    </router-link>
+    </div>
   </div>
 </template>
 

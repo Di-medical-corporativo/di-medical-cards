@@ -4,7 +4,8 @@ const initActions = (dependencies) => {
   const {
     useCases: {
       getEmployeeByIdUseCase,
-      getProductsUsecase
+      getProductsUsecase,
+      getTechnicalSheetsUseCase
     }
   } = dependencies
   return {
@@ -28,6 +29,22 @@ const initActions = (dependencies) => {
       commit('setLastDateToPaginate', lastDate)
       commit('setProducts', products)
       return formatedProducts
+    },
+
+    getTechnicalSheets: async ({ commit, getters }) => {
+      const technicalSheets = await getTechnicalSheetsUseCase(dependencies).execute({
+        startAfterDate: getters.getLastDateForTechnicalSheets
+      })
+
+      if (!technicalSheets) {
+        return null
+      }
+
+      const formatedTechnicalSheets = formatResult(technicalSheets)
+      const lastDate = formatedTechnicalSheets[formatedTechnicalSheets.length - 1].date
+      commit('setLastDateToPaginateTechnicalSheets', lastDate)
+      commit('setTechnicalSheets', technicalSheets)
+      return technicalSheets
     }
 
   }
