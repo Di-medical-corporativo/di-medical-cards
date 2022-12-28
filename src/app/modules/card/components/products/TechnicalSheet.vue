@@ -2,7 +2,9 @@
   <div class="card-technicals__technicalSheet">
     <img
         class="card-technicals__technicalSheet__image"
-        :src="image" alt="">
+        :src="image"
+        @click="$emit('openModal', image)"
+    >
   </div>
 </template>
 
@@ -12,6 +14,7 @@ export default {
     image: {
       type: String
     }
-  }
+  },
+  emits: ['openModal']
 }
 </script>

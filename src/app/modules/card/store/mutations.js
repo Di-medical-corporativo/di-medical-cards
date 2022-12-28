@@ -32,19 +32,13 @@ export const setLastDateToPaginateTechnicalSheets = (state, date) => {
 export const setTechnicalSheets = (state, technicalSheets) => {
   if (!state.technicalSheets) {
     const technicalSheetFormated = formatResult(technicalSheets)
-    const noRepeated = technicalSheetFormated.filter((data, index) => {
-      return technicalSheetFormated.indexOf(data) === index
-    })
-    state.technicalSheets = noRepeated
+    state.technicalSheets = technicalSheetFormated
   } else {
     for (const id of Object.keys(technicalSheets)) {
-      const hasTechnicalSheet = state.technicalSheets.find(element => element.id === id)
-      if (!hasTechnicalSheet) {
-        state.technicalSheets.push({
-          id,
-          ...technicalSheets[id]
-        })
-      }
+      state.technicalSheets.push({
+        id,
+        ...technicalSheets[id]
+      })
     }
   }
 }
