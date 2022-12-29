@@ -374,9 +374,8 @@
         &__list {
             @include flex(center, space-around, row);
             flex-wrap: wrap;
-            margin-top: 20px;
             margin-bottom: 10px;
-
+            margin-top: 25px;
             .list-enter-active,
             .list-leave-active {
                 transition: all 0.5s ease;
@@ -395,7 +394,7 @@
             height: 410px;
             padding: 0;
             border: 1px solid rgba(0, 0, 0, .125);
-            margin-top: 15px;
+            margin-top: 20px;
             border-radius: 5px;
             @include flex(left, space-between,  column);
             
@@ -461,7 +460,7 @@
                 height: 40px;
                 border-radius:5px;
             }
-            margin-top: 10px;
+            margin-top: 25px;
             margin-bottom: 10px;
             box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
 
@@ -488,6 +487,7 @@
         @include flex(center, space-around, row);
         flex-wrap: wrap;
         transition: .2s;
+        margin-bottom: 15px;
     }
 
     &__technicalSheet {
@@ -497,6 +497,8 @@
         box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
         border-radius: 5px;
         transition: .2s;
+        position: relative;
+
         @include small_device-up {
             width: 380px;
             height: 400px;
@@ -509,6 +511,21 @@
             border-radius: 5px;
             transition: transform .2s; 
             cursor: pointer;
+        }   
+
+        &__download {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 50px;
+            height: 50px;
+            border-radius: 5px;
+            @include flex(center, center, row);
+            cursor: pointer;
+            .icon {
+                color: #fff;
+
+            }
         }
 
     }
@@ -535,7 +552,7 @@
                 }
 
                 @include medium_device-up {
-                    width: 800px;
+                    width: 750px;
                     height: 700px;
                 }
             }
@@ -559,6 +576,36 @@
             }
 
             .icon {
+                color: #fff;
+            }
+        }
+    }
+
+    &__brandList {
+        width: 96%;
+        @include flex(center, space-around, row);
+        flex-wrap: wrap;
+        margin-top: 10px;
+        transition: .2s linear;
+        
+        @include small_device-up {
+            width: 50%;
+        }
+
+        &__brand {
+            &__name {
+                width: 138px;
+                height: 40px;
+                border-radius: 5px;
+                outline: none;
+                border: none;
+                margin-top: 10px;
+                transition: .2s;
+            }
+
+            $brandActive: #003566;
+            .currentBrand {
+                background-color: $brandActive;
                 color: #fff;
             }
         }

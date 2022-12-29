@@ -1,10 +1,10 @@
 <template>
   <div class="products__product">
     <div class="products__product--photo">
-        <img
+        <v-lazy-image
+            class="products__product--photo__image"
             :src="photoThumb[0]"
-            alt="Product image"
-            class="products__product--photo__image">
+        />
     </div>
     <div class="products__product--name">
         <h5>{{shortenTitle}}</h5>
@@ -32,6 +32,8 @@
 
 <script>
 import { computed, toRef } from 'vue'
+import VLazyImage from 'v-lazy-image'
+
 export default {
   props: {
     product: {
@@ -75,6 +77,9 @@ export default {
       urlToProductPage: computed(() => `https://www.dimedicalcorporativo.mx/products/detail/${product.value.id}`)
 
     }
+  },
+  components: {
+    VLazyImage
   }
 }
 </script>

@@ -2,12 +2,12 @@
   <div class="card-technicals__modal">
     <div
         @click.self="closeModal"
-        class="card-technicals__modal__background">
-        <img
+        class="card-technicals__modal__background outer">
+
+        <v-lazy-image
+            class="card-technicals__modal__background__image inner"
             :src="imageToOpen"
-            alt=""
-            class="card-technicals__modal__background__image"
-        >
+        />
         <div
             :style="buttonBackground"
             class="card-technicals__modal__background__close"
@@ -22,6 +22,8 @@
 <script>
 import { computed } from '@vue/runtime-core'
 import { useRoute } from 'vue-router'
+import VLazyImage from 'v-lazy-image'
+
 export default {
   props: {
     imageToOpen: {
@@ -46,6 +48,10 @@ export default {
           : { background: '#c28400' }
       })
     }
+  },
+
+  components: {
+    VLazyImage
   }
 }
 </script>

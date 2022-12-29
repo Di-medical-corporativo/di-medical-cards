@@ -9,3 +9,9 @@ export const getProducts = (state) => state.products
 export const getLastDateForTechnicalSheets = (state) => state.lastDateTechnicalSheets
 
 export const getTechnicalSheets = (state) => state.technicalSheets
+
+export const getBrands = (state) => state.brands
+
+export const getBrandToSearch = (state) => state.brandToSearch
+
+export const isLoadingTechnicalSheets = (state) => state.isLoadingTechnicalSheets
