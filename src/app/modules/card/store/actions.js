@@ -5,7 +5,9 @@ const initActions = (dependencies) => {
     useCases: {
       getEmployeeByIdUseCase,
       getProductsUsecase,
-      getTechnicalSheetsUseCase
+      getTechnicalSheetsUseCase,
+      getAllBrandsUseCase,
+      getTechnicalSheetsByBrandUsecase
     }
   } = dependencies
   return {
@@ -32,11 +34,17 @@ const initActions = (dependencies) => {
     },
 
     getTechnicalSheets: async ({ commit, getters }) => {
+      commit('setIsLoadingTechnicalSheets', true)
+      if (getters.getLastDateForTechnicalSheets) {
+        commit('setIsLoadingTechnicalSheets', false)
+      }
+
       const technicalSheets = await getTechnicalSheetsUseCase(dependencies).execute({
         startAfterDate: getters.getLastDateForTechnicalSheets
       })
 
       if (!technicalSheets) {
+        commit('setIsLoadingTechnicalSheets', false)
         return null
       }
 
@@ -44,7 +52,32 @@ const initActions = (dependencies) => {
       const lastDate = formatedTechnicalSheets[formatedTechnicalSheets.length - 1].date
       commit('setLastDateToPaginateTechnicalSheets', lastDate)
       commit('setTechnicalSheets', technicalSheets)
+      commit('setIsLoadingTechnicalSheets', false)
       return technicalSheets
+    },
+
+    getAllBrands: async ({ commit }) => {
+      const brands = await getAllBrandsUseCase(dependencies).execute()
+      const formattedBrands = formatResult(brands)
+      commit('setBrands', formattedBrands)
+    },
+
+    getTechnicalSheetsByBrand: async ({ commit }, brand) => {
+      commit('cleanTechnicalSheets')
+      commit('setIsLoadingTechnicalSheets', true)
+      commit('setBrandToSearch', brand)
+
+      const technicalSheets = await getTechnicalSheetsByBrandUsecase(dependencies)
+        .execute({ brand })
+      if (!technicalSheets) {
+        commit('setTechnicalSheets', null)
+        commit('setIsLoadingTechnicalSheets', false)
+        return
+      }
+
+      const formattedTechnicalSheets = formatResult(technicalSheets)
+      commit('setTechnicalSheets', formattedTechnicalSheets)
+      commit('setIsLoadingTechnicalSheets', false)
     }
 
   }
