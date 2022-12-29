@@ -30,15 +30,37 @@ export const setLastDateToPaginateTechnicalSheets = (state, date) => {
 }
 
 export const setTechnicalSheets = (state, technicalSheets) => {
+  if (!technicalSheets) {
+    state.technicalSheets = []
+    return
+  }
+
   if (!state.technicalSheets) {
     const technicalSheetFormated = formatResult(technicalSheets)
     state.technicalSheets = technicalSheetFormated
-  } else {
-    for (const id of Object.keys(technicalSheets)) {
-      state.technicalSheets.push({
-        id,
-        ...technicalSheets[id]
-      })
-    }
+    return
   }
+
+  for (const id of Object.keys(technicalSheets)) {
+    state.technicalSheets.push({
+      id,
+      ...technicalSheets[id]
+    })
+  }
+}
+
+export const setBrands = (state, brands) => {
+  state.brands = brands
+}
+
+export const setBrandToSearch = (state, brand) => {
+  state.brandToSearch = brand
+}
+
+export const cleanTechnicalSheets = (state) => {
+  state.technicalSheets = null
+}
+
+export const setIsLoadingTechnicalSheets = (state, loading) => {
+  state.isLoadingTechnicalSheets = loading
 }

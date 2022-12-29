@@ -352,8 +352,8 @@
                 @include flex(center, center, row);
                 width: 100%;
                 $radius-actions: 3px;
-                $with-actions: 125px;
-                $height-actions: 30px;
+                $with-actions: 135px;
+                $height-actions: 45px;
 
                 &__catalogue {
                     width: $with-actions;
@@ -374,9 +374,8 @@
         &__list {
             @include flex(center, space-around, row);
             flex-wrap: wrap;
-            margin-top: 20px;
             margin-bottom: 10px;
-
+            margin-top: 25px;
             .list-enter-active,
             .list-leave-active {
                 transition: all 0.5s ease;
@@ -395,7 +394,7 @@
             height: 410px;
             padding: 0;
             border: 1px solid rgba(0, 0, 0, .125);
-            margin-top: 15px;
+            margin-top: 20px;
             border-radius: 5px;
             @include flex(left, space-between,  column);
             
@@ -458,11 +457,13 @@
                 outline: none;
                 border: none;
                 width: 20rem;
-                height: 35px;
+                height: 40px;
                 border-radius:5px;
             }
-            margin-top: 10px;
+            margin-top: 25px;
             margin-bottom: 10px;
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+
         }
     }
 
@@ -481,12 +482,12 @@
 .card-technicals {
     width: 100%;
     @include flex(center, space-around, column);
-
     &__list {
         width:100%;
         @include flex(center, space-around, row);
         flex-wrap: wrap;
-        
+        transition: .2s;
+        margin-bottom: 15px;
     }
 
     &__technicalSheet {
@@ -495,9 +496,13 @@
         margin-top: 50px;
         box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
         border-radius: 5px;
+        transition: .2s;
+        position: relative;
+
         @include small_device-up {
             width: 380px;
             height: 400px;
+            margin-left: 10px;
         }
 
         &__image {
@@ -506,7 +511,103 @@
             border-radius: 5px;
             transition: transform .2s; 
             cursor: pointer;
+        }   
+
+        &__download {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 50px;
+            height: 50px;
+            border-radius: 5px;
+            @include flex(center, center, row);
+            cursor: pointer;
+            .icon {
+                color: #fff;
+
+            }
         }
 
+    }
+
+    &__modal {
+        position: fixed;
+        width: 100vw;
+        height: 100vh;
+        top: 0;
+        @include flex(center, center, row);
+        &__background {
+            width: 100%;
+            height: 100% !important;
+            background-color: rgba(0, 0, 0, 0.373);
+            @include flex(center, center, row);
+            position: relative;
+            &__image {
+                width: 100%;
+                height: 500px;
+                border-radius: 5px;
+                @include small_device-up {
+                    width: 700px;
+                    height: 600px;
+                }
+
+                @include medium_device-up {
+                    width: 750px;
+                    height: 700px;
+                }
+            }
+
+            &__close {
+                position: absolute;
+                width: 50px;
+                height: 50px;
+                @include flex(center, center, row);
+                top: 10px;
+                right: 10px;
+                border-radius: 5px;
+                cursor: pointer;
+
+                @include small_device-up {
+                    width: 65px;
+                    height: 65px;
+                    top: 15px;
+                    right: 15px;
+                }
+            }
+
+            .icon {
+                color: #fff;
+            }
+        }
+    }
+
+    &__brandList {
+        width: 96%;
+        @include flex(center, space-around, row);
+        flex-wrap: wrap;
+        margin-top: 10px;
+        transition: .2s linear;
+        
+        @include small_device-up {
+            width: 50%;
+        }
+
+        &__brand {
+            &__name {
+                width: 138px;
+                height: 40px;
+                border-radius: 5px;
+                outline: none;
+                border: none;
+                margin-top: 10px;
+                transition: .2s;
+            }
+
+            $brandActive: #003566;
+            .currentBrand {
+                background-color: $brandActive;
+                color: #fff;
+            }
+        }
     }
 }
