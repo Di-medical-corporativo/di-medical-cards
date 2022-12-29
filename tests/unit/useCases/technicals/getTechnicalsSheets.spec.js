@@ -15,7 +15,8 @@ const formatResult = (result = {}) => {
 
 describe('Technicals sheets use cases', () => {
   const mockEmployeRepo = {
-    getPaginatedTechnicalSheets: jest.fn(async (date) => products)
+    getPaginatedTechnicalSheets: jest.fn(async (date) => products),
+    getTechincalSheetsByBrand: jest.fn(async (brand) => products)
   }
 
   const dependencies = {
@@ -29,6 +30,13 @@ describe('Technicals sheets use cases', () => {
       const products = await getTechnicalSheetsUseCase(dependencies).execute({ startAfterDate: null })
       const formatedResult = formatResult(products)
       expect(formatedResult.length).toBe(9)
+    })
+  })
+
+  describe('getTechnicalSheetsByBrandUsecase', () => {
+    test('should return only technical sheets by specified brand (Salter Labs, only 5 in test store)', async () => {
+      const technicalSheetsByBrand = await getTechnicalSheetsUseCase(dependencies).execute({ brand: 'Salter Labs' })
+      expect(technicalSheetsByBrand).toBeDefined()
     })
   })
 })

@@ -4,5 +4,8 @@ export default () => ({
   isLoading: false,
   lastDate: null,
   lastDateTechnicalSheets: null,
-  technicalSheets: null
+  technicalSheets: [],
+  brandToSearch: null,
+  brands: null,
+  isLoadingTechnicalSheets: false
 })
