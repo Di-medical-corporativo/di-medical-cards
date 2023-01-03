@@ -23,6 +23,7 @@
             :cornersSquareOptions="{ type: 'dot', color: cornersCOlor }"
             :cornersDotOptions="{ type: undefined, color: cornersCOlor }"
             imgclass="img-qr"
+            downloadButton="my-button"
             :downloadOptions="{ name: 'vqr', extension: 'png' }"
           />
         </div>

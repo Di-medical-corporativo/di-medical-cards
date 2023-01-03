@@ -1,13 +1,8 @@
 <template>
   <div class="card-about">
-    <div class="card-about__logo" style="visibility: hidden;">
+    <div class="card-about__logo">
       <Logo :sucursal="sucursal" />
     </div>
-
-    <v-lazy-image
-        class="xmas__pine"
-        src="https://firebasestorage.googleapis.com/v0/b/di-medical-del-sur.appspot.com/o/static%2Fdecoration%2FpineXmas.png?alt=media&token=a7976b85-0bbe-4e68-824c-17131c136723"
-    />
     <div class="card-about__image">
       <button
         class="card-about__image__button"
