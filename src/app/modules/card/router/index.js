@@ -38,6 +38,12 @@ export default {
           meta: { transition: 'slide-right' }
         }
       ]
+    },
+    {
+      path: ':id/newYear',
+      name: 'newYear',
+      component: () => import('../views/NewYear.vue'),
+      meta: { transition: 'slide-right' }
     }
   ]
 }
