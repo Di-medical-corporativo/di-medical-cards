@@ -10,6 +10,18 @@
       <i class="bi bi-person-fill icon"></i>
       Sobre mí
     </button>
+    <button
+        class="newYear__access"
+        :style="sucursalColor"
+        @click="$router.push({ name: 'newYear' })"
+    >
+        <img
+            class="newYear__access__icon"
+            src="../../../assets/newYearIcon.png"
+            alt=""
+        >
+        <span class="newYear__access__text">2023</span>
+    </button>
   </div>
 </template>
 
