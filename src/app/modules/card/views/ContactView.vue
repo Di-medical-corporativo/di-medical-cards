@@ -39,20 +39,6 @@
         <CopyMessage />
       </template>
     </SucursalProvider>
-
-    <img
-        class="xmas__lights"
-        src="https://firebasestorage.googleapis.com/v0/b/di-medical-del-sur.appspot.com/o/static%2Fdecoration%2FxmasLights.png?alt=media&token=74fa0a46-debe-464d-9e2d-76664394cbf0"
-        alt="xmas lights"
-        srcset=""
-    >
-    <img
-    class="xmas__lights"
-    src="https://firebasestorage.googleapis.com/v0/b/di-medical-del-sur.appspot.com/o/static%2Fdecoration%2FxmasLights.png?alt=media&token=74fa0a46-debe-464d-9e2d-76664394cbf0"
-    alt="xmas lights"
-    srcset=""
->
-    <Snow/>
 </div>
 </template>
 
@@ -78,8 +64,7 @@ export default {
     CopyMessage: defineAsyncComponent(() =>
       import('../components/CopyMessage.vue')
     ),
-    Sharer: defineAsyncComponent(() => import('../components/Sharer.vue')),
-    Snow: defineAsyncComponent(() => import('../components/decoration/xmas/Snow.vue'))
+    Sharer: defineAsyncComponent(() => import('../components/Sharer.vue'))
   },
 
   setup () {
