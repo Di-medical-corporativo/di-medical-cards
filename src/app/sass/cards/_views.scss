@@ -289,7 +289,7 @@
         .img-qr {
             width: 100%;
             height: 100%;
-
+            @include flex(center, space-evenly, column);
             @include medium_device-up {
                 width: 350px;
                 height: 350px;
@@ -305,12 +305,26 @@
             margin-top: 20px;
             color: #fff;
         }
+    }
 
-        .download__qr {
-            &--sur {
-                background-color: $bg-dm-corporativo-light;
-                @include buttonQR;
-            }
+    &__download {
+        width: 200px;
+        height: 35px;
+        border-radius: 5px;
+        outline: none;
+        cursor: pointer;
+        border:none;
+        color: #fff;
+    }
+
+    #qrImageBase64 {
+        @include flex(center, space-evenly, column);
+        width: 95%;
+        height: 95%;
+
+        div {
+            width: 100%;
+            height:100%;
         }
     }
 }
