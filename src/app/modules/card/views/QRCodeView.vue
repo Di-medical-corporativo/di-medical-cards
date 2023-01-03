@@ -2,11 +2,12 @@
     <div class="card-qr">
         <div class="card-qr__image">
             <QRcode
-            :width="250"
-            :height="250"
+            :width="500"
+            :height="500"
             :value="currentLink"
             :qrOptions="{ typeNumber: 0, mode: 'Byte', errorCorrectionLevel: 'H' }"
             :imageOptions="{ hideBackgroundDots: true, imageSize: 0.4, margin: 0 }"
+            :image="base64Image"
             :dotsOptions="{
               type: 'dots',
               color: dotsColor,
@@ -23,10 +24,18 @@
             :cornersSquareOptions="{ type: 'dot', color: cornersCOlor }"
             :cornersDotOptions="{ type: undefined, color: cornersCOlor }"
             imgclass="img-qr"
-            downloadButton="my-button"
-            :downloadOptions="{ name: 'vqr', extension: 'png' }"
+            id="qrImageBase64"
           />
         </div>
+
+        <button
+            class="card-qr__download"
+            @click="downloadImage"
+            :style="{ backgroundColor: dotsColor }"
+        >
+            Descargar
+        </button>
+
     </div>
 </template>
 
@@ -34,6 +43,7 @@
 import QRcode from 'qrcode-vue3'
 import { computed } from 'vue'
 import { useRoute } from 'vue-router'
+import { surBase64, corpBase64 } from '../helpers/base64Logos'
 
 export default {
   components: {
@@ -42,10 +52,20 @@ export default {
   setup () {
     const { params } = useRoute()
     const { sucursal } = params
+    const downloadImage = () => {
+      const imageBase64 = document.getElementsByClassName('img-qr')[0]
+      const linkUrl = document.createElement('a')
+      linkUrl.href = imageBase64.src
+      linkUrl.download = `${params.id}.jpg`
+      linkUrl.click()
+    }
+
     return {
       currentLink: computed(() => `https://card.dimedicalcorporativo.mx/${params.sucursal}/${params.id}`),
       dotsColor: computed(() => sucursal === 'sur' ? '#218d9b' : '#c28400'),
-      cornersCOlor: computed(() => sucursal === 'sur' ? '#187876' : '#684700')
+      cornersCOlor: computed(() => sucursal === 'sur' ? '#187876' : '#684700'),
+      downloadImage,
+      base64Image: computed(() => sucursal === 'sur' ? surBase64 : corpBase64)
     }
   }
 }
