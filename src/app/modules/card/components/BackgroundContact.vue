@@ -8,12 +8,22 @@
       <slot name="products" :sucursal="$route.params.sucursal"></slot>
     </div>
 
-    <div class="card-contact__logo">
-      <slot name="logo" :sucursal="$route.params.sucursal"> </slot>
+    <div class="card-contact__stories">
+        <slot name="stories-button" :sucursal="$route.params.sucursal"></slot>
     </div>
+
+    <div class="card-contact__stories">
+        <slot name="stories-modal" :sucursal="$route.params.sucursal"></slot>
+    </div>
+
+    <div class="card-contact__logo">
+      <slot name="logo" :sucursal="$route.params.sucursal"></slot>
+    </div>
+
     <div class="card-contact__info">
       <slot name="employee" :sucursal="$route.params.sucursal"> </slot>
     </div>
+
     <div class="card-contact__links">
       <div class="card-contact__links--left">
         <slot name="hexagons-left" :sucursal="$route.params.sucursal"> </slot>
@@ -22,6 +32,7 @@
         <slot name="hexagons-right" :sucursal="$route.params.sucursal"> </slot>
       </div>
     </div>
+
     <div class="card-contact__copy">
       <slot name="copy"></slot>
     </div>

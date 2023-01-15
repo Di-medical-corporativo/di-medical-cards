@@ -64,3 +64,12 @@ export const cleanTechnicalSheets = (state) => {
 export const setIsLoadingTechnicalSheets = (state, loading) => {
   state.isLoadingTechnicalSheets = loading
 }
+
+export const setStories = (state, stories) => {
+  if (!stories) {
+    state.stories = []
+    return
+  }
+
+  state.stories = formatResult(stories)
+}

@@ -7,5 +7,6 @@ export default () => ({
   technicalSheets: [],
   brandToSearch: null,
   brands: null,
-  isLoadingTechnicalSheets: false
+  isLoadingTechnicalSheets: false,
+  stories: []
 })

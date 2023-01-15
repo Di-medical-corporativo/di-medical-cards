@@ -2,6 +2,7 @@ import { createStore } from 'vuex'
 import dependencies from '../../../../src/config/dependencies'
 import initCardModule from '../../../../src/app/modules/card/store'
 import { products } from '../../mock-data/testProduts'
+import { stories } from '../../mock-data/testStories'
 
 describe('Card store', () => {
   const createVuexStore = (initialState) => {
@@ -84,6 +85,25 @@ describe('Card store', () => {
 
       expect(store.state.card.products.length).toBe(10)
     })
+
+    test('setStories, should set formated stories', () => {
+      const store = createVuexStore({
+        stories: null
+      })
+
+      store.commit('card/setStories', stories)
+
+      expect(store.state.card.stories).toBeDefined()
+    })
+
+    test('setStories,  should set to [] when no stories provided', () => {
+      const store = createVuexStore({
+        stories: null
+      })
+
+      store.commit('card/setStories', null)
+      expect(store.state.card.stories.length).toBe(0)
+    })
   })
 
   describe('actions', () => {
@@ -143,6 +163,20 @@ describe('Card store', () => {
       await store.dispatch('card/getTechnicalSheets')
 
       expect(store.state.card.technicalSheets.length).toBe(5)
+    })
+
+    test('getAllStories, should get all stories', async () => {
+      const store = createVuexStore({
+        employee: null,
+        products: null,
+        isLoading: false,
+        lastDate: null,
+        lastDateTechnicalSheets: null,
+        technicalSheets: null,
+        stories: null
+      })
+      await store.dispatch('card/getAllStories')
+      expect(store.state.card.stories.length).toBeDefined()
     })
   })
 })
