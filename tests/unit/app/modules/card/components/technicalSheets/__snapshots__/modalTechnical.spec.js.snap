@@ -2,7 +2,8 @@
 
 exports[`Technical sheet modal component should match snapshot 1`] = `
 <div class="card-technicals__modal">
-  <div class="card-technicals__modal__background"><img src="https://firebasestorage.googleapis.com/v0/b/di-medical-del-sur.appspot.com/o/technicalSheets%2F3f0c89b3-c25e-4176-adc7-48fd69263b0c-technical.jpg?alt=media&amp;token=0721fbd8-6891-4915-a084-e66108940c39" alt="" class="card-technicals__modal__background__image">
+  <div class="card-technicals__modal__background outer">
+    <v-lazy-image-stub src="https://firebasestorage.googleapis.com/v0/b/di-medical-del-sur.appspot.com/o/technicalSheets%2F3f0c89b3-c25e-4176-adc7-48fd69263b0c-technical.jpg?alt=media&amp;token=0721fbd8-6891-4915-a084-e66108940c39" srcplaceholder="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" intersectionoptions="[object Object]" usepicture="false" class="card-technicals__modal__background__image inner"></v-lazy-image-stub>
     <div style="background: rgb(33, 141, 155);" class="card-technicals__modal__background__close"><i class="bi bi-x-lg icon"></i></div>
   </div>
 </div>
