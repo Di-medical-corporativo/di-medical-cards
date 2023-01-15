@@ -7,7 +7,8 @@ const initActions = (dependencies) => {
       getProductsUsecase,
       getTechnicalSheetsUseCase,
       getAllBrandsUseCase,
-      getTechnicalSheetsByBrandUsecase
+      getTechnicalSheetsByBrandUsecase,
+      getAllStoriesUseCase
     }
   } = dependencies
   return {
@@ -78,8 +79,18 @@ const initActions = (dependencies) => {
       const formattedTechnicalSheets = formatResult(technicalSheets)
       commit('setTechnicalSheets', formattedTechnicalSheets)
       commit('setIsLoadingTechnicalSheets', false)
-    }
+    },
 
+    getAllStories: async ({ commit }) => {
+      const stories = await getAllStoriesUseCase(dependencies).execute()
+
+      if (!stories) {
+        commit('setStories', null)
+        return
+      }
+
+      commit('setStories', stories)
+    }
   }
 }
 

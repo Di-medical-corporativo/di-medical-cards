@@ -2,20 +2,50 @@
   <div class="card-contact">
     <SucursalProvider>
       <template #sharer="{ sucursal }">
-        <Sharer :sucursal="sucursal" :employeeName="`${employeeData.firstName} ${employeeData.lastName}`"/>
+        <Sharer
+            :sucursal="sucursal"
+            :employeeName="`${employeeData.firstName} ${employeeData.lastName}`"
+        />
       </template>
+
       <template #products="{ sucursal }">
         <ProductsButton :sucursal="sucursal"/>
       </template>
+
+      <template #stories-button="{ sucursal }">
+        <StoriesButton
+            :sucursal="sucursal"
+            @openModal="openStoriesModal=true"
+        />
+      </template>
+
+      <template #stories-modal="{ sucursal }">
+        <Transition
+            name="nested"
+            :duration="{
+                enter: 700,
+                leave: 200
+            }
+        ">
+            <ModalStories
+            :sucursal="sucursal"
+            v-if="openStoriesModal"
+            @closeModal="openStoriesModal=false"
+        />
+        </Transition>
+      </template>
+
       <template #logo="{ sucursal }">
         <Logo :sucursal="sucursal" />
       </template>
+
       <template #employee="{ sucursal }">
         <EmployeeName
           :sucursal="sucursal"
           :employee="employeeData"
         />
       </template>
+
       <template #hexagons-left="{ sucursal }">
         <Hexagon
           :sucursal="sucursal"
@@ -24,7 +54,9 @@
           :icon="l.logo"
           :link="l.link"
         />
+
       </template>
+
       <template #hexagons-right="{ sucursal }">
         <Hexagon
           :sucursal="sucursal"
@@ -38,6 +70,7 @@
       <template #copy>
         <CopyMessage />
       </template>
+
     </SucursalProvider>
 </div>
 </template>
@@ -64,7 +97,10 @@ export default {
     CopyMessage: defineAsyncComponent(() =>
       import('../components/CopyMessage.vue')
     ),
-    Sharer: defineAsyncComponent(() => import('../components/Sharer.vue'))
+    Sharer: defineAsyncComponent(() => import('../components/Sharer.vue')),
+    StoriesButton: defineAsyncComponent(() => import('../components/stories/StoriesButton.vue')),
+    ModalStories: defineAsyncComponent(() => import('../components/stories/ModalStories.vue'))
+
   },
 
   setup () {
@@ -74,6 +110,7 @@ export default {
     const employeeData = ref({})
     const leftHexagonsWithEmployeeData = ref([])
     const rightHexagonsWithEmployeeData = ref([])
+    const openStoriesModal = ref(false)
 
     const getEmployeeFromDataBaseOrSavedInLocalStorage = async () => {
       try {
@@ -113,7 +150,8 @@ export default {
       rightHexagonsLogos,
       employeeData,
       leftHexagonsWithEmployeeData,
-      rightHexagonsWithEmployeeData
+      rightHexagonsWithEmployeeData,
+      openStoriesModal
     }
   }
 }
