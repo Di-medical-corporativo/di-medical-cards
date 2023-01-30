@@ -267,6 +267,7 @@
     height: 100%;
     overflow-x: hidden;
     z-index: 5;
+    position: relative;
 
     background: {
         image: url('https://firebasestorage.googleapis.com/v0/b/di-medical-del-sur.appspot.com/o/mainBg.webp?alt=media&token=072feb70-824e-468a-8594-89b5ee617997');
@@ -325,7 +326,6 @@
                 height: 95%;
                 border-radius: 50%;
                 image-rendering: optimizeSpeed;
-                object-fit: cover;
             }
         }
 

@@ -85,19 +85,28 @@
     position: relative;
 
     @keyframes shake {
-        10%, 90% {
-          transform: translate3d(-1px, 0, 0);
+
+        10%,
+        90% {
+            transform: translate3d(-1px, 0, 0);
         }
-        20%, 80% {
-          transform: translate3d(2px, 0, 0);
+
+        20%,
+        80% {
+            transform: translate3d(2px, 0, 0);
         }
-        30%, 50%, 70% {
-          transform: translate3d(-4px, 0, 0);
+
+        30%,
+        50%,
+        70% {
+            transform: translate3d(-4px, 0, 0);
         }
-        40%, 60% {
-          transform: translate3d(4px, 0, 0);
+
+        40%,
+        60% {
+            transform: translate3d(4px, 0, 0);
         }
-      }
+    }
 
     &__access {
         margin-top: 10px;
@@ -107,13 +116,13 @@
         cursor: pointer;
         width: 135px;
         height: 30px;
-        animation: shake 1s cubic-bezier(.36,.07,.19,.97) both infinite;
+        animation: shake 1s cubic-bezier(.36, .07, .19, .97) both infinite;
         transform: translate3d(0, 0, 0);
         perspective: 1000px;
         @include flex(center, space-around, row);
 
         &__icon {
-            width:20px
+            width: 20px
         }
 
         &__text {
@@ -123,6 +132,7 @@
 
     &__title {
         width: 90%;
+
         &__text {
             font-family: 'Dancing Script', cursive;
             color: #fff;
@@ -292,88 +302,251 @@
         }
     }
 
-    .contentglass{
+    .contentglass {
         display: flex;
-        flex-direction:row;
+        flex-direction: row;
         justify-content: center;
         align-items: center;
         width: 200px;
         height: 200px;
     }
-    
-    .glass1,.glass2{
+
+    .glass1,
+    .glass2 {
         bottom: 28px;
-        background-color:rgba(255,255,255,0.5);
+        background-color: rgba(255, 255, 255, 0.5);
         height: 70px;
         width: 30px;
         border-radius: 0 0 9px 9px;
         position: relative;
     }
 
-    .glass1{
-        left:-40px;
-        animation:cheers 2s infinite; 
-        -webkit-animation:cheers 2s infinite; 
+    .glass1 {
+        left: -40px;
+        animation: cheers 2s infinite;
+        -webkit-animation: cheers 2s infinite;
     }
 
-    @keyframes cheers{
-        50%{
-            transform:rotate(20deg) translate(30px);
-    
+    @keyframes cheers {
+        50% {
+            transform: rotate(20deg) translate(30px);
+
         }
     }
 
-    @-webkit-keyframes cheers{
-        50%{
-            -webkit-transform:rotate(20deg) translate(30px);
-    
+    @-webkit-keyframes cheers {
+        50% {
+            -webkit-transform: rotate(20deg) translate(30px);
+
         }
     }
-    .glass2{
+
+    .glass2 {
         left: 40px;
-        animation:cheers1 2s infinite; 
-        -webkit-animation:cheers1 2s infinite; 
+        animation: cheers1 2s infinite;
+        -webkit-animation: cheers1 2s infinite;
     }
 
-    @keyframes cheers1{
-        50%{
-            transform:rotate(-20deg) translate(-30px);
-    
+    @keyframes cheers1 {
+        50% {
+            transform: rotate(-20deg) translate(-30px);
+
         }
     }
 
-    @-webkit-keyframes cheers1{
-        50%{
-            -webkit-transform:rotate(-20deg) translate(-30px);
-    
+    @-webkit-keyframes cheers1 {
+        50% {
+            -webkit-transform: rotate(-20deg) translate(-30px);
+
         }
     }
 
-    .b1{
-        background-color:rgba(255,255,255,0.5);
+    .b1 {
+        background-color: rgba(255, 255, 255, 0.5);
         height: 40px;
         width: 7px;
         position: relative;
-        top:69px;
-        left:12px;
+        top: 69px;
+        left: 12px;
     }
-    .b2{
+
+    .b2 {
         height: 6px;
         width: 30px;
-        background-color:rgba(255,255,255,0.5);
+        background-color: rgba(255, 255, 255, 0.5);
         position: relative;
-        top:69px;
+        top: 69px;
         border-radius: 10px 10px 0 0;
     }
-    .champagne{
+
+    .champagne {
         background-color: #f0ff00;
         height: 45px;
         width: 22px;
         position: relative;
-        bottom:25px;
-        left:4.1px;
-        border-radius:0 0 6px 6px; 
+        bottom: 25px;
+        left: 4.1px;
+        border-radius: 0 0 6px 6px;
         z-index: -1;
     }
 
+}
+
+.hearts {
+    width: 100%;
+    position: absolute;
+    z-index: 10;
+
+    .heart-1 {
+        left: 5%;
+        animation-duration: 3s;
+        animation-iteration-count: infinite;
+    }
+
+    .heart-2 {
+        left: 15%;
+        animation-duration: 2.5s;
+        animation-iteration-count: infinite;
+    }
+
+    .heart-3 {
+        left: 25%;
+        animation-duration: 2.3s;
+        animation-iteration-count: infinite;
+    }
+
+    .heart-4 {
+        left: 35%;
+        animation-duration: 2.9s;
+        animation-iteration-count: infinite;
+    }
+
+    .heart-5 {
+        left: 45%;
+        animation-duration: 2.6s;
+        animation-iteration-count: infinite;
+    }
+
+    .heart-6 {
+        left: 55%;
+        animation-duration: 2.4s;
+        animation-iteration-count: infinite;
+    }
+
+    .heart-7 {
+        left: 65%;
+        animation-duration: 2.7s;
+        animation-iteration-count: infinite;
+    }
+
+    .heart {
+        position: relative;
+        display: inline-block;
+        background-color: pink;
+        height: 50px;
+        width: 50px;
+        transform: rotate(-45deg);
+        -webkit-transform: rotate(-45deg);
+        -moz-transform: rotate(-45deg);
+        -ms-transform: rotate(-45deg);
+        -o-transform: rotate(-45deg);
+        animation-name: drop;
+        animation-timing-function: ease-in;
+    }
+
+    .heart::after {
+        background-color: pink;
+        content: "";
+        border-radius: 50%;
+        position: absolute;
+        width: 50px;
+        height: 50px;
+        top: 0px;
+        left: 25px;
+    }
+
+    .heart::before {
+        content: "";
+        background-color: pink;
+        border-radius: 50%;
+        position: absolute;
+        width: 50px;
+        height: 50px;
+        top: -25px;
+        left: 0px;
+    }
+
+    @keyframes drop {
+        0% {
+            top: -55px;
+        }
+
+        100% {
+            top: 900px;
+            opacity: 0.2;
+        }
+    }
+
+    @media only screen and (max-width: 1025px) {
+        body {
+            max-width: 60%;
+        }
+
+        #message {
+            left: 5%;
+        }
+    }
+
+    @media only screen and (max-width: 600px) {
+        #message {
+            padding: 0;
+            font-size: 150%;
+        }
+
+        #message p {
+            right: 5%;
+        }
+
+        .heart {
+            height: 25px;
+            width: 25px;
+        }
+
+        .heart::after {
+            width: 25px;
+            height: 25px;
+            left: 12.5px;
+        }
+
+        .heart::before {
+            width: 25px;
+            height: 25px;
+            top: -12.5px;
+        }
+    }
+}
+
+
+.cupid-image {
+    position: absolute;
+    width: 200px;
+    top: 20px;
+    left: -50px;
+    -webkit-animation: mover 2s infinite  alternate;
+    animation: mover 2s infinite  alternate;
+    bottom: 0;
+
+    @-webkit-keyframes mover {
+        0% { transform: translateY(40px); }
+        100% { transform: translateY(-10px); }
+    }
+    @keyframes mover {
+        0% { transform: translateY(40px); }
+        100% { transform: translateY(-10px); }
+    }
+
+    @include small_device-up {
+        width: 300px;
+        left: -70px;
+    }
 }

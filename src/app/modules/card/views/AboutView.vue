@@ -3,6 +3,9 @@
     <div class="card-about__logo">
       <Logo :sucursal="sucursal" />
     </div>
+
+    <img src="../../../assets/cupid.png" class="cupid-image">
+
     <div class="card-about__image">
       <button
         class="card-about__image__button"
