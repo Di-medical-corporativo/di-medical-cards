@@ -1,4 +1,4 @@
-export default () => ({
+export const initialState = {
   employee: null,
 
   products: null,
@@ -17,4 +17,4 @@ export default () => ({
   lastDateCatalogues: null,
   isLoadingCatalogues: false,
   catalogues: []
-})
+}

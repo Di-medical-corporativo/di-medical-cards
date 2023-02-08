@@ -8,7 +8,8 @@ const initActions = (dependencies) => {
       getTechnicalSheetsUseCase,
       getAllBrandsUseCase,
       getTechnicalSheetsByBrandUsecase,
-      getAllStoriesUseCase
+      getAllStoriesUseCase,
+      getCataloguesUseCase
     }
   } = dependencies
   return {
@@ -90,6 +91,29 @@ const initActions = (dependencies) => {
       }
 
       commit('setStories', stories)
+    },
+
+    getCatalogues: async ({ commit, getters }) => {
+      commit('setIsloadingCatalogues', true)
+      if (getters.getLastDateForCatalogues) {
+        commit('setIsloadingCatalogues', false)
+      }
+
+      const catalogues = await getCataloguesUseCase(dependencies).execute({
+        startAfterDate: getters.getLastDateForTechnicalSheets
+      })
+
+      if (!catalogues) {
+        commit('setIsloadingCatalogues', false)
+        return null
+      }
+
+      const formatedCatalogues = formatResult(catalogues)
+      const lastDate = formatedCatalogues[formatedCatalogues.length - 1].date
+      commit('setLastDateToPaginateCatalogues', lastDate)
+      commit('setCatalogues', catalogues)
+      commit('setIsloadingCatalogues', false)
+      return catalogues
     }
   }
 }
