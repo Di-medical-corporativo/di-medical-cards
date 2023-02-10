@@ -73,3 +73,35 @@ export const setStories = (state, stories) => {
 
   state.stories = formatResult(stories)
 }
+
+export const setIsloadingCatalogues = (state, loading) => {
+  state.isLoadingCatalogues = loading
+}
+
+export const setLastDateToPaginateCatalogues = (state, date) => {
+  state.lastDateCatalogues = date
+}
+
+export const setCatalogues = (state, catalogues) => {
+  if (!catalogues) {
+    state.catalogues = []
+    return
+  }
+
+  if (!state.catalogues) {
+    const cataloguesFormatted = formatResult(catalogues)
+    state.catalogues = cataloguesFormatted
+    return
+  }
+
+  for (const id of Object.keys(catalogues)) {
+    state.catalogues.push({
+      id,
+      ...catalogues[id]
+    })
+  }
+}
+
+export const cleanCatalogues = (state) => {
+  state.catalogues = []
+}

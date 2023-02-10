@@ -3,6 +3,8 @@ import dependencies from '../../../../src/config/dependencies'
 import initCardModule from '../../../../src/app/modules/card/store'
 import { products } from '../../mock-data/testProduts'
 import { stories } from '../../mock-data/testStories'
+import { catalogues } from '../../mock-data/testCatalogues'
+import { initialState } from './initalState'
 
 describe('Card store', () => {
   const createVuexStore = (initialState) => {
@@ -104,6 +106,35 @@ describe('Card store', () => {
       store.commit('card/setStories', null)
       expect(store.state.card.stories.length).toBe(0)
     })
+
+    test('setCatalogues, should set catalogues', () => {
+      const store = createVuexStore(initialState)
+
+      store.commit('card/setCatalogues', catalogues)
+      expect(store.state.card.catalogues.length).toBe(6)
+    })
+
+    test('setCatalogues, should set catalogues to [] when no catalogues provided ', () => {
+      const store = createVuexStore(initialState)
+      store.commit('card/setCatalogues', null)
+      expect(store.state.card.catalogues.length).toBe(0)
+    })
+
+    test('setCatalogues, should add to catalogues array when there are more than one catalogue', () => {
+      const store = createVuexStore({
+        catalogues: []
+      })
+      store.commit('card/setCatalogues', catalogues)
+      store.commit('card/setCatalogues', {
+        '096feb26-dc5d-431b-b9df-31a8d6fe736f': {
+          active: true,
+          brand: 'Respifix',
+          date: 1675873433466,
+          file: 'https://firebasestorage.googleapis.com/v0/b/di-medical-del-sur.appspot.com/o/catalogues%2F096feb26-dc5d-431b-b9df-31a8d6fe736f.pdf?alt=media&token=4e48bd2e-9cd5-4184-99bc-4fb4867311fa',
+          title: 'Catalago de prueba 5'
+        }
+      })
+    })
   })
 
   describe('actions', () => {
@@ -177,6 +208,28 @@ describe('Card store', () => {
       })
       await store.dispatch('card/getAllStories')
       expect(store.state.card.stories.length).toBeDefined()
+    })
+
+    test('getCatalogues. should get first 5 catalogues', async () => {
+      const store = createVuexStore({
+        lastDateCatalogues: null,
+        isLoadingCatalogues: false,
+        catalogues: []
+      })
+      await store.dispatch('card/getCatalogues')
+      expect(store.state.card.catalogues.length).toBe(5)
+    })
+
+    test('getCataloguesByBrand, should get catalogues by provided brand, Salter Labs 2 catalogues', async () => {
+      const store = createVuexStore({
+        lastDateCatalogues: null,
+        isLoadingCatalogues: false,
+        catalogues: [],
+        brandToSearch: null
+      })
+      const brandToSearch = 'Salter Labs'
+      await store.dispatch('card/getCataloguesByBrand', brandToSearch)
+      expect(store.state.card.catalogues.length).toBe(2)
     })
   })
 })

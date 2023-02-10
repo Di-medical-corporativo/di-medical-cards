@@ -12,12 +12,19 @@
 
     <div class="products__header--actions">
         <router-link
-            class="products__header--actions__catalogue"
+            class="products__header--actions__action"
             :style="backgroundSucursal"
             :to="{ name: 'products-technicals' }"
         >
-        Fichas Técnicas
-    </router-link>
+            Fichas Técnicas
+        </router-link>
+        <button
+            class="products__header--actions__action"
+            :style="backgroundSucursal"
+            @click="openModalCatalogues"
+        >
+            Catálogos
+        </button>
     </div>
   </div>
 </template>
@@ -27,16 +34,22 @@ import { computed } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 
 export default {
-  setup () {
+  setup (_, { emit }) {
     const route = useRoute()
     const router = useRouter()
+
+    const openModalCatalogues = () => {
+      emit('openModal')
+    }
+
     return {
       backgroundSucursal: computed(() => {
         const sucursal = route.params.sucursal
         const background = sucursal === 'sur' ? '#218d9b' : '#c28400'
         return { background: background }
       }),
-      goToMainView: () => router.go(-1)
+      goToMainView: () => router.go(-1),
+      openModalCatalogues
     }
   }
 }

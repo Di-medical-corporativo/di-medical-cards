@@ -17,3 +17,9 @@ export const getBrandToSearch = (state) => state.brandToSearch
 export const isLoadingTechnicalSheets = (state) => state.isLoadingTechnicalSheets
 
 export const getStories = (state) => state.stories
+
+export const getLastDateForCatalogues = (state) => state.lastDateCatalogues
+
+export const getCatalogues = (state) => state.catalogues
+
+export const getIsLoadingCatalogues = (state) => state.isLoadingCatalogues
