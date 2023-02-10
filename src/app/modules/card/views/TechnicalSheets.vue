@@ -65,12 +65,10 @@ export default {
     const searchByBrand = async (brand) => {
       try {
         if (store.getters['card/getBrandToSearch'] === brand) {
-          console.log(brand)
           return
         }
         await store.dispatch('card/getTechnicalSheetsByBrand', brand)
       } catch (error) {
-        console.log(error)
         router.push({ name: 'not-found' })
       }
     }

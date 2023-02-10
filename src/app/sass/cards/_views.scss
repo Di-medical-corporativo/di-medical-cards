@@ -467,24 +467,30 @@
             }
 
             &--actions {
-                @include flex(center, center, row);
+                @include flex(center, space-evenly, row);
                 width: 100%;
                 $radius-actions: 3px;
-                $with-actions: 135px;
+                $with-actions: 120px;
                 $height-actions: 45px;
 
-                &__catalogue {
+                &__action {
                     width: $with-actions;
                     @include flex(center, space-evenly, row);
                     border-radius: $radius-actions;
                     height: $height-actions;
                     color: #fff;
                     text-decoration: none;
-                    font-size: 14px;
+                    font-size: 13px;
+                    border: none;
                 }
 
                 @include medium_device-up {
                     width: 70%;
+
+                    &__action {
+                        width: 136px;
+                        font-size: 15px;
+                    }
                 }
             }
         }
@@ -716,6 +722,7 @@
         }
 
         &__brand {
+            margin-left: 10px;
             &__name {
                 width: 138px;
                 height: 40px;
@@ -733,4 +740,64 @@
             }
         }
     }
+}
+
+.card-catalogues {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    z-index: 10;
+    &__background {
+        width: 100%;
+        height: 100%;
+        background-color: #00000042;
+        @include flex(center, center, row);
+
+        &__content {
+            width: 95%;
+            height: 95%;
+            background-color: #fff;
+            @include flex(center, center, column);
+            position: relative;
+            border-radius: 2px;
+            overflow: scroll;
+
+            &__x {
+                position: absolute;
+                right: 0;
+                top: 0;
+                width: 50px;
+                height: 50px;
+                background-color: $bg-dm-corporativo-light;
+                @include flex(center, center, row);
+                color: #fff;
+                cursor: pointer;
+            }
+
+            &__list {
+                width: 100%;
+                margin-top: 30px;
+                @include flex(center, center, column);
+
+            }
+
+            @include small_device-up {
+                width: 90%;
+                height:90%;
+                @include flex(center, flex-start, column)
+            }
+
+        }
+    }
+
+    &__catalogue {
+        margin-left: 10px;
+        margin-top: 20px;
+        width: 90%;
+        @include flex(center, center, row);
+        &__title {
+            @include flex(center, center, row);
+        }
+    }
+
 }

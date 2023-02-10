@@ -22,6 +22,15 @@
     transform: scale(0.9);
 }
 
+
+.fade-enter, .fade-leave-to {
+    opacity: 0;
+  }
+  
+  .fade-enter-active, .fade-leave-active {
+    transition: 0.2s opacity ease-out;
+  }
+
 .v-lazy-image {
     filter: blur(10px);
     transition: filter 0.7s;

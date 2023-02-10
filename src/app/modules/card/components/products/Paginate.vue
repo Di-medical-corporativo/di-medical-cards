@@ -38,6 +38,10 @@ export default {
           elements = await store.dispatch('card/getTechnicalSheets')
         }
 
+        if (props.elementToPaginate === 'catalogues') {
+          elements = await store.dispatch('card/getCatalogues')
+        }
+
         if (!elements) {
           showButton.value = false
         }

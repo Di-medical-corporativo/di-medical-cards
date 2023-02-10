@@ -219,5 +219,17 @@ describe('Card store', () => {
       await store.dispatch('card/getCatalogues')
       expect(store.state.card.catalogues.length).toBe(5)
     })
+
+    test('getCataloguesByBrand, should get catalogues by provided brand, Salter Labs 2 catalogues', async () => {
+      const store = createVuexStore({
+        lastDateCatalogues: null,
+        isLoadingCatalogues: false,
+        catalogues: [],
+        brandToSearch: null
+      })
+      const brandToSearch = 'Salter Labs'
+      await store.dispatch('card/getCataloguesByBrand', brandToSearch)
+      expect(store.state.card.catalogues.length).toBe(2)
+    })
   })
 })

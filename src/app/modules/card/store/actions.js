@@ -9,7 +9,8 @@ const initActions = (dependencies) => {
       getAllBrandsUseCase,
       getTechnicalSheetsByBrandUsecase,
       getAllStoriesUseCase,
-      getCataloguesUseCase
+      getCataloguesUseCase,
+      getCataloguesByBrandUseCase
     }
   } = dependencies
   return {
@@ -114,6 +115,24 @@ const initActions = (dependencies) => {
       commit('setCatalogues', catalogues)
       commit('setIsloadingCatalogues', false)
       return catalogues
+    },
+
+    getCataloguesByBrand: async ({ commit }, brand) => {
+      commit('cleanCatalogues')
+      commit('setIsloadingCatalogues', true)
+      commit('setBrandToSearch', brand)
+
+      const catalogues = await getCataloguesByBrandUseCase(dependencies)
+        .execute({ brand })
+      if (!catalogues) {
+        commit('setCatalogues', null)
+        commit('setIsloadingCatalogues', false)
+        return
+      }
+
+      const formattedCatalogues = formatResult(catalogues)
+      commit('setCatalogues', formattedCatalogues)
+      commit('setIsloadingCatalogues', false)
     }
   }
 }

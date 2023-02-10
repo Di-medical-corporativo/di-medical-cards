@@ -101,3 +101,7 @@ export const setCatalogues = (state, catalogues) => {
     })
   }
 }
+
+export const cleanCatalogues = (state) => {
+  state.catalogues = []
+}
