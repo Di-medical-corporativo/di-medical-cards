@@ -1,6 +1,10 @@
 <template>
   <div class="card-technicals">
     <BrandList @brandToSearch="searchByBrand"/>
+
+    <div class="card-technicals__bar">
+        <SearchBar @codeToSearch="searchByCode"/>
+    </div>
     <template v-if="!isLoading && TechnicalSheetPaginated.length > 0">
         <div class="card-technicals__list">
             <TransitionGroup name="slide-fade" :duration="500">
@@ -27,7 +31,7 @@
         </Transition>
         <Pagination
             elementToPaginate="technicals"
-            v-if="!isSearchingByBrand"
+            v-if="!showPagination"
         />
     </template>
     <p v-else-if="isLoading">Cargando fichas...</p>
@@ -44,7 +48,8 @@ export default {
     TechnicalSheet: defineAsyncComponent(() => import('../components/technicalSheets/TechnicalSheet.vue')),
     Pagination: defineAsyncComponent(() => import('../components/products/Paginate.vue')),
     ModalTechnicalVue: defineAsyncComponent(() => import('../components/technicalSheets/ModalTechnical.vue')),
-    BrandList: defineAsyncComponent(() => import('../components/brands/BrandList.vue'))
+    BrandList: defineAsyncComponent(() => import('../components/brands/BrandList.vue')),
+    SearchBar: defineAsyncComponent(() => import('../components/SearchBar.vue'))
   },
   setup () {
     const store = useStore()
@@ -52,6 +57,7 @@ export default {
 
     const imageToOpen = ref('')
     const isModalOpen = ref(false)
+    const showPagination = ref(false)
 
     const getTechnicalSheets = async () => {
       try {
@@ -63,11 +69,21 @@ export default {
     }
 
     const searchByBrand = async (brand) => {
+      showPagination.value = true
       try {
         if (store.getters['card/getBrandToSearch'] === brand) {
           return
         }
         await store.dispatch('card/getTechnicalSheetsByBrand', brand)
+      } catch (error) {
+        router.push({ name: 'not-found' })
+      }
+    }
+
+    const searchByCode = async (code) => {
+      showPagination.value = true
+      try {
+        await store.dispatch('card/getTechnicalSheetByCode', code)
       } catch (error) {
         router.push({ name: 'not-found' })
       }
@@ -93,7 +109,9 @@ export default {
       closeModal,
       isModalOpen,
       imageToOpen,
-      searchByBrand
+      searchByBrand,
+      searchByCode,
+      showPagination
     }
   }
 }

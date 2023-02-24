@@ -3,14 +3,15 @@ import { formatResult } from '../helpers/formatProducts'
 const initActions = (dependencies) => {
   const {
     useCases: {
-      getEmployeeByIdUseCase,
-      getProductsUsecase,
       getTechnicalSheetsUseCase,
-      getAllBrandsUseCase,
       getTechnicalSheetsByBrandUsecase,
-      getAllStoriesUseCase,
+      getTechnicalSheetByCodeUseCase,
+      getProductsUsecase,
+      getEmployeeByIdUseCase,
       getCataloguesUseCase,
-      getCataloguesByBrandUseCase
+      getCataloguesByBrandUseCase,
+      getAllStoriesUseCase,
+      getAllBrandsUseCase
     }
   } = dependencies
   return {
@@ -80,6 +81,23 @@ const initActions = (dependencies) => {
 
       const formattedTechnicalSheets = formatResult(technicalSheets)
       commit('setTechnicalSheets', formattedTechnicalSheets)
+      commit('setIsLoadingTechnicalSheets', false)
+    },
+
+    getTechnicalSheetByCode: async ({ commit }, code) => {
+      commit('cleanTechnicalSheets')
+      commit('setIsLoadingTechnicalSheets', true)
+
+      const technicalSheetByBrand = await getTechnicalSheetByCodeUseCase(dependencies)
+        .execute({ code })
+      if (!technicalSheetByBrand) {
+        commit('setTechnicalSheets', null)
+        commit('setIsLoadingTechnicalSheets', false)
+        return
+      }
+
+      const formattedTechnicalSheet = formatResult(technicalSheetByBrand)
+      commit('setTechnicalSheets', formattedTechnicalSheet)
       commit('setIsLoadingTechnicalSheets', false)
     },
 

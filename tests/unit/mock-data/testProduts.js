@@ -181,3 +181,12 @@ export const products = {
     updatedAt: 1670024515775
   }
 }
+
+export const product = {
+  id: '08eb9132-5c46-4ab2-90c8-6c6f15e683d6',
+  active: true,
+  brand: 'Intersurgical',
+  code: '1341000S',
+  date: 1676339110776,
+  image: 'https://firebasestorage.googleapis.com/v0/b/di-medical-del-sur.appspot.com/o/technicalSheets%2F08eb9132-5c46-4ab2-90c8-6c6f15e683d6-technical.jpg?alt=media&token=873ec379-41ea-4d2c-af91-c058c2cf0515'
+}

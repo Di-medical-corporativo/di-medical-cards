@@ -4,6 +4,11 @@
 
 .card__content {
     @include flex(center, center, column);
+
+    @include medium_device-up {
+        height: 100vh;
+    }
+    
     &--sur {
         background: rgb(33, 141, 155);
         background: -moz-linear-gradient(90deg, rgba(33, 141, 155, 1) 0%, rgba(255, 255, 255, 1) 37%, rgba(255, 255, 255, 1) 65%, rgba(24, 120, 118, 1) 100%);

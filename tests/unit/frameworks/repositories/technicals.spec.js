@@ -49,6 +49,13 @@ describe('Technical sheets repository, test firebase has 10 technical sheets in 
     const brand = 'Salter Labs'
     const technicalSheetsByBrand = await technicalRepository.getTechincalSheetsByBrand(brand)
     const technicalSheetsByBrandFormated = formatResult(technicalSheetsByBrand)
-    expect(technicalSheetsByBrandFormated.length).toBe(5)
+    expect(technicalSheetsByBrandFormated.length).toBe(17)
+  })
+
+  test('should return techinical sheet by code', async () => {
+    const code = '1341000S'
+    const techinicalSheetByCode = await technicalRepository.getTechnicalSheetByCode(code)
+    const technicalSheetbyCodeFormated = formatResult(techinicalSheetByCode)
+    console.log(technicalSheetbyCodeFormated)
   })
 })

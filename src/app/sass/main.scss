@@ -23,18 +23,21 @@
 }
 
 
-.fade-enter, .fade-leave-to {
+.fade-enter,
+.fade-leave-to {
     opacity: 0;
-  }
-  
-  .fade-enter-active, .fade-leave-active {
+}
+
+.fade-enter-active,
+.fade-leave-active {
     transition: 0.2s opacity ease-out;
-  }
+}
 
 .v-lazy-image {
     filter: blur(10px);
     transition: filter 0.7s;
-  }
-  .v-lazy-image-loaded {
+}
+
+.v-lazy-image-loaded {
     filter: blur(0);
-  }
+}
