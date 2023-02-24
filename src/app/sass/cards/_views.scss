@@ -627,7 +627,7 @@
 
     &__technicalSheet {
         width: 95%;
-        height: 400px;
+        height: 390px;
         margin-top: 50px;
         box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
         border-radius: 5px;
@@ -678,8 +678,8 @@
             @include flex(center, center, row);
             position: relative;
             &__image {
-                width: 96%;
-                height: 500px;
+                width: 98%;
+                height: 450px;
                 border-radius: 5px;
                 transition: .2s;
                 @include small_device-up {
@@ -737,8 +737,13 @@
         &__brand {
             margin-left: 10px;
             &__name {
+<<<<<<< HEAD
                 width: 150px;
                 height: 45px;
+=======
+                width: 138px;
+                height: 50px;
+>>>>>>> a7d284a45ac8ccc15df9607ed8e9255116dabf4c
                 border-radius: 5px;
                 outline: none;
                 border: none;
@@ -775,7 +780,7 @@
             width: 95%;
             height: 95%;
             background-color: #fff;
-            @include flex(center, center, column);
+            @include flex(center, space-evenly, column);
             position: relative;
             border-radius: 2px;
             overflow: scroll;
