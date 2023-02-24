@@ -1,5 +1,5 @@
 import technical from '../../../../src/useCases/index'
-import { products } from '../../mock-data/testProduts'
+import { products, product } from '../../mock-data/testProduts'
 
 const formatResult = (result = {}) => {
   const productsList = []
@@ -16,16 +16,17 @@ const formatResult = (result = {}) => {
 describe('Technicals sheets use cases', () => {
   const mockEmployeRepo = {
     getPaginatedTechnicalSheets: jest.fn(async (date) => products),
-    getTechincalSheetsByBrand: jest.fn(async (brand) => products)
+    getTechincalSheetsByBrand: jest.fn(async (brand) => products),
+    getTechnicalSheetByCode: jest.fn(async (code) => product)
   }
 
   const dependencies = {
     technicalRepository: mockEmployeRepo
   }
 
-  const { getTechnicalSheetsUseCase } = technical
+  const { getTechnicalSheetsUseCase, getTechnicalSheetsByBrandUsecase, getTechnicalSheetByCodeUseCase } = technical
 
-  describe('GetTechnicalSheets', () => {
+  describe('GetTechnicalSheetsUseCase', () => {
     test('should return all technicalsheets', async () => {
       const products = await getTechnicalSheetsUseCase(dependencies).execute({ startAfterDate: null })
       const formatedResult = formatResult(products)
@@ -35,8 +36,14 @@ describe('Technicals sheets use cases', () => {
 
   describe('getTechnicalSheetsByBrandUsecase', () => {
     test('should return only technical sheets by specified brand (Salter Labs, only 5 in test store)', async () => {
-      const technicalSheetsByBrand = await getTechnicalSheetsUseCase(dependencies).execute({ brand: 'Salter Labs' })
+      const technicalSheetsByBrand = await getTechnicalSheetsByBrandUsecase(dependencies).execute({ brand: 'Salter Labs' })
       expect(technicalSheetsByBrand).toBeDefined()
+    })
+  })
+  describe('getTechnicalSheetsByCodeUsecase', () => {
+    test('should return only technical sheets by specified code', async () => {
+      const technicalSheetsByCode = await getTechnicalSheetByCodeUseCase(dependencies).execute({ code: 'Salter Labs' })
+      expect(technicalSheetsByCode).toBeDefined()
     })
   })
 })

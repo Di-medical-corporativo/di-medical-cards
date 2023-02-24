@@ -1,6 +1,10 @@
 <template>
   <div class="card-technicals">
     <BrandList @brandToSearch="searchByBrand"/>
+
+    <div class="card-technicals__bar">
+        <SearchBar/>
+    </div>
     <template v-if="!isLoading && TechnicalSheetPaginated.length > 0">
         <div class="card-technicals__list">
             <TransitionGroup name="slide-fade" :duration="500">
@@ -44,7 +48,8 @@ export default {
     TechnicalSheet: defineAsyncComponent(() => import('../components/technicalSheets/TechnicalSheet.vue')),
     Pagination: defineAsyncComponent(() => import('../components/products/Paginate.vue')),
     ModalTechnicalVue: defineAsyncComponent(() => import('../components/technicalSheets/ModalTechnical.vue')),
-    BrandList: defineAsyncComponent(() => import('../components/brands/BrandList.vue'))
+    BrandList: defineAsyncComponent(() => import('../components/brands/BrandList.vue')),
+    SearchBar: defineAsyncComponent(() => import('../components/SearchBar.vue'))
   },
   setup () {
     const store = useStore()

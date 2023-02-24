@@ -22,5 +22,12 @@ export default {
     const technicalSheetsByBrandQuery = query(productsRef, orderByChild(orderByChildKey), equalTo(brand))
     const technicalSheetsByBrand = await (await get(technicalSheetsByBrandQuery)).val()
     return technicalSheetsByBrand
+  },
+
+  getTechnicalSheetByCode: async (code) => {
+    const orderByChildKey = 'code'
+    const technicalSheetsByCodeQuery = query(productsRef, orderByChild(orderByChildKey), equalTo(code))
+    const technicalSheetsByCode = await (await get(technicalSheetsByCodeQuery)).val()
+    return technicalSheetsByCode
   }
 }

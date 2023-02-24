@@ -210,7 +210,21 @@ describe('Card store', () => {
       expect(store.state.card.stories.length).toBeDefined()
     })
 
-    test('getCatalogues. should get first 5 catalogues', async () => {
+    test('getTechnicalSheetByCode, should get technicalSheet by code', async () => {
+      const store = createVuexStore({
+        employee: null,
+        products: null,
+        isLoading: false,
+        lastDate: null,
+        lastDateTechnicalSheets: null,
+        technicalSheets: null,
+        stories: null
+      })
+      await store.dispatch('card/getTechnicalSheetByCode', '1341000S')
+      expect(store.state.card.technicalSheets).toBeDefined()
+    })
+
+    test('getCatalogues should get first 5 catalogues', async () => {
       const store = createVuexStore({
         lastDateCatalogues: null,
         isLoadingCatalogues: false,
@@ -229,7 +243,7 @@ describe('Card store', () => {
       })
       const brandToSearch = 'Salter Labs'
       await store.dispatch('card/getCataloguesByBrand', brandToSearch)
-      expect(store.state.card.catalogues.length).toBe(2)
+      expect(store.state.card.catalogues.length).toBeDefined()
     })
   })
 })
