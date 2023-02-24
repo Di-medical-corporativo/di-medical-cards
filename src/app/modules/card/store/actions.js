@@ -91,8 +91,8 @@ const initActions = (dependencies) => {
       const technicalSheetByBrand = await getTechnicalSheetByCodeUseCase(dependencies)
         .execute({ code })
       if (!technicalSheetByBrand) {
-        commit('setCatalogues', null)
-        commit('setIsloadingCatalogues', false)
+        commit('setTechnicalSheets', null)
+        commit('setIsLoadingTechnicalSheets', false)
         return
       }
 
