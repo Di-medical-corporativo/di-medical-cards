@@ -6,7 +6,7 @@ const useEmployee = () => {
 
   const getEmployee = async (id) => {
     if (checkIfEmployeeExistsInLocalStore(id)) {
-      const savedEmployee = JSON.parse(localStorage.getItem(id))
+      const savedEmployee = JSON.parse(sessionStorage.getItem(id))
       store.commit('card/setEmployee', savedEmployee)
       return savedEmployee
     }
@@ -16,11 +16,11 @@ const useEmployee = () => {
   }
 
   const saveEmployeeToLocalStore = (employee, id) => {
-    localStorage.setItem(id, JSON.stringify(employee))
+    sessionStorage.setItem(id, JSON.stringify(employee))
   }
 
   const checkIfEmployeeExistsInLocalStore = (id) => {
-    return localStorage.getItem(id)
+    return sessionStorage.getItem(id)
   }
 
   return {
