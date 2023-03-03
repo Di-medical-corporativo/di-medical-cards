@@ -1,570 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
-
-@function random_range($min, $max) {
-    $rand: random();
-    $random_range: $min +floor($rand * (($max - $min) + 1));
-    @return $random_range;
-}
-
-.snow {
-    $total: 200;
-    position: absolute;
-    overflow: hidden;
-    width: 10px;
-    top: 0;
-    height: 10px;
-    background: white;
-    border-radius: 50%;
-
-    @for $i from 1 through $total {
-        $random-x: random(10000000) * 0.00001vw;
-        $random-offset: random_range(-10000, 10000) * 0.001vw;
-        $random-x-end: $random-x +$random-offset;
-        $random-x-end-yoyo: $random-x +($random-offset / 2);
-        $random-yoyo-time: random_range(3000, 8000) / 10000;
-        $random-yoyo-y: $random-yoyo-time * 200vh;
-        $random-scale: random(10000) * 0.0001;
-        $fall-duration: random_range(10, 30) * 1s;
-        $fall-delay: random(30) * -1s;
-
-        &:nth-child(#{$i}) {
-            opacity: random(1000) * 0.01;
-            transform: translate($random-x, -10px) scale($random-scale);
-            animation: fall-#{$i} $fall-duration $fall-delay linear infinite;
-        }
-
-        @keyframes fall-#{$i} {
-            #{percentage($random-yoyo-time)} {
-                transform: translate($random-x-end, $random-yoyo-y) scale($random-scale);
-            }
-
-            to {
-                transform: translate($random-x-end-yoyo, 190vh) scale($random-scale);
-            }
-        }
-    }
-}
-
-.xmas {
-    &__lights {
-        width: 100%;
-        height: 200px;
-        position: absolute;
-
-        &:nth-child(2) {
-            top: -100px;
-            left: -30px;
-            transform: rotate(-25deg);
-        }
-
-        &:nth-child(3) {
-            top: -100px;
-            right: -180px;
-            transform: rotate(60deg);
-        }
-    }
-
-    &__pine {
-        width: 100%;
-        position: absolute;
-        top: -5px;
-
-        @include medium_device-up {
-            width: 800px;
-            top: -25px;
-        }
-    }
-
-}
-
-.newYear {
-    width: 100%;
-    height: 100vh;
-    overflow: hidden;
-    background-color: $font_color;
-    position: relative;
-
-    @keyframes shake {
-
-        10%,
-        90% {
-            transform: translate3d(-1px, 0, 0);
-        }
-
-        20%,
-        80% {
-            transform: translate3d(2px, 0, 0);
-        }
-
-        30%,
-        50%,
-        70% {
-            transform: translate3d(-4px, 0, 0);
-        }
-
-        40%,
-        60% {
-            transform: translate3d(4px, 0, 0);
-        }
-    }
-
-    &__access {
-        margin-top: 10px;
-        border-radius: 5px;
-        border: none;
-        outline: none;
-        cursor: pointer;
-        width: 135px;
-        height: 30px;
-        animation: shake 1s cubic-bezier(.36, .07, .19, .97) both infinite;
-        transform: translate3d(0, 0, 0);
-        perspective: 1000px;
-        @include flex(center, space-around, row);
-
-        &__icon {
-            width: 20px
-        }
-
-        &__text {
-            color: #fff;
-        }
-    }
-
-    &__title {
-        width: 90%;
-
-        &__text {
-            font-family: 'Dancing Script', cursive;
-            color: #fff;
-            font-size: 3.7rem;
-            text-align: center;
-
-            @include medium_device-up {
-                font-size: 4.5rem;
-            }
-
-            .dimedical {
-                color: $bg-dm-corporativo-light;
-                font-family: 'Dancing Script', cursive;
-                text-decoration: underline;
-            }
-        }
-    }
-
-    &__button {
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
-        outline: none;
-        border: none;
-        color: #fff;
-        cursor: pointer;
-        z-index: 10000;
-        position: absolute;
-        top: 10px;
-        left: 10px;
-
-    }
-
-
-    $particles: 50;
-    $width: 500;
-    $height: 500;
-    $box-shadow: (
-    );
-$box-shadow2: (
-);
-@include flex(center, space-around, column);
-
-@for $i from 0 through $particles {
-    $box-shadow: $box-shadow,
-    random($width)-$width / 2+px random($height)-$height / 1.2+px hsl(random(360), 100, 50);
-    $box-shadow2: $box-shadow2,
-    0 0 #fff
-}
-
-@mixin keyframes ($animationName) {
-    @-webkit-keyframes #{$animationName} {
-        @content;
-    }
-
-    @-moz-keyframes #{$animationName} {
-        @content;
-    }
-
-    @-o-keyframes #{$animationName} {
-        @content;
-    }
-
-    @-ms-keyframes #{$animationName} {
-        @content;
-    }
-
-    @keyframes #{$animationName} {
-        @content;
-    }
-}
-
-@mixin animation-delay ($settings) {
-    -moz-animation-delay: $settings;
-    -webkit-animation-delay: $settings;
-    -o-animation-delay: $settings;
-    -ms-animation-delay: $settings;
-    animation-delay: $settings;
-}
-
-@mixin animation-duration ($settings) {
-    -moz-animation-duration: $settings;
-    -webkit-animation-duration: $settings;
-    -o-animation-duration: $settings;
-    -ms-animation-duration: $settings;
-    animation-duration: $settings;
-}
-
-@mixin animation ($settings) {
-    -moz-animation: $settings;
-    -webkit-animation: $settings;
-    -o-animation: $settings;
-    -ms-animation: $settings;
-    animation: $settings;
-}
-
-@mixin transform ($settings) {
-    transform: $settings;
-    -moz-transform: $settings;
-    -webkit-transform: $settings;
-    -o-transform: $settings;
-    -ms-transform: $settings;
-}
-
-.pyro {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-}
-
-.pyro>.before,
-.pyro>.after {
-    position: absolute;
-    width: 5px;
-    height: 5px;
-    border-radius: 50%;
-    box-shadow: $box-shadow2;
-    @include animation((1s bang ease-out infinite backwards, 1s gravity ease-in infinite backwards, 5s position linear infinite backwards));
-}
-
-.pyro>.after {
-    @include animation-delay((1.25s, 1.25s, 1.25s));
-    @include animation-duration((1.25s, 1.25s, 6.25s));
-}
-
-@include keyframes(bang) {
-    to {
-        box-shadow: $box-shadow;
-    }
-}
-
-@include keyframes(gravity) {
-    to {
-        @include transform(translateY(200px));
-        opacity: 0;
-    }
-}
-
-@include keyframes(position) {
-
-    0%,
-    19.9% {
-        margin-top: 10%;
-        margin-left: 40%;
-    }
-
-    20%,
-    39.9% {
-        margin-top: 40%;
-        margin-left: 30%;
-    }
-
-    40%,
-    59.9% {
-        margin-top: 20%;
-        margin-left: 70%
-    }
-
-    60%,
-    79.9% {
-        margin-top: 30%;
-        margin-left: 20%;
-    }
-
-    80%,
-    99.9% {
-        margin-top: 30%;
-        margin-left: 80%;
-    }
-}
-
-.contentglass {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    width: 200px;
-    height: 200px;
-}
-
-.glass1,
-.glass2 {
-    bottom: 28px;
-    background-color: rgba(255, 255, 255, 0.5);
-    height: 70px;
-    width: 30px;
-    border-radius: 0 0 9px 9px;
-    position: relative;
-}
-
-.glass1 {
-    left: -40px;
-    animation: cheers 2s infinite;
-    -webkit-animation: cheers 2s infinite;
-}
-
-@keyframes cheers {
-    50% {
-        transform: rotate(20deg) translate(30px);
-
-    }
-}
-
-@-webkit-keyframes cheers {
-    50% {
-        -webkit-transform: rotate(20deg) translate(30px);
-
-    }
-}
-
-.glass2 {
-    left: 40px;
-    animation: cheers1 2s infinite;
-    -webkit-animation: cheers1 2s infinite;
-}
-
-@keyframes cheers1 {
-    50% {
-        transform: rotate(-20deg) translate(-30px);
-
-    }
-}
-
-@-webkit-keyframes cheers1 {
-    50% {
-        -webkit-transform: rotate(-20deg) translate(-30px);
-
-    }
-}
-
-.b1 {
-    background-color: rgba(255, 255, 255, 0.5);
-    height: 40px;
-    width: 7px;
-    position: relative;
-    top: 69px;
-    left: 12px;
-}
-
-.b2 {
-    height: 6px;
-    width: 30px;
-    background-color: rgba(255, 255, 255, 0.5);
-    position: relative;
-    top: 69px;
-    border-radius: 10px 10px 0 0;
-}
-
-.champagne {
-    background-color: #f0ff00;
-    height: 45px;
-    width: 22px;
-    position: relative;
-    bottom: 25px;
-    left: 4.1px;
-    border-radius: 0 0 6px 6px;
-    z-index: -1;
-}
-
-}
-
-.hearts {
-    width: 100%;
-    position: absolute;
-    z-index: 10;
-
-    .heart-1 {
-        left: 5%;
-        animation-duration: 3s;
-        animation-iteration-count: infinite;
-    }
-
-    .heart-2 {
-        left: 15%;
-        animation-duration: 2.5s;
-        animation-iteration-count: infinite;
-    }
-
-    .heart-3 {
-        left: 25%;
-        animation-duration: 2.3s;
-        animation-iteration-count: infinite;
-    }
-
-    .heart-4 {
-        left: 35%;
-        animation-duration: 2.9s;
-        animation-iteration-count: infinite;
-    }
-
-    .heart-5 {
-        left: 45%;
-        animation-duration: 2.6s;
-        animation-iteration-count: infinite;
-    }
-
-    .heart-6 {
-        left: 55%;
-        animation-duration: 2.4s;
-        animation-iteration-count: infinite;
-    }
-
-    .heart-7 {
-        left: 65%;
-        animation-duration: 2.7s;
-        animation-iteration-count: infinite;
-    }
-
-    .heart {
-        position: relative;
-        display: inline-block;
-        background-color: pink;
-        height: 50px;
-        width: 50px;
-        transform: rotate(-45deg);
-        -webkit-transform: rotate(-45deg);
-        -moz-transform: rotate(-45deg);
-        -ms-transform: rotate(-45deg);
-        -o-transform: rotate(-45deg);
-        animation-name: drop;
-        animation-timing-function: ease-in;
-    }
-
-    .heart::after {
-        background-color: pink;
-        content: "";
-        border-radius: 50%;
-        position: absolute;
-        width: 50px;
-        height: 50px;
-        top: 0px;
-        left: 25px;
-    }
-
-    .heart::before {
-        content: "";
-        background-color: pink;
-        border-radius: 50%;
-        position: absolute;
-        width: 50px;
-        height: 50px;
-        top: -25px;
-        left: 0px;
-    }
-
-    @keyframes drop {
-        0% {
-            top: -55px;
-        }
-
-        100% {
-            top: 900px;
-            opacity: 0.2;
-        }
-    }
-
-    @media only screen and (max-width: 1025px) {
-        body {
-            max-width: 60%;
-        }
-
-        #message {
-            left: 5%;
-        }
-    }
-
-    @media only screen and (max-width: 600px) {
-        #message {
-            padding: 0;
-            font-size: 150%;
-        }
-
-        #message p {
-            right: 5%;
-        }
-
-        .heart {
-            height: 25px;
-            width: 25px;
-        }
-
-        .heart::after {
-            width: 25px;
-            height: 25px;
-            left: 12.5px;
-        }
-
-        .heart::before {
-            width: 25px;
-            height: 25px;
-            top: -12.5px;
-        }
-    }
-}
-
-
-.cupid-image {
-    position: absolute;
-    width: 200px;
-    top: 20px;
-    left: -50px;
-    -webkit-animation: mover 2s infinite alternate;
-    animation: mover 2s infinite alternate;
-    bottom: 0;
-
-    @-webkit-keyframes mover {
-        0% {
-            transform: translateY(40px);
-        }
-
-        100% {
-            transform: translateY(-10px);
-        }
-    }
-
-    @keyframes mover {
-        0% {
-            transform: translateY(40px);
-        }
-
-        100% {
-            transform: translateY(-10px);
-        }
-    }
-
-    @include small_device-up {
-        width: 300px;
-        left: -70px;
-    }
-}
-
 #leaves {
     position: absolute;
     width: 100%;
@@ -977,4 +410,275 @@ position:absolute;
 	50% {left:34px;transform:rotate(-5deg);}
 	75% {left:40px;transform:rotate(5deg);}
 	100% {left:34px;transform:rotate(-5deg);}
+}
+
+
+// Bee Bee
+
+.wrap {
+	position: relative;
+    z-index: -2;
+}
+/* THE BEE   THE BEE   THE BEE   THE BEE    */
+@keyframes dodging1 {
+	0% {
+		top:0;
+	}
+	50% {
+		top:75px;
+	}
+	100% {
+		top:0;
+	}
+}
+.wrap2 {
+	position:absolute;
+    left: -100px;
+    margin-top:-250px;
+	animation:
+	dodging1 1s ease-in-out infinite;
+}
+/* THE BEE   THE BEE   THE BEE   THE BEE    */
+/* BODY BODY BODY BODY  */
+.body {
+	position:absolute;
+	top:250px;
+	left:0px;
+	height:85px;
+	width:75px;
+	border-radius:100%;
+	background-color:#FFB733;
+	box-shadow:
+	20px 0 0 #000,
+	40px -3px 0 #ffb733,
+	60px -7px 0 #000,
+	80px -11px 0 #ffb733;
+}
+/* BODY BODY BODY BODY  */
+/* WINGS WINGS WINGS WINGS */
+@keyframes flutter2 {
+	0% {
+		transform:rotate(80deg);
+	}
+	50% {
+		transform:rotate(100deg);
+	}
+}
+@keyframes flutter1 {
+	0% {
+		transform:rotate(20deg);
+	}
+	50% {
+		transform:rotate(40deg);
+	}
+}
+.wing1 {
+	position: absolute;
+	height:55px;
+	width:55px;
+	top:210px;
+	left:0px;
+	transform:rotate(20deg);
+	transform-origin:bottom right;
+	border-top-right-radius:100%;
+	border-bottom-left-radius:100%;
+	border-top-left-radius:10px;
+	background-color:#ddd;
+	z-index:-1;
+	filter:blur(1px);
+	animation: flutter1 0.01s linear reverse infinite;
+}
+.wing2 {
+	position: absolute;
+	height:55px;
+	width:55px;
+	top:205px;
+	left:10px;
+	transform:rotate(80deg);
+	transform-origin:bottom right;
+	border-top-right-radius:100%;
+	border-bottom-left-radius:100%;
+	border-top-left-radius:10px;
+	background-color:#ddd;
+	z-index:1;
+	filter:blur(1px);
+	animation: flutter2 0.01s linear infinite;
+}
+/* WINGS WINGS WINGS WINGS */
+/* STINGER STINGER STINGER STINGER  */
+
+.stinger {
+	position: absolute;
+	height:55px;
+	width:55px;
+	top:255px;
+	left:120px;
+	transform:rotate(320deg);
+	border-top-right-radius:50%;
+	border-bottom-left-radius:100%;
+	border-top-left-radius:10px;
+	background-color:#000;
+	z-index:-1;
+}
+
+/* STINGER STINGER STINGER STINGER  */
+/* EYES EYES EYES EYES  */
+.eyes {
+	position: absolute;
+	height:25px;
+	width:25px;
+	top:260px;
+	left:0px;
+	background-color:#eee;
+	box-shadow:
+	20px 0 0 #eee;
+	border-radius:100%;
+	.pupil {
+		position:absolute;
+		height:4px;
+		width:4px;
+		top:13px;
+		left:0px;
+		background-color:#000;
+		border-radius:100%;
+		box-shadow:
+		20px 0 0 #000;
+	}
+}
+/* EYES EYES EYES EYES  */
+/* DEBRIS DEBRIS DEBRIS DEBRIS  */
+@keyframes debri {
+	0% {
+		left:-400px;
+	}
+	100% {
+		left:700px;
+	}
+}
+$debri-duration:random(1) - .4 + s;
+$debri-delay:0.5s;
+.debri1 {
+	position: absolute;
+	width:100px;
+	height:1px;
+	background-color:#000;
+	top:300px;
+	left:-150px;
+	animation:debri $debri-duration $debri-delay ease-out infinite;
+}
+.debri2 {
+	position: absolute;
+	width:75px;
+	height:2px;
+	background-color:#000;
+	top:170px;
+	left:-150px;
+	animation:debri $debri-duration $debri-delay+-.1 ease-out infinite;
+}
+.debri3 {
+	position: absolute;
+	width:60px;
+	height:2px;
+	background-color:#000;
+	top:275px;
+	left:-150px;
+	z-index:-1;
+	animation:debri $debri-duration $debri-delay+.95 ease-out infinite;
+}
+.debri4 {
+	position: absolute;
+	width:80px;
+	height:1px;
+	background-color:#000;
+	top:400px;
+	left:-150px;
+	animation:debri $debri-duration $debri-delay+-.2 ease-out infinite;
+}
+.debri5 {
+	position: absolute;
+	width:90px;
+	height:2px;
+	background-color:#000;
+	top:315px;
+	left:-150px;
+	animation:debri $debri-duration $debri-delay+.3 ease-out infinite;
+}
+.debri6 {
+	position: absolute;
+	width:100px;
+	height:2px;
+	background-color:#000;
+	top:265px;
+	left:-150px;
+	z-index:-1;
+	animation:debri $debri-duration $debri-delay+.2 ease-out infinite;
+}
+/* DEBRIS DEBRIS DEBRIS DEBRIS  */
+/* CLOUDS CLOUDS CLOUDS CLOUDS  */
+@keyframes cloud {
+	0% {
+		left:-400px;
+	}
+	100% {
+		left: 500px;
+	}
+}
+@keyframes cloud2 {
+	0% {
+		left:-450px;
+	}
+	100% {
+		left:400px;
+	}
+}
+.cloud1 {
+	position: absolute;
+	height:30px;
+	width:30px;
+	top:100px;
+	left:-150px;
+	border-radius:100%;
+	box-shadow:
+	50px 50px 2px rgba(255,255,255,0.95),
+	30px 55px 1px rgba(255,255,255,0.95),
+	10px 50px 1px rgba(255,255,255,0.95),
+	20px 35px 1px rgba(255,255,255,0.95),
+	40px 35px 1px rgba(255,255,255,0.95);
+	animation:
+	cloud 10s linear infinite;
+	z-index:-1;
+}
+.cloud2 {
+	position: absolute;
+	height:60px;
+	width:60px;
+	top:0px;
+	left:-950px;
+	border-radius:100%;
+	box-shadow:
+	100px 200px 2px rgba(255,255,255,0.95),
+	50px 205px 1px rgba(255,255,255,0.95),
+	10px 200px 1px rgba(255,255,255,0.95),
+	35px 170px 1px rgba(255,255,255,0.95),
+	70px 170px 1px rgba(255,255,255,0.95);
+	animation:
+	cloud 5s 2s linear infinite;
+	z-index:-1;
+}
+.cloud3 {
+	position: absolute;
+	height:100px;
+	width:100px;
+	top:200px;
+	left:-950px;
+	border-radius:100%;
+	box-shadow:
+	150px 200px 2px rgba(255,255,255,0.95),
+	75px 205px 1px rgba(255,255,255,0.95),
+	10px 200px 1px rgba(255,255,255,0.95),
+	45px 150px 1px rgba(255,255,255,0.95),
+	120px 150px 1px rgba(255,255,255,0.95);
+	animation:
+	cloud2 2.8s 1s linear infinite;
+	z-index:1;
 }
