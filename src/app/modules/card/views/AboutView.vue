@@ -1,10 +1,14 @@
 <template>
   <div class="card-about">
-    <div class="card-about__logo">
+    <!-- <div class="card-about__logo">
       <Logo :sucursal="sucursal" />
-    </div>
+    </div> -->
 
     <!-- <img src="../../../assets/cupid.png" class="cupid-image"> -->
+
+    <div class="spring__decoration">
+
+    </div>
 
     <div class="card-about__image">
       <button
@@ -43,7 +47,7 @@
 </template>
 
 <script>
-import { computed, defineAsyncComponent, ref } from 'vue'
+import { computed, ref } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import useEmployee from '../composables/useEmployee'
 import meta from '../../../services/metatags'
@@ -51,7 +55,7 @@ import VLazyImage from 'v-lazy-image'
 
 export default {
   components: {
-    Logo: defineAsyncComponent(() => import('../components/Logo.vue')),
+    // Logo: defineAsyncComponent(() => import('../components/Logo.vue')),
     VLazyImage
   },
 

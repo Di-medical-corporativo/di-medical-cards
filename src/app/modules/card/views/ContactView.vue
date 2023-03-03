@@ -1,5 +1,8 @@
 <template>
   <div class="card-contact">
+
+    <LeavesFalling/>
+
     <SucursalProvider>
       <template #sharer="{ sucursal }">
         <Sharer
@@ -70,8 +73,9 @@
       <template #copy>
         <CopyMessage />
       </template>
-
     </SucursalProvider>
+
+    <SunFlower/>
 </div>
 </template>
 
@@ -99,7 +103,9 @@ export default {
     ),
     Sharer: defineAsyncComponent(() => import('../components/Sharer.vue')),
     StoriesButton: defineAsyncComponent(() => import('../components/stories/StoriesButton.vue')),
-    ModalStories: defineAsyncComponent(() => import('../components/stories/ModalStories.vue'))
+    ModalStories: defineAsyncComponent(() => import('../components/stories/ModalStories.vue')),
+    LeavesFalling: defineAsyncComponent(() => import('../components/decoration/spring/Leaves.vue')),
+    SunFlower: defineAsyncComponent(() => import('../components/decoration/spring/SunFlower.vue'))
   },
 
   setup () {
