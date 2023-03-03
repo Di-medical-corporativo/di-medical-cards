@@ -7,8 +7,8 @@
       @click="$router.push({ name: 'about-card' })"
       :style="sucursalColor"
     >
-      <!-- <i class="bi bi-person-fill icon"></i> -->
-      <i class="bi bi-heart-fill icon"></i>
+      <i class="bi bi-person-fill icon"></i>
+      <!-- <i class="bi bi-heart-fill icon"></i> -->
       Sobre mí
     </button>
   </div>
