@@ -4,6 +4,7 @@ import technicalRepository from './technical.repository'
 import brandRepository from './brands.repository'
 import storiesRepository from './stories.repository'
 import cataloguesRepository from './catalogues.repository'
+import statsRepository from './stats.repository'
 
 export default {
   employeeRepository,
@@ -11,5 +12,6 @@ export default {
   technicalRepository,
   brandRepository,
   storiesRepository,
-  cataloguesRepository
+  cataloguesRepository,
+  statsRepository
 }
