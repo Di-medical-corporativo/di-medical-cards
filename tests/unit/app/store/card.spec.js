@@ -148,7 +148,8 @@ describe('Card store', () => {
         job: 'Jefe de Almacén ',
         phone: '5580494313',
         sucursal: 'dm-sur',
-        email: 'almacen@dimedicaldelsur.mx'
+        email: 'almacen@dimedicaldelsur.mx',
+        visitsId: '0R6F7uwODmKKbb52gPG7'
       }
       const store = createVuexStore({ employee: null })
       await store.dispatch('card/getEmployeeById', '0W2w0TFoyn3AbUf10hYn')
@@ -244,6 +245,14 @@ describe('Card store', () => {
       const brandToSearch = 'Salter Labs'
       await store.dispatch('card/getCataloguesByBrand', brandToSearch)
       expect(store.state.card.catalogues.length).toBeDefined()
+    })
+
+    test('updateCountVisits should update by 1 the visits count', async () => {
+      const userID = '0W2w0TFoyn3AbUf10hYn'
+      const store = createVuexStore({ employee: null })
+      const user = await store.dispatch('card/getEmployeeById', userID)
+      console.log(user)
+      await store.dispatch('card/updateCountVisits', user.visitsId)
     })
   })
 })

@@ -109,7 +109,7 @@ export default {
   },
 
   setup () {
-    const { getEmployee } = useEmployee()
+    const { getEmployee, updateVisitCount } = useEmployee()
     const router = useRouter()
     const route = useRoute()
     const employeeData = ref({})
@@ -122,6 +122,7 @@ export default {
         const employee = await getEmployee(route.params.id)
         setHexagonsFromEmployeeData(employee)
         employeeData.value = employee
+        updateVisitCount(employee.visitsId)
         meta.update('title', employee.firstName + ' ' + employee.lastName)
         meta.update('url', `https://card.dimedicalcorporativo.mx${route.path}`)
       } catch (error) {
