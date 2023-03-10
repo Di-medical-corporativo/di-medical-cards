@@ -11,7 +11,8 @@ const initActions = (dependencies) => {
       getCataloguesUseCase,
       getCataloguesByBrandUseCase,
       getAllStoriesUseCase,
-      getAllBrandsUseCase
+      getAllBrandsUseCase,
+      updateVisitsCountUseCase
     }
   } = dependencies
   return {
@@ -151,6 +152,10 @@ const initActions = (dependencies) => {
       const formattedCatalogues = formatResult(catalogues)
       commit('setCatalogues', formattedCatalogues)
       commit('setIsloadingCatalogues', false)
+    },
+
+    updateCountVisits: async (_, id) => {
+      await updateVisitsCountUseCase(dependencies).execute({ statsId: id })
     }
   }
 }

@@ -9,7 +9,6 @@ export default {
       const vCardStatsRef = doc(firestore, ENTITY_NAME, viewsId)
       await runTransaction(firestore, async (transaction) => {
         const vCardStats = await transaction.get(vCardStatsRef)
-        console.log(vCardStats.exists())
         if (!vCardStats.exists()) {
           throw new Error('The card does not exists')
         }
