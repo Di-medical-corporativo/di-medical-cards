@@ -146,6 +146,15 @@ export default {
         if (hexagon.logo === 'phone') {
           hexagon.link = `tel:+52${employee.phone}`
         }
+
+        if (hexagon.logo === 'telephone' && route.params.id === 'd0XRDmaQYG2p4rKxqyNP') {
+          hexagon.link = 'tel:+528128609435'
+        }
+
+        if (hexagon.logo === 'telephone' && route.params.id === 'vgTqMVuZVI9l9Kaa4UZt') {
+          hexagon.link = 'tel:+528128609435'
+        }
+
         return hexagon
       })
     }
