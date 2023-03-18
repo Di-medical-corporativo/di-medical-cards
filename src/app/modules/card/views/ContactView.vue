@@ -147,12 +147,12 @@ export default {
           hexagon.link = `tel:+52${employee.phone}`
         }
 
-        if (hexagon.logo === 'telephone' && route.params.id === 'd0XRDmaQYG2p4rKxqyNP') {
-          hexagon.link = 'tel:+528128609435'
+        if (hexagon.logo === 'telephone') {
+          hexagon.link = `tel:+52${employee.sucursalPhone}`
         }
 
-        if (hexagon.logo === 'telephone' && route.params.id === 'vgTqMVuZVI9l9Kaa4UZt') {
-          hexagon.link = 'tel:+528128609435'
+        if (hexagon.logo === 'geo-alt') {
+          hexagon.link = employee.sucursalAddress
         }
 
         return hexagon
