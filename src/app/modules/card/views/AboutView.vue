@@ -1,10 +1,8 @@
 <template>
   <div class="card-about">
-    <!-- <div class="card-about__logo">
+    <div class="card-about__logo">
       <Logo :sucursal="sucursal" />
-    </div> -->
-
-    <Bee/>
+    </div>
 
     <div class="card-about__image">
       <button
@@ -51,9 +49,8 @@ import VLazyImage from 'v-lazy-image'
 
 export default {
   components: {
-    // Logo: defineAsyncComponent(() => import('../components/Logo.vue')),
-    VLazyImage,
-    Bee: defineAsyncComponent(() => import('../components/decoration/spring/Bee.vue'))
+    Logo: defineAsyncComponent(() => import('../components/Logo.vue')),
+    VLazyImage
   },
 
   setup () {
