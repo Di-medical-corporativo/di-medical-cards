@@ -1,5 +1,8 @@
 <template>
   <div class="card-about">
+
+    <img src="../../../assets/candy.png" alt="Decoration for April" class="candies-decoration">
+
     <div class="card-about__logo">
       <Logo :sucursal="sucursal" />
     </div>
