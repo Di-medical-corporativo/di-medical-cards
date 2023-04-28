@@ -5,7 +5,6 @@ export const setEmployee = (state, employee) => {
 }
 
 export const setLoading = (state, loadingState) => {
-  console.log('Loading...')
   state.isLoading = loadingState
 }
 

@@ -251,8 +251,7 @@ describe('Card store', () => {
       const userID = '0W2w0TFoyn3AbUf10hYn'
       const store = createVuexStore({ employee: null })
       const user = await store.dispatch('card/getEmployeeById', userID)
-      console.log(user)
-      await store.dispatch('card/updateCountVisits', user.visitsId)
+      await store.dispatch('card/updateCountVisits', { id: user.visitsId, fieldToUpdate: 'in' })
     })
   })
 })

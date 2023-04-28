@@ -4,7 +4,7 @@ import { doc, runTransaction } from 'firebase/firestore'
 const ENTITY_NAME = 'visitas'
 
 export default {
-  incrementVisits: async (viewsId) => {
+  incrementVisits: async (viewsId, statName) => {
     try {
       const vCardStatsRef = doc(firestore, ENTITY_NAME, viewsId)
       await runTransaction(firestore, async (transaction) => {
@@ -13,8 +13,8 @@ export default {
           throw new Error('The card does not exists')
         }
 
-        const newVisistStats = Number(vCardStats.data().visits) + 1
-        transaction.update(vCardStatsRef, { visits: newVisistStats })
+        const newVisistStats = Number(vCardStats.data()[statName]) + 1
+        transaction.update(vCardStatsRef, { [statName]: newVisistStats })
       })
 
       return { ok: true }
