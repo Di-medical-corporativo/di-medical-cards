@@ -25,12 +25,12 @@ const useEmployee = () => {
     return sessionStorage.getItem(id)
   }
 
-  const updateVisitCount = async (id) => {
-    const cookieName = getCookie(`${COOKIE__NAME__VISTED}-id`)
-    if (getCookie(cookieName)) return
-
+  const updateVisitCount = async (id, fieldToUpdate) => {
+    const cookieName = `${COOKIE__NAME__VISTED}-${fieldToUpdate}-${id}`
+    const exisitsCookie = getCookie(cookieName)
+    if (exisitsCookie) return
     setCoockieVisit(cookieName)
-    await store.dispatch('card/updateCountVisits', id)
+    await store.dispatch('card/updateCountVisits', { id, fieldToUpdate })
   }
 
   const setCoockieVisit = async (cookieToSet) => {

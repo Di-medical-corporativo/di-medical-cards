@@ -54,6 +54,8 @@
           :key="i"
           :icon="l.logo"
           :link="l.link"
+          :updateVisit="l.visitField"
+          :employeeVisitId="employeeData.visitsId"
         />
 
       </template>
@@ -65,6 +67,8 @@
           :key="i"
           :icon="l.logo"
           :link="l.link"
+          :updateVisit="l.visitField"
+          :employeeVisitId="employeeData.visitsId"
         />
       </template>
 
@@ -116,10 +120,11 @@ export default {
 
     const getEmployeeFromDataBaseOrSavedInLocalStorage = async () => {
       try {
+        const fieldToUpdateVisistCount = 'visits'
         const employee = await getEmployee(route.params.id)
         setHexagonsFromEmployeeData(employee)
         employeeData.value = employee
-        updateVisitCount(employee.visitsId)
+        updateVisitCount(employee.visitsId, fieldToUpdateVisistCount)
         meta.update('title', employee.firstName + ' ' + employee.lastName)
         meta.update('url', `https://card.dimedicalcorporativo.mx${route.path}`)
       } catch (error) {

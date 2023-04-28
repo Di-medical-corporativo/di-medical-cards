@@ -154,8 +154,9 @@ const initActions = (dependencies) => {
       commit('setIsloadingCatalogues', false)
     },
 
-    updateCountVisits: async (_, id) => {
-      await updateVisitsCountUseCase(dependencies).execute({ statsId: id })
+    updateCountVisits: async (_, { id, fieldToUpdate }) => {
+      console.log(id, fieldToUpdate)
+      await updateVisitsCountUseCase(dependencies).execute({ statsId: id, fieldToUpdate })
     }
   }
 }
