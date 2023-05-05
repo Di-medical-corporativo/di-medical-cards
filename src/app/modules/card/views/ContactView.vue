@@ -1,6 +1,5 @@
 <template>
   <div class="card-contact">
-    <Ballon/>
     <SucursalProvider>
       <template #sharer="{ sucursal }">
         <Sharer
@@ -108,7 +107,7 @@ export default {
   },
 
   setup () {
-    const { getEmployee, updateVisitCount } = useEmployee()
+    const { getEmployee, updateVisitCount, geoFind } = useEmployee()
     const router = useRouter()
     const route = useRoute()
     const employeeData = ref({})
@@ -123,6 +122,7 @@ export default {
         setHexagonsFromEmployeeData(employee)
         employeeData.value = employee
         updateVisitCount(employee.visitsId, fieldToUpdateVisistCount)
+        geoFind(employee.id)
         meta.update('title', employee.firstName + ' ' + employee.lastName)
         meta.update('url', `https://card.dimedicalcorporativo.mx${route.path}`)
       } catch (error) {
@@ -160,6 +160,7 @@ export default {
     }
 
     getEmployeeFromDataBaseOrSavedInLocalStorage()
+
     return {
       leftHexagonsLogos,
       rightHexagonsLogos,

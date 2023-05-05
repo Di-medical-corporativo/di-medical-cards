@@ -5,6 +5,7 @@ import brandRepository from './brands'
 import storiesRepository from './stories'
 import catalogueRepository from './catalogues'
 import statsRepository from './stats'
+import geolocationRepository from './geolocation'
 
 export default {
   ...employeeRepository,
@@ -13,5 +14,6 @@ export default {
   ...brandRepository,
   ...storiesRepository,
   ...catalogueRepository,
-  ...statsRepository
+  ...statsRepository,
+  ...geolocationRepository
 }

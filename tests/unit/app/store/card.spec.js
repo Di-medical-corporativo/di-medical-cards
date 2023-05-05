@@ -149,7 +149,9 @@ describe('Card store', () => {
         phone: '5580494313',
         sucursal: 'dm-sur',
         email: 'almacen@dimedicaldelsur.mx',
-        visitsId: '0R6F7uwODmKKbb52gPG7'
+        visitsId: '0R6F7uwODmKKbb52gPG7',
+        sucursalAddress: 'https://goo.gl/maps/MVb84MXQ1Jf4xZei6',
+        sucursalPhone: '5572616849'
       }
       const store = createVuexStore({ employee: null })
       await store.dispatch('card/getEmployeeById', '0W2w0TFoyn3AbUf10hYn')
@@ -252,6 +254,15 @@ describe('Card store', () => {
       const store = createVuexStore({ employee: null })
       const user = await store.dispatch('card/getEmployeeById', userID)
       await store.dispatch('card/updateCountVisits', { id: user.visitsId, fieldToUpdate: 'in' })
+    })
+
+    test('geoFindUser should update or set new location', async () => {
+      const lat = 123
+      const lon = 123
+
+      const store = createVuexStore({ employee: null })
+
+      await store.dispatch('card/geoFindUser', { lat, lon })
     })
   })
 })
