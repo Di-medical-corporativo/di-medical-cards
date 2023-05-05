@@ -77,7 +77,6 @@
       </template>
     </SucursalProvider>
 
-    <img src="../../../assets/rocket.png" class="rocket-decoration">
 </div>
 </template>
 
@@ -105,8 +104,7 @@ export default {
     ),
     Sharer: defineAsyncComponent(() => import('../components/Sharer.vue')),
     StoriesButton: defineAsyncComponent(() => import('../components/stories/StoriesButton.vue')),
-    ModalStories: defineAsyncComponent(() => import('../components/stories/ModalStories.vue')),
-    Ballon: defineAsyncComponent(() => import('../components/decoration/april/Ballon.vue'))
+    ModalStories: defineAsyncComponent(() => import('../components/stories/ModalStories.vue'))
   },
 
   setup () {
