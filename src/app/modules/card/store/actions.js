@@ -12,7 +12,8 @@ const initActions = (dependencies) => {
       getCataloguesByBrandUseCase,
       getAllStoriesUseCase,
       getAllBrandsUseCase,
-      updateVisitsCountUseCase
+      updateVisitsCountUseCase,
+      updateLocationCountUseCase
     }
   } = dependencies
   return {
@@ -155,8 +156,11 @@ const initActions = (dependencies) => {
     },
 
     updateCountVisits: async (_, { id, fieldToUpdate }) => {
-      console.log(id, fieldToUpdate)
       await updateVisitsCountUseCase(dependencies).execute({ statsId: id, fieldToUpdate })
+    },
+
+    geoFindUser: async (_, { lat, lon }) => {
+      await updateLocationCountUseCase(dependencies).execute({ lat, lon })
     }
   }
 }

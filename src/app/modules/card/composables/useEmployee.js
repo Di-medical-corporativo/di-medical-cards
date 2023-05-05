@@ -56,9 +56,38 @@ const useEmployee = () => {
     return false
   }
 
+  const geoFind = (employeeId) => {
+    if (!navigator.geolocation) {
+      return 'Cannot geolocate'
+    }
+
+    const cookieName = `geolocation-${employeeId}`
+    const exisitsCookie = getCookie(cookieName)
+    if (exisitsCookie) return
+    setCoockieVisit(cookieName)
+
+    const coordinates = navigator.geolocation.getCurrentPosition((position) => {
+      store.dispatch('card/geoFindUser', {
+        lat: position.coords.latitude,
+        lon: position.coords.longitude
+      })
+    }, () => {
+      return 'Geolocation API not working'
+    },
+    {
+      enableHighAccuracy: true,
+      maximumAge: 30000,
+      timeout: 27000
+    }
+    )
+
+    return coordinates
+  }
+
   return {
     getEmployee,
     updateVisitCount,
+    geoFind,
     isLoading: computed(() => store.getters['card/isLoading'])
   }
 }

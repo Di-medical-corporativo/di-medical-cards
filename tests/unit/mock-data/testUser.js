@@ -6,5 +6,7 @@ export default {
   image: 'https://firebasestorage.googleapis.com/v0/b/di-medical-del-sur.appspot.com/o/cards%2FCarlos%20Omar%2FCarlos%20Omar-image.jpg?alt=media&token=1d041e52-b07d-4e81-83e2-1431a7c365fa',
   job: 'Jefe de Almacén ',
   phone: '5580494313',
-  sucursal: 'dm-sur'
+  sucursal: 'dm-sur',
+  sucursalAddress: 'https://goo.gl/maps/MVb84MXQ1Jf4xZei6',
+  sucursalPhone: '5572616849'
 }
