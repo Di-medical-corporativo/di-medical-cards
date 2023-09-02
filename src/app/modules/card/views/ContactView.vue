@@ -35,8 +35,8 @@
         </Transition>
       </template>
 
-      <template #logo="{ sucursal }">
-        <Logo :sucursal="sucursal" />
+      <template #logo="{ sucursal }">.
+        <Logo :sucursal="sucursal"  style="visibility: hidden;"/>
       </template>
 
       <template #employee="{ sucursal }">
@@ -75,7 +75,10 @@
         <CopyMessage />
       </template>
     </SucursalProvider>
-
+    <v-lazy-image
+            class="september_image"
+            src="https://firebasestorage.googleapis.com/v0/b/di-medical-del-sur.appspot.com/o/static%2Fdecoration%2Fmexico_flag%20(2).png?alt=media&token=40f2e6b7-2108-4c8b-b67b-a198afc8cf21"
+    />
 </div>
 </template>
 
@@ -85,6 +88,7 @@ import { useRoute, useRouter } from 'vue-router'
 import useEmployee from '../composables/useEmployee'
 import { leftHexagonsLogos, rightHexagonsLogos } from '../helpers/hexagonLogos'
 import meta from '../../../services/metatags'
+import VLazyImage from 'v-lazy-image'
 export default {
   components: {
     Logo: defineAsyncComponent(() => import('../components/Logo.vue')),
@@ -103,7 +107,8 @@ export default {
     ),
     Sharer: defineAsyncComponent(() => import('../components/Sharer.vue')),
     StoriesButton: defineAsyncComponent(() => import('../components/stories/StoriesButton.vue')),
-    ModalStories: defineAsyncComponent(() => import('../components/stories/ModalStories.vue'))
+    ModalStories: defineAsyncComponent(() => import('../components/stories/ModalStories.vue')),
+    VLazyImage
   },
 
   setup () {
