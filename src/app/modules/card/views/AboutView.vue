@@ -1,7 +1,9 @@
 <template>
   <div class="card-about">
+
     <div class="card-about__logo">
-      <Logo :sucursal="sucursal" />
+      <!-- <Logo :sucursal="sucursal" /> -->
+      <WavingFlagSeptember/>
     </div>
 
     <div class="card-about__image">
@@ -49,7 +51,8 @@ import VLazyImage from 'v-lazy-image'
 
 export default {
   components: {
-    Logo: defineAsyncComponent(() => import('../components/Logo.vue')),
+    // Logo: defineAsyncComponent(() => import('../components/Logo.vue')),
+    WavingFlagSeptember: defineAsyncComponent(() => import('../components/decoration/september/WavingFlag.vue')),
     VLazyImage
   },
 
