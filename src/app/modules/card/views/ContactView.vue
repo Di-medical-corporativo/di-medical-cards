@@ -1,81 +1,56 @@
 <template>
   <div class="card-contact">
+
+    <img class="cempasuchil-deco" src="../../../assets/cempasuchil.png" />
+    <img class="calavera" src="../../../assets/calavera.png">
+
     <SucursalProvider>
       <template #sharer="{ sucursal }">
-        <Sharer
-            :sucursal="sucursal"
-            :employeeName="`${employeeData.firstName} ${employeeData.lastName}`"
-        />
+        <Sharer :sucursal="sucursal" :employeeName="`${employeeData.firstName} ${employeeData.lastName}`" />
       </template>
 
       <template #products="{ sucursal }">
-        <ProductsButton :sucursal="sucursal"/>
+        <ProductsButton :sucursal="sucursal" />
       </template>
 
       <template #stories-button="{ sucursal }">
-        <StoriesButton
-            :sucursal="sucursal"
-            @openModal="openStoriesModal=true"
-        />
+        <StoriesButton :sucursal="sucursal" @openModal="openStoriesModal = true" />
       </template>
 
       <template #stories-modal="{ sucursal }">
-        <Transition
-            name="nested"
-            :duration="{
-                enter: 700,
-                leave: 200
-            }
-        ">
-            <ModalStories
-            :sucursal="sucursal"
-            v-if="openStoriesModal"
-            @closeModal="openStoriesModal=false"
-        />
+        <Transition name="nested" :duration="{
+          enter: 700,
+          leave: 200
+        }
+          ">
+          <ModalStories :sucursal="sucursal" v-if="openStoriesModal" @closeModal="openStoriesModal = false" />
         </Transition>
       </template>
 
       <template #logo="{ sucursal }">.
-        <Logo :sucursal="sucursal"/>
+        <Logo :sucursal="sucursal" />
       </template>
 
       <template #employee="{ sucursal }">
-        <EmployeeName
-          :sucursal="sucursal"
-          :employee="employeeData"
-        />
+        <EmployeeName :sucursal="sucursal" :employee="employeeData" />
       </template>
 
       <template #hexagons-left="{ sucursal }">
-        <Hexagon
-          :sucursal="sucursal"
-          v-for="(l, i) in leftHexagonsWithEmployeeData"
-          :key="i"
-          :icon="l.logo"
-          :link="l.link"
-          :updateVisit="l.visitField"
-          :employeeVisitId="employeeData.visitsId"
-        />
+        <Hexagon :sucursal="sucursal" v-for="(l, i) in leftHexagonsWithEmployeeData" :key="i" :icon="l.logo"
+          :link="l.link" :updateVisit="l.visitField" :employeeVisitId="employeeData.visitsId" />
 
       </template>
 
       <template #hexagons-right="{ sucursal }">
-        <Hexagon
-          :sucursal="sucursal"
-          v-for="(l, i) in rightHexagonsWithEmployeeData"
-          :key="i"
-          :icon="l.logo"
-          :link="l.link"
-          :updateVisit="l.visitField"
-          :employeeVisitId="employeeData.visitsId"
-        />
+        <Hexagon :sucursal="sucursal" v-for="(l, i) in rightHexagonsWithEmployeeData" :key="i" :icon="l.logo"
+          :link="l.link" :updateVisit="l.visitField" :employeeVisitId="employeeData.visitsId" />
       </template>
 
       <template #copy>
         <CopyMessage />
       </template>
     </SucursalProvider>
-</div>
+  </div>
 </template>
 
 <script>
@@ -171,3 +146,20 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+  .cempasuchil-deco {
+    width: 100%;
+    position: absolute;
+    transform: rotate(180deg);
+    top: 0;
+    z-index: 1;
+  }
+  .calavera {
+    position: absolute;
+    bottom: 0;
+    left: -15px;
+    width: 85px;
+    z-index: 100;
+  }
+</style>

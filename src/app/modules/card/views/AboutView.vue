@@ -6,13 +6,14 @@
     </div>
 
     <div class="card-about__image">
-      <button
+      <!-- <button
         class="card-about__image__button"
         :style="buttonBackground"
         @click="$router.push({ name: 'contact-card' })"
       >
         <i class="bi bi-arrow-left icon"></i>
-      </button>
+      </button> -->
+      <Skull @click="$router.push({ name: 'contact-card' })" />
       <div class="card-about__image__outline" :style="sucursalBackground">
         <v-lazy-image
             class="card-about__image__employee"
@@ -51,7 +52,8 @@ import VLazyImage from 'v-lazy-image'
 export default {
   components: {
     Logo: defineAsyncComponent(() => import('../components/Logo.vue')),
-    VLazyImage
+    VLazyImage,
+    Skull: defineAsyncComponent(() => import('../components/decoration/november/Skull.vue'))
   },
 
   setup () {

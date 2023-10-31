@@ -32,7 +32,7 @@
         <slot name="hexagons-right" :sucursal="$route.params.sucursal"> </slot>
       </div>
     </div>
-
+    <Candle/>
     <div class="card-contact__copy">
       <slot name="copy"></slot>
     </div>
@@ -40,9 +40,8 @@
 </template>
 
 <script>
-import { computed } from 'vue'
+import { computed, defineAsyncComponent } from 'vue'
 import { useRoute } from 'vue-router'
-
 export default {
   setup () {
     const route = useRoute()
@@ -58,6 +57,9 @@ export default {
         return `background-image: url(${backgroundList[sucursal]})`
       })
     }
+  },
+  components: {
+    Candle: defineAsyncComponent(() => import('../components/decoration/november/Candle.vue'))
   }
 }
 </script>
