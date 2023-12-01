@@ -1,9 +1,5 @@
 <template>
   <div class="card-contact">
-
-    <img class="cempasuchil-deco" src="../../../assets/cempasuchil.png" />
-    <img class="calavera" src="../../../assets/calavera.png">
-
     <SucursalProvider>
       <template #sharer="{ sucursal }">
         <Sharer :sucursal="sucursal" :employeeName="`${employeeData.firstName} ${employeeData.lastName}`" />
