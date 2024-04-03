@@ -11,10 +11,6 @@
         <ProductsButton :sucursal="sucursal" />
       </template>
 
-      <template #stories-button="{ sucursal }">
-        <StoriesButton :sucursal="sucursal" @open-modal="openStoriesModal = true" />
-      </template>
-
       <template #stories-modal="{ sucursal }">
         <Transition name="nested" :duration="{
           enter: 700,
@@ -74,7 +70,6 @@ export default {
       import('../components/CopyMessage.vue')
     ),
     Sharer: defineAsyncComponent(() => import('../components/Sharer.vue')),
-    StoriesButton: defineAsyncComponent(() => import('../components/stories/StoriesButton.vue')),
     ModalStories: defineAsyncComponent(() => import('../components/stories/ModalStories.vue')),
     Ballon: defineAsyncComponent(() => import('../components/decoration/april/Ballon.vue'))
   },
