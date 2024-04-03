@@ -32,7 +32,7 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v2
 
-    - name: Debug: List contents of dist directory
+    - name: List contents of dist directory
       run: ls -l dist
 
     - name: Deploy to Firebase
