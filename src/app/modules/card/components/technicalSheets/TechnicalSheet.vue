@@ -3,7 +3,7 @@
     <v-lazy-image
         class="card-technicals__technicalSheet__image"
         :src="image"
-        @click="$emit('openModal', image)"
+        @click="$emit('open-modal', image)"
     />
   </div>
 </template>
@@ -16,7 +16,7 @@ export default {
       type: String
     }
   },
-  emits: ['openModal'],
+  emits: ['open-modal'],
   components: {
     VLazyImage
   }

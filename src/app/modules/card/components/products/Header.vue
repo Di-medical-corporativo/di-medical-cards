@@ -39,7 +39,7 @@ export default {
     const router = useRouter()
 
     const openModalCatalogues = () => {
-      emit('openModal')
+      emit('open-modal')
     }
 
     return {

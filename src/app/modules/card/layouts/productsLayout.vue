@@ -1,13 +1,13 @@
 <template>
   <div class="card-products">
-    <Header @openModal="toggleModal"/>
+    <Header @open-modal="toggleModal"/>
     <Transition
         name="fade"
         appear
     >
         <CatalogueModal
         v-if="isActiveModalCatalogues"
-        @closeModal="toggleModal"
+        @close-modal="toggleModal"
     />
         </Transition>
     <router-view></router-view>

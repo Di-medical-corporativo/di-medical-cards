@@ -32,7 +32,7 @@ export default {
 
     const searchTechnicalSheetByCode = () => {
       if (!codeToSearch.value || codeToSearch.value.trim().length === 0) return
-      emit('codeToSearch', codeToSearch.value)
+      emit('code-to-search', codeToSearch.value)
     }
 
     return {

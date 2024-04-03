@@ -23,12 +23,12 @@ export default {
     }
   },
 
-  emits: ['activeBrand'],
+  emits: ['active-brand'],
 
   setup (props, { emit }) {
     const isActive = ref(false)
     const addOrRemoveActiveBrand = () => {
-      emit('activeBrand', props.brandName)
+      emit('active-brand', props.brandName)
       const brandsButton = document.querySelectorAll('.card-technicals__brandList__brand__name')
       brandsButton.forEach(e => e.classList.remove('currentBrand'))
 

@@ -19,7 +19,7 @@ export default {
     }
   },
 
-  emits: ['openModal'],
+  emits: ['open-modal'],
 
   setup (props, { emit }) {
     return {
@@ -28,7 +28,7 @@ export default {
           props.sucursal === 'sur' ? '#218d9b' : '#c28400'
         return { background: backgroundSucursal }
       }),
-      openStoriesModal: () => emit('openModal')
+      openStoriesModal: () => emit('open-modal')
     }
   }
 }

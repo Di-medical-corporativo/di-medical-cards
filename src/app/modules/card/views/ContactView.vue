@@ -12,7 +12,7 @@
       </template>
 
       <template #stories-button="{ sucursal }">
-        <StoriesButton :sucursal="sucursal" @openModal="openStoriesModal = true" />
+        <StoriesButton :sucursal="sucursal" @open-modal="openStoriesModal = true" />
       </template>
 
       <template #stories-modal="{ sucursal }">
@@ -21,7 +21,7 @@
           leave: 200
         }
           ">
-          <ModalStories :sucursal="sucursal" v-if="openStoriesModal" @closeModal="openStoriesModal = false" />
+          <ModalStories :sucursal="sucursal" v-if="openStoriesModal" @close-modal="openStoriesModal = false" />
         </Transition>
       </template>
 

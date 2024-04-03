@@ -9,7 +9,7 @@
                 x
             </div>
             <Brands
-                @brandToSearch="getCataloguesByBrand"
+                @brand-to-search="getCataloguesByBrand"
             />
             <div
                 v-if="!isLoadingCatalogues"
@@ -47,7 +47,7 @@ export default {
     const router = useRouter()
 
     const closeModal = () => {
-      emit('closeModal')
+      emit('close-modal')
     }
 
     const getCataloguesByBrand = async (brand) => {

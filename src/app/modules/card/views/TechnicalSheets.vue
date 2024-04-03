@@ -1,9 +1,9 @@
 <template>
   <div class="card-technicals">
-    <BrandList @brandToSearch="searchByBrand"/>
+    <BrandList @brand-to-search="searchByBrand"/>
 
     <div class="card-technicals__bar">
-        <SearchBar @codeToSearch="searchByCode"/>
+        <SearchBar @code-to-search="searchByCode"/>
     </div>
     <template v-if="!isLoading && TechnicalSheetPaginated.length > 0">
         <div class="card-technicals__list">
@@ -12,7 +12,7 @@
                     v-for="i in TechnicalSheetPaginated"
                     :key="i"
                     :image="i.image"
-                    @openModal="openModal"
+                    @open-modal="openModal"
                 />
             </TransitionGroup>
         </div>
@@ -26,7 +26,7 @@
             <ModalTechnicalVue
                 v-if="isModalOpen"
                 :imageToOpen="imageToOpen"
-                @closeModal="closeModal"
+                @close-modal="closeModal"
             />
         </Transition>
         <Pagination

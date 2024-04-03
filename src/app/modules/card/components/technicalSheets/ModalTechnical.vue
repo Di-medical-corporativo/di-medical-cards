@@ -31,13 +31,13 @@ export default {
     }
   },
 
-  emits: ['closeModal'],
+  emits: ['close-modal'],
 
   setup (_, { emit }) {
     const route = useRoute()
 
     const closeModal = () => {
-      emit('closeModal')
+      emit('close-modal')
     }
 
     return {

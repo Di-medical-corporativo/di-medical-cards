@@ -63,7 +63,7 @@ export default {
     }
 
     const emitCloseModal = () => {
-      emit('closeModal')
+      emit('close-modal')
     }
 
     getStories()

@@ -5,7 +5,7 @@
         :key="brand.id"
         :idBrand="brand.id"
         :brandName="brand.name"
-        @activeBrand="brandToSearch"
+        @active-brand="brandToSearch"
     />
   </div>
 </template>
@@ -19,13 +19,13 @@ export default {
   components: {
     Brand: defineAsyncComponent(() => import('./Brand.vue'))
   },
-  emits: ['brandToSearch'],
+  emits: ['brand-to-search'],
   setup (_, { emit }) {
     const store = useStore()
     const router = useRouter()
 
     const brandToSearch = (brand) => {
-      emit('brandToSearch', brand)
+      emit('brand-to-search', brand)
     }
 
     const getBrands = async () => {
