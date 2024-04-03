@@ -26,15 +26,18 @@ jobs:
         run: npm run build
 
   deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
+  needs: build
+  runs-on: ubuntu-latest
+  steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
 
-      - name: Deploy to Firebase
-        run: |
-          npm install -g firebase-tools
-          firebase deploy --token "$FIREBASE_TOKEN"
-        env:
-          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+    - name: Debug: List contents of dist directory
+      run: ls -l dist
+
+    - name: Deploy to Firebase
+      run: |
+        npm install -g firebase-tools
+        firebase deploy --token "$FIREBASE_TOKEN"
+      env:
+        FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
