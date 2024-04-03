@@ -1,31 +1,6 @@
 <template>
     <div class="card-qr">
         <div class="card-qr__image">
-            <QRcode
-            :width="500"
-            :height="500"
-            :value="currentLink"
-            :qrOptions="{ typeNumber: 0, mode: 'Byte', errorCorrectionLevel: 'H' }"
-            :imageOptions="{ hideBackgroundDots: true, imageSize: 0.4, margin: 0 }"
-            :image="base64Image"
-            :dotsOptions="{
-              type: 'dots',
-              color: dotsColor,
-              gradient: {
-                type: 'linear',
-                rotation: 0,
-                colorStops: [
-                  { offset: 0, color: dotsColor },
-                  { offset: 1, color: dotsColor },
-                ],
-              },
-            }"
-            :backgroundOptions="{ color: 'transparent' }"
-            :cornersSquareOptions="{ type: 'dot', color: cornersCOlor }"
-            :cornersDotOptions="{ type: undefined, color: cornersCOlor }"
-            imgclass="img-qr"
-            id="qrImageBase64"
-          />
         </div>
 
         <button
@@ -40,15 +15,11 @@
 </template>
 
 <script>
-import QRcode from 'qrcode-vue3'
 import { computed } from 'vue'
 import { useRoute } from 'vue-router'
 import { surBase64, corpBase64 } from '../helpers/base64Logos'
 
 export default {
-  components: {
-    QRcode
-  },
   setup () {
     const { params } = useRoute()
     const { sucursal } = params
