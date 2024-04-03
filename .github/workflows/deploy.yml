@@ -8,7 +8,7 @@ on:
       - main
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -24,16 +24,7 @@ jobs:
       
       - name: Build
         run: npm run build
-
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-        with:
-          clean: false
-
+      
       - name: List contents of dist directory
         run: ls -l
 
