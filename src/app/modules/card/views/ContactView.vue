@@ -1,5 +1,7 @@
 <template>
   <div class="card-contact">
+    <Ballon/>
+
     <SucursalProvider>
       <template #sharer="{ sucursal }">
         <Sharer :sucursal="sucursal" :employeeName="`${employeeData.firstName} ${employeeData.lastName}`" />
@@ -73,7 +75,8 @@ export default {
     ),
     Sharer: defineAsyncComponent(() => import('../components/Sharer.vue')),
     StoriesButton: defineAsyncComponent(() => import('../components/stories/StoriesButton.vue')),
-    ModalStories: defineAsyncComponent(() => import('../components/stories/ModalStories.vue'))
+    ModalStories: defineAsyncComponent(() => import('../components/stories/ModalStories.vue')),
+    Ballon: defineAsyncComponent(() => import('../components/decoration/april/Ballon.vue'))
   },
 
   setup () {
@@ -142,20 +145,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-  .cempasuchil-deco {
-    width: 100%;
-    position: absolute;
-    transform: rotate(180deg);
-    top: 0;
-    z-index: 1;
-  }
-  .calavera {
-    position: absolute;
-    bottom: 0;
-    left: -15px;
-    width: 85px;
-    z-index: 100;
-  }
-</style>
