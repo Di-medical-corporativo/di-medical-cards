@@ -1,7 +1,5 @@
 <template>
   <div class="card-contact">
-    <Ballon/>
-
     <SucursalProvider>
       <template #sharer="{ sucursal }">
         <Sharer :sucursal="sucursal" :employeeName="`${employeeData.firstName} ${employeeData.lastName}`" />
@@ -70,8 +68,7 @@ export default {
       import('../components/CopyMessage.vue')
     ),
     Sharer: defineAsyncComponent(() => import('../components/Sharer.vue')),
-    ModalStories: defineAsyncComponent(() => import('../components/stories/ModalStories.vue')),
-    Ballon: defineAsyncComponent(() => import('../components/decoration/april/Ballon.vue'))
+    ModalStories: defineAsyncComponent(() => import('../components/stories/ModalStories.vue'))
   },
 
   setup () {
